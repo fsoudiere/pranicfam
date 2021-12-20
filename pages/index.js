@@ -96,7 +96,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
         </div>
         <Button variant="contained"><a
           href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-          target="_blank"
         >Apply Now</a></Button>
         <div className={styles.grid}>
             <h1>May you all be joyful and free!</h1>
@@ -106,8 +105,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
       <footer className={styles.footer}>
         <a
           href="https://thatfabi.com"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Made with Love by Fabi{' '}
         </a>
