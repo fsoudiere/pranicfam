@@ -74,7 +74,6 @@ It requires much more determination to stay on the pranic path as the temptation
 When you feed on the Consciousness of Joy, you become Joy.</p>
 <Button variant="contained"><a
           href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-          target="_blank"
         >Apply Now</a></Button>
         </div>
         <div className={styles.grid}>
