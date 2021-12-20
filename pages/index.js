@@ -53,7 +53,6 @@ export default function Home() {
             </a>
             <Button variant="contained"><a
           href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-          target="_blank"
         >Apply Now</a></Button>
         </div>
         <div className={styles.grid}>
@@ -63,7 +62,6 @@ export default function Home() {
             <p>After having run many weekly dry fasting at a timing (7pm Paris) rather difficult for other timezones (than Paris), we are improving! We have decided to create 3 private groups and 3 different times to dry fast together, no matter what! Now if you are in the Pranic Family Asia you can start your Weekly Dry Fast on Sunday evening with a group of supportive beings on the pranic journey!</p>
             <Button variant="contained"><a
           href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-          target="_blank"
         >Apply Now</a></Button>
         </div>
         <div className={styles.grid}>
