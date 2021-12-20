@@ -17,7 +17,7 @@ export default function Home() {
 
         <div>
         <h1 className={styles.title}>
-          Welcome to the Pranic Family!
+          The Pranic Family
         </h1>
         <p className={styles.description}>
           Inspiring beings to live joyfully free
@@ -32,30 +32,18 @@ export default function Home() {
         <div><h1>Values we share</h1></div>
         <div className={styles.grid}>
 
-          <a href="#" className={styles.card}>
             <h2>Inner Joy</h2>
             <p>Life is exuberant and so after surrendering our body, our mind, our will, there’s only peace, playfulness and gratitude that pervades.</p>
-            </a>
-            <a href="#" className={styles.card}>
             <h2>Freedom</h2>
             <p>Through non-attachment, we find freedom. We cultivate that by avoiding all dependencies on people, food, activities, self, shelter. </p>
-            </a>
-            <a href="#" className={styles.card}>
               <h2>Compassion</h2>
             <p>Like the sun, we shine on all creatures, good and bad, without conditions. Connection is what’s most important, so we are always embracing change. All is one.</p>
-            </a>
-            <a href="#" className={styles.card}>
               <h2>Simplicity</h2>
             <p>We are not intellectuals, we live in the present, here and now. Contemplative and without the need to judge or to accumulate knowledge. </p>
-            </a>
-            <a href="#" className={styles.card}>
               <h2>Natural</h2>
             <p>All is a spontaneous happening, so are we. There is no agenda or comparison, thus there is nothing to change. We accept the natural aspect of all things, simply untouched.</p>
-            </a>
-            <a href="#" className={styles.card}>
               <h2>Harmony</h2>
             <p>Collectively we can slip, so we accept some rules, ethics, principles for the respect of all life on earth. Non-violence in all action, speech and thoughts.</p>
-            </a>
         </div>
         <div className={styles.grid}>
         <h1>America, Europe, Asia!</h1>
