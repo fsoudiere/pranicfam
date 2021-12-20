@@ -22,14 +22,7 @@ export default function Home() {
         <p className={styles.description}>
           Inspiring beings to live joyfully free
         </p>
-        <Image
-          src="/images/joy.jpg" // Route of the image file
-          height={2590} // Desired size with correct aspect ratio
-          width={2860} // Desired size with correct aspect ratio
-          layout="responsive"
-          className="heroimg"
-          alt="Being Joy"
-        />
+
         </div>
         <div><h1>Values we share</h1></div>
         <div className={styles.grid}>
@@ -65,12 +58,7 @@ export default function Home() {
         </div>
         <div className={styles.grid}>
         <h1>America, Europe, Asia!</h1>
-        <Image
-          src="/images/together.jpg" // Route of the image file
-          height={749} // Desired size with correct aspect ratio
-          width={1200} // Desired size with correct aspect ratio
-          alt="Together"
-        />
+
             
             <p>After having run many weekly dry fasting at a timing (7pm Paris) rather difficult for other timezones (than Paris), we are improving! We have decided to create 3 private groups and 3 different times to dry fast together, no matter what! Now if you are in the Pranic Family Asia you can start your Weekly Dry Fast on Sunday evening with a group of supportive beings on the pranic journey!</p>
             <Button variant="contained"><a
@@ -80,12 +68,7 @@ export default function Home() {
         </div>
         <div className={styles.grid}>
             <h1>Consciousness of the Group</h1>
-            <Image
-          src="/images/ceremony.jpg" // Route of the image file
-          height={420} // Desired size with correct aspect ratio
-          width={1200} // Desired size with correct aspect ratio
-          alt="Fam"
-        />
+
             <p>Whether it is in one physical location or virtually connected, the power of a group suddenly reveals the energy of the Beloved, the ungraspable and unspeakable connection between us all. That force can move mountains and is the only reason why we are all here, and thanks to That Grace, each of us can easily flow with Life joyfully.
 
 It requires much more determination to stay on the pranic path as the temptations keep on increasing. Doubt, agitation and idleness then surface and pull us back into our old habits. With this group, you don’t have to fear the obstacles on the path. We are all going through them together and supporting this common enthusiasm through the collective group consciousness. Simply being part of such a group will nourish you from its collective consciousness. The primary food which gives Life to your mind-body is Consciousness.
