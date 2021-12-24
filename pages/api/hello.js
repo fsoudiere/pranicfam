@@ -1,5 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+  const body = req.body;
+  if (!body.email) {
+    return res.status(500).json({ msg: 'Name was not found' });
+  }
+
+  res.status(200).json({ name: `${body.email} ` });
 }
