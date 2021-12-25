@@ -6,7 +6,7 @@ export default function handler(req, res) {
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 
 let apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = REACT_APP_SENDIN_API_KEY;
+apiKey.apiKey = REACT_APP_SENDINBLUE_API_KEY;
 
 let apiInstance = new SibApiV3Sdk.ContactsApi();
 
