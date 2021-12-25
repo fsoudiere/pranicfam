@@ -30,7 +30,7 @@ const registerUser = async event => {
 
 
 // posts will be populated at build time by getStaticProps()
-function Blog({ contentCards }) {
+function Onboarding({ contentCards }) {
   const { user, login } = useAppContext();
   const [name, setName] = useState();
 
@@ -135,4 +135,4 @@ export async function getStaticProps() {
   }
 }
 
-export default Blog
+export default Onboarding
