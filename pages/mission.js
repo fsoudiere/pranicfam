@@ -66,7 +66,7 @@ function Blog({ contentCards }) {
             <option value="no">No</option>
           </select>
 
-          <p>If NO, Well Here's our dry fasting guide!</p>
+          <p>If NO, Well Here&apos;s our dry fasting guide!</p>
   
           <p>{contentCards[4].desc}</p>
           <label htmlFor="initiated">Have you ever done a Group Pranic Initiation?</label>
