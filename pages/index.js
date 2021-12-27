@@ -27,7 +27,7 @@ export default function Home() {
           height={420} // Desired size with correct aspect ratio
           width={1200} // Desired size with correct aspect ratio
           alt="Fam"
-        />{card.attachments[0].url}
+        />
         </div>
         <div><h1>Values we share</h1></div>
         <div className={styles.grid}>
