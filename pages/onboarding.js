@@ -25,7 +25,6 @@ import {
 // posts will be populated at build time by getStaticProps()
 function Onboarding({ contentCards }) {
 
-
   const { user, login } = useAppContext();
   
   const [name, setName] = useState("");
@@ -311,23 +310,48 @@ function Onboarding({ contentCards }) {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getServerSideProps() {
+export async function getServerSideProps({query}) {
+  const member = query.a;
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
   const posts = await res.json()
 
+  const fabi = "61ba2e77d9741d7fc9a75e4d"
+  const nathan = "61bbae0eaf9f8c2284e2a4dd"
+  const hrefna = "61bbae1a66752b3ad447ec8c"
+  const luiza = "61bbae23f477ee272f05a5c4"
+  const rakhi = "61bc8fd878662a71f9458203"
+  const ray = "61c25cc82a7abf39186de6d6"
+  
+
   const members = [
-    "61ba2e77d9741d7fc9a75e4d", 
-    "61bbae0eaf9f8c2284e2a4dd", 
-    "61bbae1a66752b3ad447ec8c", 
-    "61bbae23f477ee272f05a5c4", 
-    "61bc8fd878662a71f9458203", 
-    "61c25cc82a7abf39186de6d6"
+    fabi, nathan, hrefna, luiza, rakhi, ray
     ];
+    const memberNames = [
+      'fabi', 'nathan', 'hrefna', 'luiza', 'rakhi', 'ray'
+      ];
   
   const random = Math.floor(Math.random() * members.length);
   let contentCards = posts.cards.filter(card => {
+      if (member === 'Fabi') {
+        return card.idList == fabi && !card.closed;
+      } else
+      if (member === 'Nathan') {
+        return card.idList == nathan && !card.closed;
+      } else
+      if (member === 'Hrefna') {
+        return card.idList == hrefna && !card.closed;
+      } else
+      if (member === 'Luiza') {
+        return card.idList == luiza && !card.closed;
+      } else
+      if (member === 'Rakhi') {
+        return card.idList == rakhi && !card.closed;
+      } else
+      if (member === 'Ray') {
+        return card.idList == ray && !card.closed;
+      } else
       return card.idList == members[random] && !card.closed;
   });
   // By returning { props: { posts } }, the Blog component
