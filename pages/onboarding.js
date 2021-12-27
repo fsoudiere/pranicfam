@@ -3,6 +3,7 @@ import { useAppContext } from '../context/UserContext.js'
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { 
   Button, 
   TextField, 
@@ -21,9 +22,9 @@ import {
   } from '@mui/material';
 
 
-
 // posts will be populated at build time by getStaticProps()
 function Onboarding({ contentCards }) {
+
 
   const { user, login } = useAppContext();
   
@@ -36,6 +37,7 @@ function Onboarding({ contentCards }) {
   const [motive, setMotive] = useState("");
   const [referral, setReferral] = useState("");
   const [age, setAge] = useState("");
+
 
   const registerUser = async event => {
     event.preventDefault() // don't redirect the pag        
@@ -91,7 +93,6 @@ function Onboarding({ contentCards }) {
         typeof value === 'string' ? value.split(',') : value,
       );
     };
-    console.log(contentCards);
 
   return (
     <div className={styles.main}>
@@ -315,11 +316,20 @@ export async function getStaticProps() {
   // You can use any data fetching library
   const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
   const posts = await res.json()
-  let contentCards = posts.cards.filter(card => {
-    return card.idList == '61ba2e77d9741d7fc9a75e4d' && !card.closed;
-  });
-  
 
+  const members = [
+    "61ba2e77d9741d7fc9a75e4d", 
+    "61bbae0eaf9f8c2284e2a4dd", 
+    "61bbae1a66752b3ad447ec8c", 
+    "61bbae23f477ee272f05a5c4", 
+    "61bc8fd878662a71f9458203", 
+    "61c25cc82a7abf39186de6d6"
+    ];
+  
+  const random = Math.floor(Math.random() * members.length);
+  let contentCards = posts.cards.filter(card => {
+      return card.idList == members[random] && !card.closed;
+  });
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
