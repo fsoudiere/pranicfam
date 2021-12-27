@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 import { useAppContext } from '../context/UserContext.js'
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Button, 
   TextField, 
@@ -255,7 +256,7 @@ function Onboarding({ contentCards }) {
             form="register" 
             required/>
             <p></p> 
-            <FormLabel component="legend">Are you on medications you can't miss?</FormLabel>
+            <FormLabel component="legend">Are you on medications you cant miss?</FormLabel>
             <RadioGroup required row aria-label="medication" id="medication" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -288,7 +289,7 @@ function Onboarding({ contentCards }) {
             form="register"
             required/>
             <p></p>
-            <FormLabel component="legend">By signing your name you agree to the <a href="/">terms</a> and to receive our newsletter.</FormLabel>
+            <FormLabel component="legend">By signing your name you agree to the <Link href="/"><a>terms</a></Link> and to receive our newsletter.</FormLabel>
             <TextField 
             id="signed" 
             type="signed"
