@@ -317,6 +317,7 @@ export async function getStaticProps() {
   let contentCards = posts.cards.filter(card => {
     return card.idList == '61ba2e77d9741d7fc9a75e4d' && !card.closed;
   });
+  
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
@@ -326,5 +327,6 @@ export async function getStaticProps() {
     },
   }
 }
+
 
 export default Onboarding

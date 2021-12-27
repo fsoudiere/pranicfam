@@ -1,8 +1,10 @@
 export default function handler(req, res) {
-  const body = req.body;
-  if (!body.email) {
-    return res.status(500).json({ msg: 'Name was not found' });
+  if (req.method !== 'POST') {
+    res.status(405).send({ message: 'Only POST requests allowed' })
+    return
   }
 
-  res.status(200).json({ name: `${body.email} ` });
+  const body = JSON.parse(req.body)
+
+  // the rest of your code
 }
