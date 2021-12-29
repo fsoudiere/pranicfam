@@ -1,0 +1,17 @@
+.bubble {
+    display: block;
+    width: 80vw;
+    margin: 2px;
+    padding: 2em;
+    &.active {
+    display: block;
+    }
+    &.question {
+      background-color: rgb(158, 212, 212);
+      margin-left: -10vw;
+    }
+    &.answer {
+      background-color: rgb(158, 212, 171);
+      margin-right: -10vw;
+    }
+  }

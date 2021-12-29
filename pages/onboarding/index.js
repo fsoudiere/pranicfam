@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import ReactDOM from 'react-dom';
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import { useAppContext } from '../../context/UserContext.js'
@@ -6,6 +7,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { parseCookies } from "../../lib/cookieHelper"
+import Spring from '../../components/spring'
+import { useSpring, animated } from 'react-spring'
+
+
 import { 
   Button, 
   TextField, 
@@ -29,14 +34,10 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
   const { setUser, setSelectedMember, setQueryMember } = useAppContext();
   console.log(formData);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
   const [initiated, setInitiated] = useState("");
   const [motive, setMotive] = useState("");
-  const [referral, setReferral] = useState("");
-  const [age, setAge] = useState("");
 
   const handleInputsChange = (event) => {
     setSelectedMember(selectedMember);
@@ -73,6 +74,23 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
       );
     };
 
+
+
+    function Hi() {
+      const text = useSpring({
+        to: { opacity: 1 },
+        from: { opacity: 0 },
+        delay: 5000,
+      })
+      return (
+      <animated.div className={`${styles.bubble} ${styles.question}`}>
+        <h2 style={text}>Welcome {formData.name}</h2>
+          <p>{contentCards[1].desc}</p>
+          <p>Swipe</p>
+      </animated.div>
+      )
+    }
+
   return (
     
     <Layout>
@@ -82,8 +100,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-          <section className={isActive ? 'bubble active': 'bubble'} id="hi-bubble">
+          <section className={`${styles.bubble} ${styles.question}`} id="hi-bubble">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="320"
@@ -91,8 +108,13 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             alt="Fam"
             priority
             />
+
             <p>{contentCards[0].desc}</p>
-            <TextField id="fname" defaultValue="" label={contentCards[0].name} variant="standard" 
+            
+            </section>
+
+            <section className={`${styles.bubble} ${styles.answer}`}>
+            <TextField id="fname" label={contentCards[0].name} variant="standard" 
             onChange={(event) => {
               setUser(event.target.value); updateFormData({ name: event.target.value });
             }}
@@ -100,16 +122,14 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             required/>
             <Button variant="outlined" onClick={(event) => {
               handleInputsChange();
+              ReactDOM.render(<Hi />, document.getElementById('div1'));
             }}>Send</Button>
           </section>
 
-          <section className={!isActive ? 'bubble active': 'bubble'} id="journey-bubble">
-          <p>Hey {formData.name}, {contentCards[1].desc}</p>
-          <p>Swipe</p>
+          <section id="div1"></section>
 
-          </section>
 
-          <section className="bubble" id="diet-bubble">
+          <section className={`${styles.bubble} ${styles.answer}`}>
             <p>{contentCards[2].desc}</p>
             <InputLabel variant="standard" htmlFor="diet">
             {contentCards[2].name}
@@ -130,8 +150,11 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             </NativeSelect>
           </section>
 
-          <section className="bubble" id="dry-bubble">
+          <section className={`${styles.bubble} ${styles.question}`}>
             <p>{contentCards[3].desc}</p>
+          </section>
+
+            <section className={`${styles.bubble} ${styles.answer}`}>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry} onChange={(event) => {
               setDry(event.target.value);updateFormData({ dry: event.target.value });}} required row aria-label="dry" id="dry" name="row-radio-buttons-group">
@@ -158,7 +181,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           <section className="bubble" id="teacher-bubble">
           <p>{contentCards[6].desc}</p>
           <FormLabel component="legend">If Yes would you like to teach with us?</FormLabel>
-          <RadioGroup form="register" required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
+          <RadioGroup form="register" value=" " required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
             <FormControlLabel value="yes" control={<Radio />} label="Yes" />
             <FormControlLabel value="no" control={<Radio />} label="No" />
           </RadioGroup>
@@ -172,7 +195,6 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
               id="practices"
               multiple
               value={practiceName}
-              defaultValue=""
               onChange={handleChange}
               input={<OutlinedInput label={contentCards[6].name} />}
               MenuProps={MenuProps}
