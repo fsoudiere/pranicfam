@@ -85,7 +85,7 @@ function Apply({ contentCards, updateFormData, ...formData }) {
             </InputLabel>
             <NativeSelect
               form="register" required
-              defaultValue={formData.q}
+              value={formData.q}
               onChange={(event) => {setReferral(event.target.value);updateFormData({ referral: event.target.value });}}
               inputProps={{
                 name: 'referral',
