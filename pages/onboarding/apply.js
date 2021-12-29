@@ -1,4 +1,4 @@
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.scss'
 import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
 import Link from 'next/link';

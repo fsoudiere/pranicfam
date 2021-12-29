@@ -27,6 +27,7 @@
     "react-spring": "^9.3.3",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
+    "sass": "^1.45.1",
     "sib-api-v3-sdk": "^8.2.1"
   },
   "devDependencies": {
