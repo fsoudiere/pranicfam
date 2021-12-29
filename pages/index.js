@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
 
 
 export default function Home() {
   return (
+    <Layout>
     <div className={styles.container}>
       <Head>
         <title>Pranic Family</title>
@@ -20,6 +22,7 @@ export default function Home() {
         <p className={styles.description}>
           Inspiring beings to live joyfully free
         </p>
+        
           <Image
           src="/images/ceremony.jpg" // Route of the image file
           height={420} // Desired size with correct aspect ratio
@@ -104,5 +107,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
         </a>
       </footer>
     </div>
+    </Layout>
   )
 }

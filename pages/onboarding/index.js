@@ -1,3 +1,5 @@
+import Head from 'next/head'
+import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
@@ -72,7 +74,15 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
     };
 
   return (
-    <div className={styles.main}>
+    
+    <Layout>
+      <div className={styles.main}>
+      <Head>
+        <title>Pranic Family - Onboarding</title>
+        <meta name="description" content="Inspiring beings to live joyfully free" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
           <section className={isActive ? 'bubble active': 'bubble'} id="hi-bubble">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
@@ -214,6 +224,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           
     
     </div>
+    </Layout>
     
 
   )

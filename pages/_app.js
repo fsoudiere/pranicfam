@@ -1,5 +1,4 @@
 import '../styles/globals.scss'
-import Layout from '../components/layout'
 import { AppWrapper } from '../context/UserContext.js'
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
@@ -13,9 +12,7 @@ const AppComponent = ({ Component, pageProps }) => {
     return (
   <>
   <CookiesProvider><AppWrapper>
-  <Layout>
   <Component {...pageProps} {...formData} updateFormData={updateFormData} />
-  </Layout>
   </AppWrapper></CookiesProvider>    
   </>
   );

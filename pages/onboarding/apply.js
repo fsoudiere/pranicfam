@@ -1,3 +1,5 @@
+import Head from 'next/head'
+import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
@@ -67,7 +69,14 @@ function Apply({ contentCards, updateFormData, ...formData }) {
   }
 
   return (
-    <div className={styles.main}>
+    <Layout>
+      <div className={styles.main}>
+
+      <Head>
+        <title>Pranic Family - Onboarding</title>
+        <meta name="description" content="Inspiring beings to live joyfully free" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <form id="register" method="post" onSubmit={registerUser}></form>
 
       <section className="bubble" id="apply-bubble">
@@ -153,6 +162,7 @@ function Apply({ contentCards, updateFormData, ...formData }) {
       <Link href="/onboarding"><a>Back </a></Link>
     
     </div>
+    </Layout>
     
 
   )
