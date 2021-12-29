@@ -16,9 +16,7 @@ export default function Home() {
       <main className={styles.main}>
 
         <div>
-        <h1 className={styles.title}>
-          The Pranic Family
-        </h1>
+
         <p className={styles.description}>
           Inspiring beings to live joyfully free
         </p>
