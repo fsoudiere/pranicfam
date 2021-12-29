@@ -1,14 +1,27 @@
 import '../styles/globals.css'
+import Layout from '../components/layout'
 import { AppWrapper } from '../context/UserContext.js'
+import { useState } from 'react'
+import { CookiesProvider } from "react-cookie"
 
-function MyApp({ Component, pageProps }) {
-  return (
+const AppComponent = ({ Component, pageProps }) => {
+
+    const [formData, setFormData] = useState({});
+    const updateFormData = (newData) => {
+      setFormData({ ...formData, ...newData });
+    };
+    return (
   <>
-  <AppWrapper>
-  <Component {...pageProps} />
-  </AppWrapper>    
+  <CookiesProvider><AppWrapper>
+  <Layout>
+  <Component {...pageProps} {...formData} updateFormData={updateFormData} />
+  </Layout>
+  </AppWrapper></CookiesProvider>    
   </>
   );
 }
 
-export default MyApp
+
+
+
+export default AppComponent

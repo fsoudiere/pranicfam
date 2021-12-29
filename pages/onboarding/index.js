@@ -1,9 +1,9 @@
-import styles from '../styles/Home.module.css'
-import { useAppContext } from '../context/UserContext.js'
+import styles from '../../styles/Home.module.css'
+import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { parseCookies } from "../../lib/cookieHelper"
 import { 
   Button, 
   TextField, 
@@ -18,15 +18,14 @@ import {
   FormControl, 
   FormControlLabel, 
   RadioGroup, 
-  Radio, 
+  Radio
   } from '@mui/material';
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards }) {
-
-  const { user, login } = useAppContext();
-  
+function Onboarding({ contentCards, selectedMember, queryMember, updateFormData, ...formData }) {
+  const { setUser, setSelectedMember, setQueryMember } = useAppContext();
+  console.log(formData);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -37,35 +36,14 @@ function Onboarding({ contentCards }) {
   const [referral, setReferral] = useState("");
   const [age, setAge] = useState("");
 
-
-  const registerUser = async event => {
-    event.preventDefault() // don't redirect the pag        
-    const res = await fetch('/api/sendinblue', {
-      body: JSON.stringify({
-        email: email,
-        sms: phone,
-        referral: referral,
-        fname: name,
-        diet: diet,
-        motive: motive,
-        initiated: initiated,
-        dry: dry,
-        age: age,
-
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST'
-    })
-    const result = await res.json()
-  }
+  const handleInputsChange = (event) => {
+    setSelectedMember(selectedMember);
+    setQueryMember(queryMember);
+    updateFormData({ idList : selectedMember, q : queryMember});
+  };
 
   const [isActive, setActive] = useState(true);
-
-  const toggleClass = () => {
-    this.setActive(!isActive);
-  };
+  const toggleClass = () => {this.setActive(!isActive);};
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -95,7 +73,6 @@ function Onboarding({ contentCards }) {
 
   return (
     <div className={styles.main}>
-      <form id="register" method="post" onSubmit={registerUser}></form>
           <section className={isActive ? 'bubble active': 'bubble'} id="hi-bubble">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
@@ -106,21 +83,20 @@ function Onboarding({ contentCards }) {
             />
             <p>{contentCards[0].desc}</p>
             <TextField id="fname" defaultValue="" label={contentCards[0].name} variant="standard" 
-            onChange={(event) => {setName(event.target.value);}}
-            form="register" required/>
-            <p></p>
-            <Button variant="outlined" onClick={() => {
-              login(name); setActive(!isActive);
-            }}>Next</Button>
-            <Button variant="outlined" onClick={toggleClass}>Back</Button>
+            onChange={(event) => {
+              setUser(event.target.value); updateFormData({ name: event.target.value });
+            }}
+            form="register"
+            required/>
+            <Button variant="outlined" onClick={(event) => {
+              handleInputsChange();
+            }}>Send</Button>
           </section>
 
           <section className={!isActive ? 'bubble active': 'bubble'} id="journey-bubble">
-          <p>Hey {user.name}, {contentCards[1].desc}</p>
-          <Button variant="outlined" onClick={() => {
-              setDietActive(!isDietActive);
-            }}>Continue</Button>
-          <Button variant="outlined" onClick={toggleClass}>Back</Button>
+          <p>Hey {formData.name}, {contentCards[1].desc}</p>
+          <p>Swipe</p>
+
           </section>
 
           <section className="bubble" id="diet-bubble">
@@ -130,7 +106,7 @@ function Onboarding({ contentCards }) {
             </InputLabel>
             <NativeSelect
               form="register" required
-              onChange={(event) => {setDiet(event.target.value);}}
+              onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
               value={diet}
               inputProps={{
                 name: 'diet',
@@ -147,7 +123,8 @@ function Onboarding({ contentCards }) {
           <section className="bubble" id="dry-bubble">
             <p>{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
-            <RadioGroup form="register" value={dry} onChange={(event) => {setDry(event.target.value);}} required row aria-label="dry" id="dry" name="row-radio-buttons-group">
+            <RadioGroup form="register" value={dry} onChange={(event) => {
+              setDry(event.target.value);updateFormData({ dry: event.target.value });}} required row aria-label="dry" id="dry" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
             </RadioGroup>
@@ -160,7 +137,9 @@ function Onboarding({ contentCards }) {
           <section className="bubble" id="initiated-bubble">
           <p>{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
-          <RadioGroup form="register" value={initiated} onChange={(event) => {setInitiated(event.target.value);}} required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
+          <RadioGroup form="register" value={initiated} onChange={(event) => {
+            setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
+            }} required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
             <FormControlLabel value="yes" control={<Radio />} label="Yes" />
             <FormControlLabel value="no" control={<Radio />} label="No" />
           </RadioGroup>
@@ -207,7 +186,8 @@ function Onboarding({ contentCards }) {
             <NativeSelect
               form="register" required
               value={motive}
-              onChange={(event) => {setMotive(event.target.value);}}
+              onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });
+            }}
               inputProps={{
                 name: 'motive',
                 id: 'motive',
@@ -227,79 +207,11 @@ function Onboarding({ contentCards }) {
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
           </section>
-
-
-      <section className="bubble" id="apply-bubble">
-            <InputLabel variant="standard" htmlFor="referral">
-            Who referred you?
-            </InputLabel>
-            <NativeSelect
-              form="register" required
-              value={referral}
-              onChange={(event) => {setReferral(event.target.value);}}
-              inputProps={{
-                name: 'referral',
-                id: 'referral',
-              }}>
-              <option value={'Fabi'}>Fabi</option>
-              <option value={'Kamilla'}>Kamilla</option>
-              <option value={'Facebook'}>Facebook</option>
-            </NativeSelect>  
-            <p></p> 
-            <TextField 
-            id="age" 
-            type="age"
-            value={age}
-            onChange={(event) => {setAge(event.target.value);}}
-            label="How old are you?"
-            variant="standard"
-            form="register" 
-            required/>
-            <p></p> 
-            <FormLabel component="legend">Are you on medications you cant miss?</FormLabel>
-            <RadioGroup required row aria-label="medication" id="medication" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
-            </RadioGroup>
-            <p></p> 
-            <FormLabel component="legend">Do you have any heart/mental problems?</FormLabel>
-            <RadioGroup required row aria-label="problems" id="problems" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
-            </RadioGroup>
-            <p></p>
-            <TextField 
-            id="sms" 
-            type="phone"
-            value={phone}
-            onChange={(event) => {setPhone(event.target.value);}}
-            label="What's your Telegram?"
-            variant="standard"
-            form="register" 
-            autoComplete="phone"
-            required/>
-            <p></p> 
-            <TextField 
-            id="email" 
-            type="email"
-            value={email}
-            onChange={(event) => {setEmail(event.target.value);}}
-            label="What's your email?"
-            variant="standard"
-            form="register"
-            required/>
-            <p></p>
-            <FormLabel component="legend">By signing your name you agree to the <Link href="/"><a>terms</a></Link> and to receive our newsletter.</FormLabel>
-            <TextField 
-            id="signed" 
-            type="signed"
-            label="Signature"
-            variant="standard"
-            required/>
-            <p></p>
-
-      <Button variant="outlined" type="submit" form="register" onClick={() => {preventDefault()}}>Submit</Button>
-      </section>
+           
+            
+          <Link href="/onboarding/apply"><a>Next </a></Link>
+          <Link href="/onboarding/later"><a>Later </a></Link>
+          
     
     </div>
     
@@ -310,8 +222,11 @@ function Onboarding({ contentCards }) {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getServerSideProps({query}) {
-  const member = query.a;
+export async function getServerSideProps({query, req}) {
+  const data = parseCookies(req);
+  
+  const member = query.a || 'undefined';
+  let queryMember = member;
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
@@ -320,45 +235,51 @@ export async function getServerSideProps({query}) {
   const fabi = "61ba2e77d9741d7fc9a75e4d"
   const nathan = "61bbae0eaf9f8c2284e2a4dd"
   const hrefna = "61bbae1a66752b3ad447ec8c"
-  const luiza = "61bbae23f477ee272f05a5c4"
+  const kamilla = "61bbae23f477ee272f05a5c4"
   const rakhi = "61bc8fd878662a71f9458203"
   const ray = "61c25cc82a7abf39186de6d6"
   
-
-  const members = [
-    fabi, nathan, hrefna, luiza, rakhi, ray
-    ];
-    const memberNames = [
-      'fabi', 'nathan', 'hrefna', 'luiza', 'rakhi', 'ray'
-      ];
-  
+  const members = [fabi, nathan, hrefna, kamilla, rakhi, ray];
   const random = Math.floor(Math.random() * members.length);
+  let selectedMember;
+
   let contentCards = posts.cards.filter(card => {
-      if (member === 'Fabi') {
-        return card.idList == fabi && !card.closed;
+
+      if (member == 'Fabi') {
+        selectedMember = fabi;
+        return card.idList == fabi && !card.closed; 
       } else
-      if (member === 'Nathan') {
+      if (member == 'Nathan') {
+         selectedMember = nathan;
         return card.idList == nathan && !card.closed;
       } else
-      if (member === 'Hrefna') {
+      if (member == 'Hrefna') {
+         selectedMember = hrefna;
         return card.idList == hrefna && !card.closed;
       } else
-      if (member === 'Luiza') {
-        return card.idList == luiza && !card.closed;
+      if (member == 'Kamilla') {
+         selectedMember = kamilla;
+        return card.idList == kamilla && !card.closed;
       } else
-      if (member === 'Rakhi') {
+      if (member == 'Rakhi') {
+         selectedMember = rakhi;
         return card.idList == rakhi && !card.closed;
       } else
-      if (member === 'Ray') {
+      if (member == 'Ray') {
+         selectedMember = ray;
         return card.idList == ray && !card.closed;
-      } else
-      return card.idList == members[random] && !card.closed;
+      } else {
+       selectedMember = members[random];
+      return card.idList == selectedMember && !card.closed;
+    }
   });
+
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      contentCards,
+      data: data && data,
+      contentCards, selectedMember, queryMember
     },
   }
 }

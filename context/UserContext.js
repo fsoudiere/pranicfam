@@ -1,30 +1,21 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const AppContext = createContext({ name: '', auth: false });
+const AppContext = createContext();
 
 export function AppWrapper({ children }) {
     // User is the name of the "data" that gets stored in context
-  const [user, setUser] = useState({ name: '', auth: false });
-
+  const [user, setUser] = useState();
+  const [selectedMember, setSelectedMember] = useState();
+  const [queryMember, setQueryMember] = useState();
   // Login updates the user data with a name parameter
-  const login = (name) => {
-    setUser((user) => ({
-      name: name,
-      auth: true,
-    }));
-  };
 
-   // Logout updates the user data to default
-   const logout = () => {
-    setUser((user) => ({
-      name: '',
-      auth: false,
-    }));
-  };
+  console.log(selectedMember, user, queryMember);
+
+
 
 
   return (
-    <AppContext.Provider value={{ user, login, logout }}>
+    <AppContext.Provider value={{ user, setUser, selectedMember, setSelectedMember, queryMember, setQueryMember }}>
       {children}
     </AppContext.Provider>
   );
