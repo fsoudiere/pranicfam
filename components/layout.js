@@ -12,7 +12,7 @@ export default function Layout({ children }) {
           alt="Pranic Family Logo"
         />
         <h2 className={styles.title}>
-          The Pranic Family
+          Pranic Family
         </h2>
         <main>{children}</main>
 

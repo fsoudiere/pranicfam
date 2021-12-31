@@ -1,12 +1,15 @@
 import Head from 'next/head'
-import ReactDOM from 'react-dom';
-import Layout from '../../components/layout'
-import styles from '../../styles/Home.module.scss'
-import { useAppContext } from '../../context/UserContext.js'
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import ReactDOM from 'react-dom';
 import { parseCookies } from "../../lib/cookieHelper"
+import { useAppContext } from '../../context/UserContext.js'
+import { useState } from 'react';
+
+import Layout from '../../components/layout'
+import styles from '../../styles/Home.module.scss'
+
 import Spring from '../../components/spring'
 import { useSpring, animated } from 'react-spring'
 
@@ -31,6 +34,7 @@ import {
 
 // posts will be populated at build time by getStaticProps()
 function Onboarding({ contentCards, selectedMember, queryMember, updateFormData, ...formData }) {
+
   const { setUser, setSelectedMember, setQueryMember } = useAppContext();
   console.log(formData);
   const [name, setName] = useState("");
@@ -38,6 +42,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
   const [dry, setDry] = useState("");
   const [initiated, setInitiated] = useState("");
   const [motive, setMotive] = useState("");
+  const [teacher, setTeacher] = useState("");
 
   const handleInputsChange = (event) => {
     setSelectedMember(selectedMember);
@@ -91,6 +96,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
       )
     }
 
+
   return (
     
     <Layout>
@@ -114,7 +120,11 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             </section>
 
             <section className={`${styles.bubble} ${styles.answer}`}>
-            <TextField id="fname" label={contentCards[0].name} variant="standard" 
+            <TextField 
+            id="fname" 
+            label={contentCards[0].name} 
+            variant="standard" 
+            value={ name ? name : formData.name ? formData.name : ""}
             onChange={(event) => {
               setUser(event.target.value); updateFormData({ name: event.target.value });
             }}
@@ -131,23 +141,20 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
 
           <section className={`${styles.bubble} ${styles.answer}`}>
             <p>{contentCards[2].desc}</p>
-            <InputLabel variant="standard" htmlFor="diet">
-            {contentCards[2].name}
-            </InputLabel>
-            <NativeSelect
-              form="register" required
-              onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
-              value={diet}
-              inputProps={{
-                name: 'diet',
-                id: 'diet',
-              }}>
-              <option value={'Omnivore'}>Omnivore/Pescatarian</option>
-              <option value={'Vegan'}>Vegan/Vegetarian</option>
-              <option value={'Raw'}>Raw Food</option>
-              <option value={'Fruitarian'}>Fruitarian</option>
-              <option value={'Liquids'}>Liquids Only</option>
-            </NativeSelect>
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel id="diet">{contentCards[2].name}</InputLabel>
+              <Select
+                onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
+                value={diet ? diet : formData.diet ? formData.diet  : ""}
+                label={contentCards[2].name}
+              >
+              <MenuItem value={'Omnivore'}>Omnivore/Pescatarian</MenuItem>
+              <MenuItem value={'Vegan'}>Vegan/Vegetarian</MenuItem>
+              <MenuItem value={'Raw'}>Raw Food</MenuItem>
+              <MenuItem value={'Fruitarian'}>Fruitarian</MenuItem>
+              <MenuItem value={'Liquids'}>Liquids Only</MenuItem>
+              </Select>
+            </FormControl>
           </section>
 
           <section className={`${styles.bubble} ${styles.question}`}>
@@ -156,7 +163,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
 
             <section className={`${styles.bubble} ${styles.answer}`}>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
-            <RadioGroup form="register" value={dry} onChange={(event) => {
+            <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setDry(event.target.value);updateFormData({ dry: event.target.value });}} required row aria-label="dry" id="dry" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -170,7 +177,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           <section className="bubble" id="initiated-bubble">
           <p>{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
-          <RadioGroup form="register" value={initiated} onChange={(event) => {
+          <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
             setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
             }} required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
             <FormControlLabel value="yes" control={<Radio />} label="Yes" />
@@ -181,7 +188,9 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           <section className="bubble" id="teacher-bubble">
           <p>{contentCards[6].desc}</p>
           <FormLabel component="legend">If Yes would you like to teach with us?</FormLabel>
-          <RadioGroup form="register" value=" " required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
+          <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
+            setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
+            }} required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
             <FormControlLabel value="yes" control={<Radio />} label="Yes" />
             <FormControlLabel value="no" control={<Radio />} label="No" />
           </RadioGroup>
@@ -212,22 +221,21 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
 
           <section className="bubble" id="motive-bubble">
             <p>{contentCards[5].desc}</p>
-            <InputLabel variant="standard" htmlFor="motive">
-            {contentCards[5].name}
-            </InputLabel>
-            <NativeSelect
-              form="register" required
-              value={motive}
-              onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });
-            }}
-              inputProps={{
-                name: 'motive',
-                id: 'motive',
-              }}>
-              <option value={'Spiritual Growth'}>Spiritual Growth</option>
-              <option value={'Inner Joy'}>Inner Joy & Freedom</option>
-              <option value={'Body'}>Health & Body</option>
-            </NativeSelect>    
+            
+            
+            <FormControl sx={{ m: 1, width: 300 }}>
+              <InputLabel id="diet">{contentCards[5].name}</InputLabel>
+              <Select
+                onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
+                value={motive ? motive : formData.motive ? formData.motive  : ""}
+                label={contentCards[5].name}
+              >
+              <MenuItem value={'Spiritual Growth'}>Spiritual Growth</MenuItem>
+              <MenuItem value={'Inner Joy'}>Inner Joy & Freedom</MenuItem>
+              <MenuItem value={'Body'}>Health & Body</MenuItem>
+              </Select>
+            </FormControl>
+   
           </section>
       
           <section className="bubble" id="focus-bubble">
@@ -242,7 +250,6 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
            
             
           <Link href="/onboarding/apply"><a>Next </a></Link>
-          <Link href="/onboarding/later"><a>Later </a></Link>
           
     
     </div>

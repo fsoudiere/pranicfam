@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@hookform/resolvers": "^2.8.5",
     "@material-ui/core": "^4.12.3",
     "@mui/material": "^5.2.4",
     "cookie": "^0.4.1",
@@ -24,11 +25,14 @@
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.22.5",
+    "react-select": "^5.2.1",
     "react-spring": "^9.3.3",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "sass": "^1.45.1",
-    "sib-api-v3-sdk": "^8.2.1"
+    "sib-api-v3-sdk": "^8.2.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "7.32.0",
