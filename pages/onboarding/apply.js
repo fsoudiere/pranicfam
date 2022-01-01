@@ -59,7 +59,7 @@ function Apply({ contentCards, updateFormData, ...formData }) {
     resolver: yupResolver(validationSchema)
   });
 const onSubmit = data => {
-    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { location.href = "/onboarding/later"; }
+    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { registerUser(); location.href = "/onboarding/later"; }
     else {registerUser();addReturningCookie(); location.href = "/onboarding/success";}  
   };
 

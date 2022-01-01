@@ -17,6 +17,7 @@
 
 # misc
 .DS_Store
+tasks.md
 *.pem
 
 # debug
