@@ -1,19 +1,14 @@
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
+import Navbar from './navbar'
+import Actionbar from './actionbar'
+
 
 export default function Layout({ children }) {
     return (
       <>
         
-            <Image
-          src="/images/icon/apple-touch-icon.png" // Route of the image file
-          height={32} // Desired size with correct aspect ratio
-          width={32} // Desired size with correct aspect ratio
-          alt="Pranic Family Logo"
-        />
-        <h2 className={styles.title}>
-          Pranic Family
-        </h2>
+        <Navbar />
         <main>{children}</main>
 
       </>

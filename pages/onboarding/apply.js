@@ -107,9 +107,10 @@ const onSubmit = data => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="bubble" id="apply-bubble">
+      <section className={`${styles.bubble} ${styles.question}`} id="apply-bubble">
 
-
+      <h2>Few last details...</h2>
+      <p></p>
               <Controller
                 control={control}
                 name="referral"
@@ -198,8 +199,6 @@ const onSubmit = data => {
       <Button variant="outlined" type="submit" form="register" onClick={handleSubmit(onSubmit)}
         >Submit</Button>
       </section>
-
-      <Link href="/onboarding"><a>Back </a></Link>
     
     </div>
     </Layout>

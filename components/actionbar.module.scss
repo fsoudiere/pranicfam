@@ -1,0 +1,23 @@
+
+.nav {
+    position: fixed;
+    width: 100vw;
+    bottom: 0;
+    z-index: 9999999999;
+    background-color: white;
+}
+.floatLeft {
+    float: left;
+}
+.navmenu {
+    display: flex;
+    padding-left: 10px;
+    justify-content: center;
+    li {
+        list-style: none;
+        display: none;
+    }
+    span { position: absolute; padding-left: 5px;}
+}
+
+li.active { display: block;}

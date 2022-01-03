@@ -2,12 +2,19 @@ import Head from 'next/head'
 import Image from 'next/image';
 import Link from 'next/link';
 
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkHtml from 'remark-html'
+import remarkRehype from 'remark-rehype'
+import rehypeStringify from 'rehype-stringify'
+
 import ReactDOM from 'react-dom';
 import { parseCookies } from "../../lib/cookieHelper"
 import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
 
 import Layout from '../../components/layout'
+import Actionbar from '../../components/actionbar'
 import styles from '../../styles/Home.module.scss'
 
 import Spring from '../../components/spring'
@@ -33,17 +40,17 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, selectedMember, queryMember, updateFormData, ...formData }) {
+function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, updateFormData, ...formData }) {
 
   const { setUser, setSelectedMember, setQueryMember } = useAppContext();
-  console.log(formData);
+  console.log(formData, contentCards);
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
   const [initiated, setInitiated] = useState("");
   const [motive, setMotive] = useState("");
   const [teacher, setTeacher] = useState("");
-
+  const [pricing, setPricing] = useState("");
   const handleInputsChange = (event) => {
     setSelectedMember(selectedMember);
     setQueryMember(queryMember);
@@ -90,11 +97,14 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
       return (
       <animated.div className={`${styles.bubble} ${styles.question}`}>
         <h2 style={text}>Welcome {formData.name}</h2>
-          <p>{contentCards[1].desc}</p>
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
           <p>Swipe</p>
       </animated.div>
       )
     }
+
+
+
 
 
   return (
@@ -110,11 +120,12 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="320"
-            height="240"
+            height="320"
             alt="Fam"
             priority
+            className="clipped"
             />
-
+            <h2 className={styles.title}>Hi</h2>
             <p>{contentCards[0].desc}</p>
             
             </section>
@@ -141,7 +152,7 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
 
           <section className={`${styles.bubble} ${styles.answer}`}>
             <p>{contentCards[2].desc}</p>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl fullWidth>
               <InputLabel id="diet">{contentCards[2].name}</InputLabel>
               <Select
                 onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
@@ -170,11 +181,9 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             </RadioGroup>
           </section>
 
-          <section className="bubble" id="dryguide-bubble">
-          <p>If NO, Well Here&apos;s our dry fasting guide!</p>
-          </section>
+          
   
-          <section className="bubble" id="initiated-bubble">
+          <section className={`${styles.bubble} ${styles.question}`} id="initiated-bubble">
           <p>{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -185,9 +194,12 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           </RadioGroup>
           </section>
 
-          <section className="bubble" id="teacher-bubble">
-          <p>{contentCards[6].desc}</p>
-          <FormLabel component="legend">If Yes would you like to teach with us?</FormLabel>
+          <section className={`${styles.bubble} ${styles.question}`} id="dryguide-bubble">
+          <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
+          </section>
+
+          <section className={`${styles.bubble} ${styles.question}`} id="teacher-bubble">
+          <FormLabel component="legend">Already done an initiation? Maybe would you like to teach with us?</FormLabel>
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
             }} required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
@@ -196,7 +208,27 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
           </RadioGroup>
           </section>
 
-          <section className="bubble" id="practice-bubble">
+          <section className={`${styles.bubble} ${styles.question}`} id="motive-bubble">
+            <p>{contentCards[5].desc}</p>
+            
+            
+            <FormControl fullWidth>
+              <InputLabel id="diet">{contentCards[5].name}</InputLabel>
+              <Select
+                onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
+                value={motive ? motive : formData.motive ? formData.motive  : ""}
+                label={contentCards[5].name}
+              >
+              <MenuItem value={'Spiritual Growth'}>Spiritual Growth</MenuItem>
+              <MenuItem value={'Inner Joy'}>Inner Joy & Freedom</MenuItem>
+              <MenuItem value={'Body'}>Health & Body</MenuItem>
+              </Select>
+            </FormControl>
+   
+          </section>
+
+          <section className={`${styles.bubble} ${styles.question}`} id="practice-bubble">
+          <p>{contentCards[6].desc}</p>
             <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
             <Select
@@ -218,38 +250,32 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
             </Select>
             </FormControl>
           </section>
-
-          <section className="bubble" id="motive-bubble">
-            <p>{contentCards[5].desc}</p>
-            
-            
-            <FormControl sx={{ m: 1, width: 300 }}>
-              <InputLabel id="diet">{contentCards[5].name}</InputLabel>
+      
+          <section className={`${styles.bubble} ${styles.question}`} id="focus-bubble">
+          <p>Ready for more meaningful discussion & projects, {contentCards[7].name}</p>
+          <p>{contentCards[7].desc}</p>
+          <FormControl fullWidth>
+              <InputLabel id="pricing">which plan suits you to join us?</InputLabel>
               <Select
-                onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
-                value={motive ? motive : formData.motive ? formData.motive  : ""}
-                label={contentCards[5].name}
+                onChange={(event) => {
+                  setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
+                value={pricing ? pricing : formData.pricing ? formData.pricing : ""}
+                label="which plan suits you to join us?"
               >
-              <MenuItem value={'Spiritual Growth'}>Spiritual Growth</MenuItem>
-              <MenuItem value={'Inner Joy'}>Inner Joy & Freedom</MenuItem>
-              <MenuItem value={'Body'}>Health & Body</MenuItem>
+              <MenuItem value={'twenty'}>$20/mo Access to all channels</MenuItem>
+              <MenuItem value={'ten'}>$10/mo Dry Fasting Channel</MenuItem>
+              <MenuItem value={'free'}>7 Day Free Trial for Now!</MenuItem>
               </Select>
             </FormControl>
-   
-          </section>
-      
-          <section className="bubble" id="focus-bubble">
-          <p>{contentCards[7].name}</p>
-          <p>{contentCards[7].desc}</p>
           </section>
 
-          <section className="bubble" id="connect-bubble">
+          <section className={`${styles.bubble} ${styles.question}`} id="connect-bubble">
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
           </section>
            
             
-          <Link href="/onboarding/apply"><a>Next </a></Link>
+          <Actionbar href="/onboarding/apply"/>
           
     
     </div>
@@ -258,6 +284,9 @@ function Onboarding({ contentCards, selectedMember, queryMember, updateFormData,
 
   )
 }
+
+
+
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -282,6 +311,7 @@ export async function getServerSideProps({query, req}) {
   const members = [fabi, nathan, hrefna, kamilla, rakhi, ray];
   const random = Math.floor(Math.random() * members.length);
   let selectedMember;
+
 
   let contentCards = posts.cards.filter(card => {
 
@@ -314,12 +344,20 @@ export async function getServerSideProps({query, req}) {
     }
   });
 
+  
+  const processedContent = await unified()
+  .use(remarkParse)
+  .use(remarkHtml)
+  .process(contentCards[1].desc)
+  const contentHtml = processedContent.toString()
+  
+
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
       data: data && data,
-      contentCards, selectedMember, queryMember
+      contentCards, selectedMember, queryMember, contentHtml
     },
   }
 }
