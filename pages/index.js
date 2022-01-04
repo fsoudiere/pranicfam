@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
 
 
-export default function Home({ data }) {
+export default function Home() {
   return (
     <Layout>
     <div className={styles.container}>
@@ -70,9 +70,7 @@ export default function Home({ data }) {
 It requires much more determination to stay on the pranic path as the temptations keep on increasing. Doubt, agitation and idleness then surface and pull us back into our old habits. With this group, you don’t have to fear the obstacles on the path. We are all going through them together and supporting this common enthusiasm through the collective group consciousness. Simply being part of such a group will nourish you from its collective consciousness. The primary food which gives Life to your mind-body is Consciousness.
 
 When you feed on the Consciousness of Joy, you become Joy.</p>
-<Button variant="contained"><a
-          href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-        >Apply Now</a></Button>
+
         </div>
         <div className={styles.grid}>
             <h1>Pranic Practices for Inner Joy</h1>
@@ -89,22 +87,14 @@ As part of the culture of this community, we share these seeds of joy, these pra
 
 We think it’s best we open our doors to all beings. However, we will offer more energy to those who are already on the pranic journey, ready to volunteer and to initiate others through content and events. To help us cover the cost of maintaining this community, we need to ask for a small membership fee of $10/mo. For anyone who would love to live with us on land, we will ask for a $200/mo rent fee in the near future.</p>
         </div>
-        <Button variant="contained"><a
-          href="https://forms.gle/cUhYy1qtHLfWXTZk7"
-        >Apply Now</a></Button>
+
         <div className={styles.grid}>
             <h1>May you all be joyful and free!</h1>
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://thatfabi.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Made with Love by Fabi{' '}
-        </a>
+
       </footer>
     </div>
     </Layout>

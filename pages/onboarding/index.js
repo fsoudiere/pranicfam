@@ -1,24 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image';
-import Link from 'next/link';
 
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
-import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
 
-import ReactDOM from 'react-dom';
-import { parseCookies } from "../../lib/cookieHelper"
-import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
 
 import Layout from '../../components/layout'
 import Actionbar from '../../components/actionbar'
 import styles from '../../styles/Home.module.scss'
 
-import Spring from '../../components/spring'
-import { useSpring, animated } from 'react-spring'
 
 
 import { 
@@ -40,10 +29,11 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, updateFormData, ...formData }) {
+function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, updateFormData, ...formData }) {
 
-  const { setUser, setSelectedMember, setQueryMember } = useAppContext();
-  console.log(formData, contentCards);
+  console.log(formData);
+  const [mathMember, setMathMember] = useState("");
+  const [utmMember, setUtmMember] = useState("");
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -51,14 +41,14 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
   const [motive, setMotive] = useState("");
   const [teacher, setTeacher] = useState("");
   const [pricing, setPricing] = useState("");
+
   const handleInputsChange = (event) => {
-    setSelectedMember(selectedMember);
-    setQueryMember(queryMember);
-    updateFormData({ idList : selectedMember, q : queryMember});
+    setMathMember(mathMember);
+    setUtmMember(utmMember);
+    updateFormData({ mathMember : selectedMember, utmMember : queryMember});
   };
 
   const [isActive, setActive] = useState(true);
-  const toggleClass = () => {this.setActive(!isActive);};
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -88,25 +78,6 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
 
 
 
-    function Hi() {
-      const text = useSpring({
-        to: { opacity: 1 },
-        from: { opacity: 0 },
-        delay: 5000,
-      })
-      return (
-      <animated.div className={`${styles.bubble} ${styles.question}`}>
-        <h2 style={text}>Welcome {formData.name}</h2>
-          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          <p>Swipe</p>
-      </animated.div>
-      )
-    }
-
-
-
-
-
   return (
     
     <Layout>
@@ -116,38 +87,40 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-          <section className={`${styles.bubble} ${styles.question}`} id="hi-bubble">
+          <section className={`${styles.bubble} ${styles.active}`} id="hi-img">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
-            width="320"
-            height="320"
+            width="620"
+            height="620"
             alt="Fam"
             priority
             className="clipped"
             />
-            <h2 className={styles.title}>Hi</h2>
-            <p>{contentCards[0].desc}</p>
+          </section>
             
-            </section>
-
-            <section className={`${styles.bubble} ${styles.answer}`}>
-            <TextField 
-            id="fname" 
-            label={contentCards[0].name} 
-            variant="standard" 
-            value={ name ? name : formData.name ? formData.name : ""}
-            onChange={(event) => {
-              setUser(event.target.value); updateFormData({ name: event.target.value });
-            }}
-            form="register"
-            required/>
-            <Button variant="outlined" onClick={(event) => {
-              handleInputsChange();
-              ReactDOM.render(<Hi />, document.getElementById('div1'));
-            }}>Send</Button>
+          <section className={`${styles.bubble} ${isActive ? 'active': 'hidden'} ${styles.active}`} id="hi-bubble">
+              <h2 className={styles.title}>Hi</h2>
+              <p>{contentCards[0].desc}</p>
+              <TextField 
+              id="fname" 
+              label={contentCards[0].name} 
+              variant="standard" 
+              value={ name ? name : formData.name ? formData.name : ""}
+              onChange={(event) => {
+                setName(event.target.value); updateFormData({ name: event.target.value });
+              }}
+              form="register"
+              required/>
+              <Button variant="outlined" type='submit' onClick={(event) => {
+                handleInputsChange(); setActive(!isActive);
+              }}>Send</Button>
           </section>
 
-          <section id="div1"></section>
+          <section className={`${styles.bubble} ${styles.question}`}>
+            <h2 className={styles.title}>Hi {formData.name}</h2>
+            <p>{contentCards[1].desc}</p>
+              <p>Swipe</p>
+          </section>
 
 
           <section className={`${styles.bubble} ${styles.answer}`}>
@@ -172,7 +145,7 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
             <p>{contentCards[3].desc}</p>
           </section>
 
-            <section className={`${styles.bubble} ${styles.answer}`}>
+          <section className={`${styles.bubble} ${styles.answer}`}>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setDry(event.target.value);updateFormData({ dry: event.target.value });}} required row aria-label="dry" id="dry" name="row-radio-buttons-group">
@@ -180,8 +153,6 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
               <FormControlLabel value="no" control={<Radio />} label="No" />
             </RadioGroup>
           </section>
-
-          
   
           <section className={`${styles.bubble} ${styles.question}`} id="initiated-bubble">
           <p>{contentCards[4].desc}</p>
@@ -287,12 +258,10 @@ function Onboarding({ contentCards, selectedMember, contentHtml, queryMember, up
 
 
 
-
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getServerSideProps({query, req}) {
-  const data = parseCookies(req);
+export async function getServerSideProps({query}) {
   
   const member = query.a || 'undefined';
   let queryMember = member;
@@ -314,7 +283,6 @@ export async function getServerSideProps({query, req}) {
 
 
   let contentCards = posts.cards.filter(card => {
-
       if (member == 'Fabi') {
         selectedMember = fabi;
         return card.idList == fabi && !card.closed; 
@@ -344,20 +312,11 @@ export async function getServerSideProps({query, req}) {
     }
   });
 
-  
-  const processedContent = await unified()
-  .use(remarkParse)
-  .use(remarkHtml)
-  .process(contentCards[1].desc)
-  const contentHtml = processedContent.toString()
-  
-
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {
     props: {
-      data: data && data,
-      contentCards, selectedMember, queryMember, contentHtml
+      contentCards, selectedMember, queryMember
     },
   }
 }

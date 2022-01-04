@@ -1,8 +1,6 @@
 import '../styles/globals.scss'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { green, blue } from '@mui/material/colors';
-
-import { AppWrapper } from '../context/UserContext.js'
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
 
@@ -19,17 +17,18 @@ const AppComponent = ({ Component, pageProps }) => {
     },
   });
 
-    const [formData, setFormData] = useState({});
-    const updateFormData = (newData) => {
+  const [formData, setFormData] = useState({});
+  const updateFormData = (newData) => {
       setFormData({ ...formData, ...newData });
-    };
-    return (
+  };
+  
+  return (
   <>
-  <CookiesProvider><AppWrapper>
+  <CookiesProvider>
   <ThemeProvider theme={theme}>
   <Component {...pageProps} {...formData} updateFormData={updateFormData} />
   </ThemeProvider>
-  </AppWrapper></CookiesProvider>    
+  </CookiesProvider>    
   </>
   );
 }

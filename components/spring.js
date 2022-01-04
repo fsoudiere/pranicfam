@@ -1,14 +1,13 @@
 import { useSpring, animated } from 'react-spring'
-import { useState } from 'react';
-
-
 
 function Spring() {
-    const [flip, set] = useState(false)
     const props = useSpring({
-      to: { opacity: 1 },
-      from: { opacity: 0 },
-      delay: 500,
+      loop: true,
+      to: [
+        { opacity: 1, color: '#ffaaee' },
+        { opacity: 0, color: 'rgb(14,26,19)' },
+      ],
+      from: { opacity: 0, color: 'red' },
     })
   
     return <animated.h2 style={props}>Welcome</animated.h2>

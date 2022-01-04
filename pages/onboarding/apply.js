@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
-import { useAppContext } from '../../context/UserContext.js'
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCookies } from "react-cookie"

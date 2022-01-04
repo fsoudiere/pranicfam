@@ -115,21 +115,19 @@
 }
 
 .bubble {
-  display: block;
   width: 90vw;
   margin: 2px;
   padding: 2em;
   border-radius: 5px;
-  &.active {
   display: block;
-  }
-  &.question {
-    margin-left: 0vw;
-  }
-  &.answer {
-    margin-right: 0vw;
-  }
 }
+
+.bubble.active {
+  display: block;
+}
+
+.bubble.hidden { display: none;}
+
 
 
 
