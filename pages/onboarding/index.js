@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image';
-
+import { useSWR } from 'swr'
 
 import { useState } from 'react';
 
@@ -79,7 +79,6 @@ function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, up
     const [activeLink, setActiveLink] = useState('hi');
     const [addBubble, setAddBubble] = useState(false);
   
-
   return (
     
     <Layout>
@@ -275,9 +274,23 @@ export async function getServerSideProps({query}) {
   const member = query.a || 'undefined';
   let queryMember = member;
 
-  
+
+  //const controller = new AbortController()
+  //const timeoutId = setTimeout(function(){controller.abort();}, 1000)   
+  //const res = await fetch('https://trello.com/b/aOOx3O4Q.json', { signal: controller.signal })
   const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
-  const posts = await res.json() 
+  const posts = await res.json()
+  //clearTimeout(timeoutId)
+
+
+  if (!res) {
+    return {
+      redirect: {
+        destination: '/onboarding/start',
+        permanent: false,
+      },
+    }
+  }
   
 
   const fabi = "61ba2e77d9741d7fc9a75e4d"
