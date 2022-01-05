@@ -264,7 +264,7 @@ export async function getServerSideProps({query}) {
   //const controller = new AbortController()
   //const timeoutId = setTimeout(function(){controller.abort();}, 1000)   
   //const res = await fetch('https://trello.com/b/aOOx3O4Q.json', { signal: controller.signal })
-  const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
+  const res = await fetch('https://pranicfamily.com/data/aOOx3O4Q.json')
   const posts = await res.json()
   //clearTimeout(timeoutId)
 
