@@ -29,7 +29,7 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, contentHtml, selectedMember, updateFormData, ...formData }) {
+function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, updateFormData, ...formData }) {
 
   console.log(formData);
   const [mathMember, setMathMember] = useState("");
@@ -255,7 +255,10 @@ function Onboarding({ contentCards, contentHtml, selectedMember, updateFormData,
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getStaticProps({}) { 
+export async function getServerSideProps({query}) { 
+  
+  const member = query.a || 'undefined';
+  let queryMember = member;
 
 
   //const controller = new AbortController()
@@ -322,7 +325,7 @@ export async function getStaticProps({}) {
   // will receive `posts` as a prop at build time
   return {
     props: {
-      contentCards, selectedMember
+      contentCards, selectedMember, queryMember
     },
   }
 }
