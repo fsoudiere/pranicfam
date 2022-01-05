@@ -29,11 +29,10 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, updateFormData, ...formData }) {
+function Onboarding({ contentCards, selectedMember, updateFormData, ...formData }) {
 
   console.log(formData);
   const [mathMember, setMathMember] = useState("");
-  const [utmMember, setUtmMember] = useState("");
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -44,8 +43,7 @@ function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, up
 
   const handleInputsChange = (event) => {
     setMathMember(mathMember);
-    setUtmMember(utmMember);
-    updateFormData({ mathMember : selectedMember, utmMember : queryMember});
+    updateFormData({ mathMember : selectedMember });
   };
 
 
@@ -270,16 +268,10 @@ function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, up
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getServerSideProps({query}) { 
+export async function getStaticProps() { 
   
-  const member = query.a || 'undefined';
-  let queryMember = member;
-
-  
-  const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
+  const res = await fetch('https//pranicfamily.com/data/aOOx3O4Q.json')
   const posts = await res.json() 
-  
-
   const fabi = "61ba2e77d9741d7fc9a75e4d"
   const nathan = "61bbae0eaf9f8c2284e2a4dd"
   const hrefna = "61bbae1a66752b3ad447ec8c"
@@ -289,47 +281,17 @@ export async function getServerSideProps({query}) {
   
   const members = [fabi, nathan, hrefna, kamilla, rakhi, ray];
   const random = Math.floor(Math.random() * members.length);
-  let selectedMember;
-
+  let selectedMember = members[random];
 
   let contentCards = posts.cards.filter(card => {
-      if (member == 'Fabi') {
-        selectedMember = fabi;
-        return card.idList == fabi && !card.closed; 
-      } else
-      if (member == 'Nathan') {
-         selectedMember = nathan;
-        return card.idList == nathan && !card.closed;
-      } else
-      if (member == 'Hrefna') {
-         selectedMember = hrefna;
-        return card.idList == hrefna && !card.closed;
-      } else
-      if (member == 'Kamilla') {
-         selectedMember = kamilla;
-        return card.idList == kamilla && !card.closed;
-      } else
-      if (member == 'Rakhi') {
-         selectedMember = rakhi;
-        return card.idList == rakhi && !card.closed;
-      } else
-      if (member == 'Ray') {
-         selectedMember = ray;
-        return card.idList == ray && !card.closed;
-      } else {
-       selectedMember = members[random];
       return card.idList == selectedMember && !card.closed;
-    }
-  });
+    });
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
-      contentCards, selectedMember, queryMember
+      contentCards, selectedMember
     },
   }
 }
-
 
 export default Onboarding
