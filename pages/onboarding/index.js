@@ -29,7 +29,7 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, updateFormData, ...formData }) {
+function Onboarding({ contentCards, contentHtml, selectedMember, updateFormData, ...formData }) {
 
   console.log(formData);
   const [mathMember, setMathMember] = useState("");
@@ -255,16 +255,13 @@ function Onboarding({ contentCards, contentHtml, selectedMember, queryMember, up
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries. See the "Technical details" section.
-export async function getServerSideProps({query}) { 
-  
-  const member = query.a || 'undefined';
-  let queryMember = member;
+export async function getStaticProps({}) { 
 
 
   //const controller = new AbortController()
   //const timeoutId = setTimeout(function(){controller.abort();}, 1000)   
   //const res = await fetch('https://trello.com/b/aOOx3O4Q.json', { signal: controller.signal })
-  const res = await fetch('https://pranicfamily.com/data/aOOx3O4Q.json')
+  const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
   const posts = await res.json()
   //clearTimeout(timeoutId)
 
@@ -325,7 +322,7 @@ export async function getServerSideProps({query}) {
   // will receive `posts` as a prop at build time
   return {
     props: {
-      contentCards, selectedMember, queryMember
+      contentCards, selectedMember
     },
   }
 }
