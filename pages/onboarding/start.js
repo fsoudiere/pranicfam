@@ -24,7 +24,8 @@ import {
   FormControl, 
   FormControlLabel, 
   RadioGroup, 
-  Radio
+  Radio,
+  Link
   } from '@mui/material';
 
 
@@ -40,11 +41,8 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
   const [motive, setMotive] = useState("");
   const [teacher, setTeacher] = useState("");
   const [pricing, setPricing] = useState("");
+  const [dryguide, setDryGuide] = useState("");
 
-  const handleInputsChange = (event) => {
-    setMathMember(mathMember);
-    updateFormData({ mathMember : selectedMember });
-  };
 
 
   const ITEM_HEIGHT = 48;
@@ -73,10 +71,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
       );
     };
 
-
-    const [activeLink, setActiveLink] = useState('hi');
-    const [addBubble, setAddBubble] = useState('');
-    console.log(practiceName.length);
+    const [addBubble, setAddBubble] = useState('hi');
 
   return (
     
@@ -87,7 +82,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-          <section className={`bubble ${activeLink === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
+          <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
@@ -98,8 +93,8 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             />
           </section>
             
-          <section className={`bubble ${activeLink === 'hi' ? 'active' : ''}`} id="hi-bubble">
-              <h2 className={styles.title}>Hi</h2>
+          <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name  ? 'active' : ''}`} id="hi-bubble">
+              <h2 className={styles.title}>Hi {formData.name}</h2>
               <p>{contentCards[0].desc}</p>
               <TextField 
               id="fname" 
@@ -107,20 +102,19 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
               variant="standard" 
               value={ name ? name : formData.name ? formData.name : ""}
               onChange={(event) => {
-                setName(event.target.value); updateFormData({ name: event.target.value });
+                setName(event.target.value);
               }}
-              form="register"
-              required/>
+              />
               <Button variant="outlined" type='submit' onClick={(event) => {
-                handleInputsChange(); 
-                setActiveLink('prana');
+                setMathMember(mathMember);
+                updateFormData({ name: name, mathMember : selectedMember });
+                setAddBubble('prana');
               }}>Send</Button>
           </section>
 
-          <section className={`bubble ${activeLink === 'prana' ? 'active' : formData.name ? 'active' : ''}`}>
-            <h2 className={styles.title}>Hi {formData.name}</h2>
+          <section className={`bubble ${addBubble === 'prana' ? 'active' : formData.name  ? 'active' : ''}`}>
             <p>{contentCards[1].desc}</p>
-              <p onClick={(event) => { setAddBubble('diet'); }}>Swipe</p>
+            <p onClick={(event) => { setAddBubble('diet'); }}>Swipe</p>
           </section>
 
 
@@ -129,8 +123,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             <FormControl fullWidth>
               <InputLabel id="diet">{contentCards[2].name}</InputLabel>
               <Select
-                onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
-                onBlur={(event) => { setAddBubble('dry'); }}
+                onChange={(event) => {setAddBubble('dry');setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
                 value={diet ? diet : formData.diet ? formData.diet  : ""}
                 label={contentCards[2].name}
               >
@@ -147,8 +140,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             <p>{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
-              setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
-              onBlur={(event) => { setAddBubble('initiated'); }}
+              setAddBubble('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -167,8 +159,9 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.initiated === 'No' ? 'active' : ''}`} id="dryguide-bubble">
-          <p onClick={(event) => { setAddBubble('motive'); }}>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
+          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide-bubble">
+          <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
+          <p><Button onClick={(event) => { setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });setAddBubble('motive'); }} variant="outlined">Download</Button></p>
           </section>
 
           <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher-bubble">
@@ -176,22 +169,18 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
             }} 
-            onBlur={(event) => { setAddBubble('motive'); }}
             required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel value="no" control={<Radio />} label="No" />
+            <FormControlLabel onChange={(event) => { setAddBubble('motive'); }} value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel onChange={(event) => { setAddBubble('motive'); }} value="no" control={<Radio />} label="No" />
           </RadioGroup>
           </section>
 
           <section className={`bubble ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive-bubble">
             <p>{contentCards[5].desc}</p>
-            
-            
             <FormControl fullWidth>
               <InputLabel id="motive">{contentCards[5].name}</InputLabel>
               <Select
-                onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
-                onBlur={(event) => { setAddBubble('practice'); }}
+                onChange={(event) => {setAddBubble('practice');setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
                 value={motive ? motive : formData.motive ? formData.motive  : ""}
                 label={contentCards[5].name}
               >
@@ -213,7 +202,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
               multiple
               value={practiceName}
               onChange={handleChange}
-              onBlur={(event) => { setAddBubble('focus'); }}
+              onBlur={(event) => {setAddBubble('focus');}}
               input={<OutlinedInput label={contentCards[6].name} />}
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
@@ -235,8 +224,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
               <InputLabel id="pricing">which plan suits you to join us?</InputLabel>
               <Select
                 onChange={(event) => {
-                  setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
-                onBlur={(event) => { setAddBubble('connect'); }}
+                    setAddBubble('connect');setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
                 value={pricing ? pricing : formData.pricing ? formData.pricing : ""}
                 label="which plan suits you to join us?"
               >

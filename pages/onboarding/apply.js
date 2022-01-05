@@ -32,6 +32,11 @@ function Apply({ contentCards, updateFormData, ...formData }) {
   console.log(formData);
   
   const [referral, setReferral] = useState("");
+  const [age, setAge] = useState("");
+  const [medication, setMedication] = useState("");
+  const [problems, setProblems] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const validationSchema = Yup.object().shape({
     age: Yup.number()
@@ -141,8 +146,10 @@ const onSubmit = data => {
             <TextField 
             id="age" 
             type="text"
+            
+            value={ age ? age : formData.age ? formData.age : ""}
             {...register('age')}
-            onBlur={(event) => {updateFormData({ age: event.target.value });}}
+            onChange={(event) => {setAge(event.target.value);updateFormData({ age: event.target.value });}}
             label="How old are you?"
             variant="standard"
             error={errors.age ? true : false}
@@ -151,7 +158,8 @@ const onSubmit = data => {
 
             <FormLabel component="legend">Are you on medications you cant miss?</FormLabel>
             <RadioGroup 
-            onChange={(event) => {updateFormData({ medication: event.target.value });}}
+            value={medication ? medication : formData.medication ? formData.medication : ""}
+            onChange={(event) => {setMedication(event.target.value);updateFormData({ medication: event.target.value });}}
             required row aria-label="medication" id="medication" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -159,7 +167,8 @@ const onSubmit = data => {
             <p></p> 
             <FormLabel component="legend">Do you have any heart/mental problems?</FormLabel>
             <RadioGroup 
-            onChange={(event) => {updateFormData({ problems: event.target.value });}}
+            value={problems ? problems : formData.problems ? formData.problems : ""}
+            onChange={(event) => {setProblems(event.target.value);updateFormData({ problems: event.target.value });}}
             required row aria-label="problems" id="problems" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -169,9 +178,10 @@ const onSubmit = data => {
             id="sms" 
             type="phone"
             {...register('phone')}
-            onBlur={(event) => {updateFormData({ phone: event.target.value });}}
+            onChange={(event) => {setPhone(event.target.value);updateFormData({ phone: event.target.value });}}
             label="What's your Telegram?"
             variant="standard"
+            value={phone ? phone : formData.phone ? formData.phone : ""}
             error={errors.phone ? true : false}
             />
             <p variant="inherit" color="textSecondary">{errors.phone?.message}</p> 
@@ -179,7 +189,8 @@ const onSubmit = data => {
             id="email" 
             type="email"
             {...register('email')}
-            onBlur={(event) => {updateFormData({ email: event.target.value });}}
+            onChange={(event) => {setEmail(event.target.value);updateFormData({ email: event.target.value });}}
+            value={email ? email : formData.email ? formData.email : ""}
             label="What's your email?"
             variant="standard"
             error={errors.email ? true : false}
