@@ -75,8 +75,8 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
 
 
     const [activeLink, setActiveLink] = useState('hi');
-    const [addBubble, setAddBubble] = useState(false);
-  
+    const [addBubble, setAddBubble] = useState('');
+    console.log(practiceName.length);
 
   return (
     
@@ -87,7 +87,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-          <section className={`bubble ${activeLink === 'hi' ? 'active' : ''}`} id="hi-img">
+          <section className={`bubble ${activeLink === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
@@ -98,7 +98,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             />
           </section>
             
-          <section className={`bubble ${activeLink === 'hi' ? 'active' : 'hidden'}`} id="hi-bubble">
+          <section className={`bubble ${activeLink === 'hi' ? 'active' : ''}`} id="hi-bubble">
               <h2 className={styles.title}>Hi</h2>
               <p>{contentCards[0].desc}</p>
               <TextField 
@@ -117,14 +117,14 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
               }}>Send</Button>
           </section>
 
-          <section className={`bubble ${activeLink === 'prana' ? 'active' : ''}`}>
+          <section className={`bubble ${activeLink === 'prana' ? 'active' : formData.name ? 'active' : ''}`}>
             <h2 className={styles.title}>Hi {formData.name}</h2>
             <p>{contentCards[1].desc}</p>
               <p onClick={(event) => { setAddBubble('diet'); }}>Swipe</p>
           </section>
 
 
-          <section className={`bubble ${addBubble === 'diet' ? 'active' : ''}`}>
+          <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth>
               <InputLabel id="diet">{contentCards[2].name}</InputLabel>
@@ -143,7 +143,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             </FormControl>
           </section>
 
-          <section className={`bubble ${addBubble === 'dry' ? 'active' : ''}`}>
+          <section className={`bubble ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
             <p>{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
@@ -155,7 +155,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             </RadioGroup>
           </section>
   
-          <section className={`bubble ${addBubble === 'initiated' ? 'active' : ''}`} id="initiated-bubble">
+          <section className={`bubble ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <p>{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -167,11 +167,11 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : ''}`} id="dryguide-bubble">
+          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.initiated === 'No' ? 'active' : ''}`} id="dryguide-bubble">
           <p onClick={(event) => { setAddBubble('motive'); }}>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
           </section>
 
-          <section className={`bubble ${addBubble === 'teacher' ? 'active' : ''}`} id="teacher-bubble">
+          <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher-bubble">
           <FormLabel component="legend">Already done an initiation? Maybe would you like to teach with us?</FormLabel>
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
@@ -183,12 +183,12 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'motive' ? 'active' : ''}`} id="motive-bubble">
+          <section className={`bubble ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive-bubble">
             <p>{contentCards[5].desc}</p>
             
             
             <FormControl fullWidth>
-              <InputLabel id="diet">{contentCards[5].name}</InputLabel>
+              <InputLabel id="motive">{contentCards[5].name}</InputLabel>
               <Select
                 onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
                 onBlur={(event) => { setAddBubble('practice'); }}
@@ -203,7 +203,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
    
           </section>
 
-          <section className={`bubble ${addBubble === 'practice' ? 'active' : ''}`} id="practice-bubble">
+          <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
           <p>{contentCards[6].desc}</p>
             <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
@@ -228,7 +228,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
             </FormControl>
           </section>
       
-          <section className={`bubble ${addBubble === 'focus' ? 'active' : ''}`} id="focus-bubble">
+          <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} id="focus-bubble">
           <p>Ready for more meaningful discussion & projects, {contentCards[7].name}</p>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
