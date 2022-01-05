@@ -270,7 +270,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
 // direct database queries. See the "Technical details" section.
 export async function getStaticProps() { 
   
-  const res = await fetch('https//pranicfamily.com/data/aOOx3O4Q.json')
+  const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
   const posts = await res.json() 
   const fabi = "61ba2e77d9741d7fc9a75e4d"
   const nathan = "61bbae0eaf9f8c2284e2a4dd"
