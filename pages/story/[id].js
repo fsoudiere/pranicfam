@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../components/layout'
-import { ActionMenu, ActionNext, ActionPlay, ActionNotif } from '../../components/actionbar'
+import { ActionMenu, ActionNext, ActionJoin, ActionNotif } from '../../components/actionbar'
 import styles from '../../styles/Home.module.scss'
 import ReactDOM from 'react-dom';
 import {unified} from 'unified'
@@ -48,6 +48,14 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
+    anchorOrigin: {
+      vertical: "top", 
+      horizontal: "center"
+    },
+    transformOrigin: {
+      vertical: "bottom",
+      horizontal: "center"
+    },
     PaperProps: {
       style: {
         maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
@@ -55,6 +63,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
       },
     },
   };
+
   const practices = [
       'Yoga',
       'Meditation',
@@ -135,6 +144,14 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
 
           <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
+          <Image
+            src={contentCards[2].attachments[0].url} // Route of the image file
+            width="620"
+            height="620"
+            alt="Fam"
+            priority
+            className="clipped-triangle"
+            />
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth>
               <InputLabel id="diet">{contentCards[2].name}</InputLabel>
@@ -142,6 +159,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
                 onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
                 value={diet ? diet : formData.diet ? formData.diet  : ""}
                 label={contentCards[2].name}
+                MenuProps={MenuProps}
               >
               <MenuItem value={'Omnivore'}>Omnivore/Pescatarian</MenuItem>
               <MenuItem value={'Vegan'}>Vegan/Vegetarian</MenuItem>
@@ -167,6 +185,14 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
   
           <section className={`bubble ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
+          <Image
+            src={contentCards[4].attachments[0].url} // Route of the image file
+            width="620"
+            height="620"
+            alt="Fam"
+            priority
+            className="clipped"
+            />
           <p id="initiated">{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -202,6 +228,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
                 onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
                 value={motive ? motive : formData.motive ? formData.motive  : ""}
                 label={contentCards[5].name}
+                MenuProps={MenuProps}
               >
               <MenuItem value={'Spiritual Growth'}>Spiritual Growth</MenuItem>
               <MenuItem value={'Inner Joy'}>Inner Joy & Freedom</MenuItem>
@@ -215,6 +242,14 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
+          <Image
+            src={contentCards[6].attachments[0].url} // Route of the image file
+            width="620"
+            height="620"
+            alt="Fam"
+            priority
+            className="clipped-triangle"
+            />
           <p id="practice">{contentCards[6].desc}</p>
             <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
@@ -251,6 +286,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
                     setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
                 value={pricing ? pricing : formData.pricing ? formData.pricing : ""}
                 label="which plan suits you to join us?"
+                MenuProps={MenuProps}
               >
               <MenuItem value={'twenty'}>$20/mo Access to all channels</MenuItem>
               <MenuItem value={'ten'}>$10/mo Dry Fasting Channel</MenuItem>
@@ -263,9 +299,17 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'connect' ? 'active' : ''}`} id="connect">
+          <Image
+            src={contentCards[8].attachments[0].url} // Route of the image file
+            width="620"
+            height="620"
+            alt="Fam"
+            priority
+            className="clipped"
+            />
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
-          <ActionNext onClick={(event) => { 
+          <ActionJoin onClick={(event) => { 
              location.href = '/apply' }} />
           </section>
            

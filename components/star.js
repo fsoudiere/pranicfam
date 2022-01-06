@@ -17,14 +17,14 @@ function SVG() {
     return (
       <animated.svg style={{ width: 50, height: 50}}
         viewBox="0 0 200 200"
-        strokeWidth="2"
-        fill="white"
+        strokeWidth="6"
+        fill="none"
         stroke="rgb(45, 55, 71)"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        transform="rotate(90 100 100)"
         strokeDasharray={156}
         strokeDashoffset={x.to(x => (1 - x) * 156)}>
-        <polygon points="100,10 40,198 190,78 10,78 160,198" />
+        <path d="m53.5001,15l92.9999,0l-46.49995,85l46.49995,85l-93,0l46.50005,-85l-46.49995,-85z" 
+        />
       </animated.svg>
     )
   }

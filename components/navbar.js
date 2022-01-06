@@ -13,7 +13,7 @@ export default function Navbar({}) {
             <ul className={styles.navmenu}>
                 <li id="home" className={styles.active}>
                     <Link href='/'>
-                        <a><SVG /><span>Pranic Family</span></a>
+                        <a><div className={styles.svg}><SVG /></div><span>Pranic Family</span></a>
                     </Link>
                 </li>
                 <li id="members" className={styles.next}><PeopleAlt /><span>Members</span></li>

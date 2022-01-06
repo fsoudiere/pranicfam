@@ -42,6 +42,26 @@ export  function ActionNext({href, onClick}) {
     )
 }
 
+export  function ActionJoin({href, onClick}) {
+  return (
+    <>
+      
+      <div className={styles.nav} id="join">
+          <ul className={styles.navmenu}>
+              <li>
+              <Button variant="outlined" type="submit" 
+              onClick={onClick}>Join <ArrowForwardIos /></Button>
+              </li>
+              
+          </ul>
+          <p className={styles.subline}>7 days free then $10/month, cancel anytime.</p>
+      </div>
+
+
+    </>
+  )
+}
+
 export  function ActionPlay({href}) {
     return (
       <>
