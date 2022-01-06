@@ -6,6 +6,10 @@ import Layout from '../../components/layout'
 import { ActionMenu, ActionNext, ActionPlay, ActionNotif } from '../../components/actionbar'
 import styles from '../../styles/Home.module.scss'
 import ReactDOM from 'react-dom';
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkHtml from 'remark-html'
+
 
 
 
@@ -29,9 +33,9 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Story({ contentCards, updateFormData, ...formData }) {
+function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
-  console.log(formData);
+  console.log(contentHtml);
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -68,7 +72,6 @@ function Story({ contentCards, updateFormData, ...formData }) {
         typeof value === 'string' ? value.split(',') : value,
       );
     };
-
 
     const [addBubble, setAddBubble] = useState('hi');
 
@@ -113,7 +116,7 @@ function Story({ contentCards, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'prana' ? 'active' : formData.name  ? 'active' : ''}`}>
-            <p>{contentCards[1].desc}</p>
+            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <p onClick={(event) => { setAddBubble('diet'); }}>Swipe</p>
           </section>
 
@@ -273,6 +276,8 @@ export async function getStaticPaths() {
     const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
     const posts = await res.json() 
 
+    
+
     let pid;
     let contentCards = posts.cards.filter(card => {
 
@@ -287,9 +292,15 @@ export async function getStaticPaths() {
     });
 
 
+    const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkHtml)
+    .process(contentCards[1].desc)
+    const contentHtml = processedContent.toString()
+
     return {
       props: {
-        contentCards
+        contentCards, contentHtml
       },
       revalidate: 1,
     }
