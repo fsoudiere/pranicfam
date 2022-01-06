@@ -35,7 +35,7 @@ import {
 // posts will be populated at build time by getStaticProps()
 function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
-  console.log(contentHtml);
+  console.log(formData);
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -44,8 +44,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
   const [teacher, setTeacher] = useState("");
   const [pricing, setPricing] = useState("");
   const [dryguide, setDryGuide] = useState("");
-
-
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -73,7 +71,16 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
       );
     };
 
+    function scrollTo(hash) {
+      location.hash = "#" + hash;
+    }
+
+    const [isHidden, setIsHidden] = useState('');
     const [addBubble, setAddBubble] = useState('hi');
+    console.log(isHidden);
+
+
+// }
 
   return (
     
@@ -95,8 +102,8 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             />
           </section>
             
-          <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name  ? 'active' : ''}`} id="hi-bubble">
-              <h2 className={styles.title}>Hi {formData.name}</h2>
+          <section className={`bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
+              <h2 className={styles.title}>Hi</h2>
               <p>{contentCards[0].desc}</p>
               <TextField 
               id="fname" 
@@ -104,20 +111,26 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               variant="standard" 
               value={ name ? name : formData.name ? formData.name : ""}
               onChange={(event) => {
-                setName(event.target.value);
+                setName(event.target.value); 
               }}
               />
-              <ActionNext onClick={(event) => {
-                  if (name.length > 0) {
-                updateFormData({ name: name });
-                setAddBubble('prana');
-                } else {  }
-              }}/>
+              <div className={` ${ isHidden.includes('init') ? 'hidden' : ''}`}>
+                <ActionNext onClick={(event) => {
+                    if (name.length > 0) {
+                  updateFormData({ name: name });
+                  setAddBubble('prana');
+                  scrollTo('prana');setIsHidden(['init']);
+                  } else {  }
+                }}/>
+              </div>
           </section>
 
-          <section className={`bubble ${addBubble === 'prana' ? 'active' : formData.name  ? 'active' : ''}`}>
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-            <p onClick={(event) => { setAddBubble('diet'); }}>Swipe</p>
+          <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
+          <h2 className={styles.title}>Hi {formData.name}</h2>
+            <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <div className={` ${ isHidden.includes('prana') ? 'hidden' : ''}`}>
+            <ActionNotif onClick={(event) => { 
+              setAddBubble('diet'); scrollTo('diet'); setIsHidden(['prana', 'init']);}} /></div>
           </section>
 
 
@@ -126,7 +139,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             <FormControl fullWidth>
               <InputLabel id="diet">{contentCards[2].name}</InputLabel>
               <Select
-                onChange={(event) => {setAddBubble('dry');setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
+                onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
                 value={diet ? diet : formData.diet ? formData.diet  : ""}
                 label={contentCards[2].name}
               >
@@ -137,13 +150,16 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'Liquids'}>Liquids Only</MenuItem>
               </Select>
             </FormControl>
+            <div className={` ${ isHidden.includes('diet') ? 'hidden' : ''}`}>
+            <ActionNext onClick={(event) => { 
+              setAddBubble('dry'); scrollTo('dry');setIsHidden(['prana', 'init', 'diet']);}} /></div>
           </section>
 
           <section className={`bubble ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
-            <p>{contentCards[3].desc}</p>
+            <p id="dry">{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
-              setAddBubble('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
+              setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -151,39 +167,39 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
   
           <section className={`bubble ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          <p>{contentCards[4].desc}</p>
+          <p id="initiated">{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
             setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
             }} 
             required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('teacher'); }}/>
-            <FormControlLabel value="no" control={<Radio />} label="No" onClick={(event) => { setAddBubble('dryguide'); }}/>
+            <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('teacher');scrollTo('teacher'); }}/>
+            <FormControlLabel value="no" control={<Radio />} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide-bubble">
+          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
           <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
-          <p><Button onClick={(event) => { setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });setAddBubble('motive'); }} variant="outlined">Download</Button></p>
+          <p><Button onClick={(event) => { setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });setAddBubble('motive');scrollTo('motive');}} variant="outlined">Download</Button></p>
           </section>
 
-          <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher-bubble">
+          <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
           <FormLabel component="legend">Already done an initiation? Maybe would you like to teach with us?</FormLabel>
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
             }} 
             required row aria-label="teacher" id="teacher" name="row-radio-buttons-group">
-            <FormControlLabel onChange={(event) => { setAddBubble('motive'); }} value="yes" control={<Radio />} label="Yes" />
-            <FormControlLabel onChange={(event) => { setAddBubble('motive'); }} value="no" control={<Radio />} label="No" />
+            <FormControlLabel onChange={(event) => { setAddBubble('motive');scrollTo('motive'); }} value="yes" control={<Radio />} label="Yes" />
+            <FormControlLabel onChange={(event) => { setAddBubble('motive');scrollTo('motive'); }} value="no" control={<Radio />} label="No" />
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive-bubble">
+          <section className={`bubble ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
             <p>{contentCards[5].desc}</p>
             <FormControl fullWidth>
-              <InputLabel id="motive">{contentCards[5].name}</InputLabel>
+              <InputLabel>{contentCards[5].name}</InputLabel>
               <Select
-                onChange={(event) => {setAddBubble('practice');setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
+                onChange={(event) => {setMotive(event.target.value);updateFormData({ motive: event.target.value });}}
                 value={motive ? motive : formData.motive ? formData.motive  : ""}
                 label={contentCards[5].name}
               >
@@ -192,11 +208,14 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'Body'}>Health & Body</MenuItem>
               </Select>
             </FormControl>
+            <div className={` ${ isHidden.includes('motive') ? 'hidden' : ''}`}>
+            <ActionNotif onClick={(event) => { 
+              setAddBubble('practice'); scrollTo('practice');setIsHidden(['prana', 'diet', 'init', 'motive']);}} /></div>
    
           </section>
 
           <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
-          <p>{contentCards[6].desc}</p>
+          <p id="practice">{contentCards[6].desc}</p>
             <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
             <Select
@@ -205,7 +224,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               multiple
               value={practiceName}
               onChange={handleChange}
-              onBlur={(event) => {setAddBubble('focus');}}
               input={<OutlinedInput label={contentCards[6].name} />}
               MenuProps={MenuProps}
               renderValue={(selected) => selected.join(', ')}
@@ -218,16 +236,19 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               ))}
             </Select>
             </FormControl>
+            <div className={` ${ isHidden.includes('practice') ? 'hidden' : ''}`}>
+              <ActionNext onClick={(event) => { 
+              setAddBubble('focus'); scrollTo('focus');setIsHidden(['prana', 'diet', 'init', 'motive', 'practice']);}} /></div>
           </section>
       
-          <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} id="focus-bubble">
-          <p>Ready for more meaningful discussion & projects, {contentCards[7].name}</p>
+          <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
+          <p id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</p>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
               <InputLabel id="pricing">which plan suits you to join us?</InputLabel>
               <Select
                 onChange={(event) => {
-                    setAddBubble('connect');setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
+                    setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
                 value={pricing ? pricing : formData.pricing ? formData.pricing : ""}
                 label="which plan suits you to join us?"
               >
@@ -236,11 +257,16 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'free'}>7 Day Free Trial for Now!</MenuItem>
               </Select>
             </FormControl>
+            <div className={` ${ isHidden.includes('focus') ? 'hidden' : ''}`}>
+              <ActionNotif onClick={(event) => { 
+              setAddBubble('connect'); scrollTo('connect');setIsHidden(['prana', 'diet', 'init', 'motive', 'practice', 'focus']);}} /></div>
           </section>
 
-          <section className={`bubble ${addBubble === 'connect' ? 'active' : ''}`} id="connect-bubble">
+          <section className={`bubble ${addBubble === 'connect' ? 'active' : ''}`} id="connect">
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
+          <ActionNext onClick={(event) => { 
+             location.href = '/apply' }} />
           </section>
            
             
