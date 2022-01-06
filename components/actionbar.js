@@ -5,35 +5,16 @@ import {  Button } from '@mui/material';
 import { KeyboardDoubleArrowDown, PlayArrow, Menu, ArrowForwardIos } from '@mui/icons-material';
 
 
-export default function Actionbar({href, onClick}) {
+export  function ActionMenu({href}) {
     return (
       <>
         
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
-                <li id="swipe">
-                    <Link href={href}>
-                        <a><KeyboardDoubleArrowDown className={styles.floatLeft} />Swipe Down</a>
-                    </Link>
-                </li>
-                <li id="play" >
-                    <Link href={href}>
-                        <a><PlayArrow className={styles.floatLeft}/>Play</a>
-                    </Link>
-                </li>
-                <li id="menu" >
+                <li id="menu">
                     <Link href={href}>
                         <a><Menu className={styles.floatLeft}/>Menu</a>
                     </Link>
-                </li>
-                <li id="next" className={styles.active}>
-                    <Link href={href}>
-                        <a><ArrowForwardIos className={styles.floatLeft}/>Next</a>
-                    </Link>
-                </li>
-                <li id="submit">
-                <Button variant="outlined" type="submit" form="register" 
-                onClick={onClick}>Submit</Button>
                 </li>
             </ul>
         </div>
@@ -41,4 +22,62 @@ export default function Actionbar({href, onClick}) {
 
       </>
     )
-  }
+}
+
+export  function ActionNext({onClick}) {
+    return (
+      <>
+        
+        <div className={styles.nav}>
+            <ul className={styles.navmenu}>
+                <li id="submit">
+                <Button variant="outlined" type="submit" 
+                onClick={onClick}>Next <ArrowForwardIos /></Button>
+                </li>
+            </ul>
+        </div>
+
+
+      </>
+    )
+}
+
+export  function ActionPlay({href}) {
+    return (
+      <>
+        
+        <div className={styles.nav}>
+            <ul className={styles.navmenu}>
+                <li id="play" >
+                    <Link href={href}>
+                        <a><PlayArrow className={styles.floatLeft}/>Play</a>
+                    </Link>
+                </li>
+            </ul>
+        </div>
+
+
+      </>
+    )
+}
+
+export  function ActionNotif({href, onClick}) {
+    return (
+      <>
+        
+        <div className={styles.nav}>
+            <ul className={styles.navmenu}>
+                <li id="swipe">
+                <Button variant="outlined" type="submit" 
+                onClick={onClick}>Scroll <KeyboardDoubleArrowDown /></Button>
+                </li>
+            </ul>
+        </div>
+
+
+      </>
+    )
+}
+
+
+

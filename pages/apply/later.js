@@ -18,11 +18,11 @@ function Later({ updateFormData, ...formData }) {
         <link rel="icon" href="/favicon.ico" />
         </Head>
 
-      <section className="bubble" id="apply-bubble">
+      <section className="bubble active" id="apply-bubble">
            <p>Oops {formData.name}! Based on your answers, it looks like we might not be the right fit for you. Feel free to reapply at a later time. May you be joyful, and free!</p>
       </section>
 
-      <Link href="/onboarding"><a>Back </a></Link>
+      <Link href="/"><a>Back </a></Link>
     
     </div>
     </Layout>

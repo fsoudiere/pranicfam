@@ -1,13 +1,12 @@
+// pages/onboarding/[id].js
 import Head from 'next/head'
 import Image from 'next/image';
-
-
 import { useState } from 'react';
-
 import Layout from '../../components/layout'
-import Actionbar from '../../components/actionbar'
+import { ActionMenu, ActionNext, ActionPlay, ActionNotif } from '../../components/actionbar'
 import styles from '../../styles/Home.module.scss'
 import ReactDOM from 'react-dom';
+
 
 
 import { 
@@ -30,10 +29,9 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Onboarding({ contentCards, selectedMember, updateFormData, ...formData }) {
+function Story({ contentCards, updateFormData, ...formData }) {
 
   console.log(formData);
-  const [mathMember, setMathMember] = useState("");
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -71,6 +69,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
       );
     };
 
+
     const [addBubble, setAddBubble] = useState('hi');
 
   return (
@@ -105,11 +104,12 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
                 setName(event.target.value);
               }}
               />
-              <Button variant="outlined" type='submit' onClick={(event) => {
-                setMathMember(mathMember);
-                updateFormData({ name: name, mathMember : selectedMember });
+              <ActionNext onClick={(event) => {
+                  if (name.length > 0) {
+                updateFormData({ name: name });
                 setAddBubble('prana');
-              }}>Send</Button>
+                } else {  }
+              }}/>
           </section>
 
           <section className={`bubble ${addBubble === 'prana' ? 'active' : formData.name  ? 'active' : ''}`}>
@@ -241,7 +241,7 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
           </section>
            
             
-          <Actionbar href="/onboarding/apply"/>
+
           
     
     </div>
@@ -252,34 +252,47 @@ function Onboarding({ contentCards, selectedMember, updateFormData, ...formData 
 }
 
 
-
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries. See the "Technical details" section.
-export async function getStaticProps() { 
+// In getStaticPaths(), you need to return the list of
+// ids of product pages (/products/[id]) that you’d
+// like to pre-render at build time. To do so,
+// you can fetch all products from a database.
+export async function getStaticPaths() {
   
-  const res = await fetch('https://pranicfamily.com/data/aOOx3O4Q.json')
-  const posts = await res.json() 
-  const fabi = "61ba2e77d9741d7fc9a75e4d"
-  const nathan = "61bbae0eaf9f8c2284e2a4dd"
-  const hrefna = "61bbae1a66752b3ad447ec8c"
-  const kamilla = "61bbae23f477ee272f05a5c4"
-  const rakhi = "61bc8fd878662a71f9458203"
-  const ray = "61c25cc82a7abf39186de6d6"
+    // fallback: false means pages that don’t have the
+    // correct id will 404.
+    return { paths: [
+        { params: { id: "fabi" } },
+        { params: { id: "kamilla" } }
+      ], 
+      fallback: false }
+  }
   
-  const members = [fabi, nathan, hrefna, kamilla, rakhi, ray];
-  const random = Math.floor(Math.random() * members.length);
-  let selectedMember = members[random];
+  // params will contain the id for each generated page.
+  export async function getStaticProps({ params }) { 
+  
+    const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
+    const posts = await res.json() 
 
-  let contentCards = posts.cards.filter(card => {
-      return card.idList == selectedMember && !card.closed;
+    let pid;
+    let contentCards = posts.cards.filter(card => {
+
+        if (params.id === 'fabi') {
+            pid = '61ba2e77d9741d7fc9a75e4d';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'kamilla') {
+            pid = '61bbae23f477ee272f05a5c4';
+            return card.idList == pid && !card.closed;
+        } 
     });
 
-  return {
-    props: {
-      contentCards, selectedMember
-    },
-  }
-}
 
-export default Onboarding
+    return {
+      props: {
+        contentCards
+      },
+      revalidate: 1,
+    }
+  }
+
+  export default Story

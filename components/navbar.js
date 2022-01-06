@@ -1,6 +1,8 @@
 import styles from './navbar.module.scss'
+import SVG from './star'
+
 import Link from 'next/link'
-import { Home, Favorite, Call, EventAvailable, Telegram, PeopleAlt } from '@mui/icons-material';
+import { AllInclusive, Favorite, Call, EventAvailable, Telegram, PeopleAlt } from '@mui/icons-material';
 
 
 export default function Navbar({}) {
@@ -11,7 +13,7 @@ export default function Navbar({}) {
             <ul className={styles.navmenu}>
                 <li id="home" className={styles.active}>
                     <Link href='/'>
-                        <a><Home /><span>Pranic Family</span></a>
+                        <a><SVG /><span>Pranic Family</span></a>
                     </Link>
                 </li>
                 <li id="members" className={styles.next}><PeopleAlt /><span>Members</span></li>
