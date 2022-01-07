@@ -1,5 +1,6 @@
 // pages/onboarding/[id].js
 import Head from 'next/head'
+import Link from 'next/link'
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../components/layout'
@@ -27,8 +28,7 @@ import {
   FormControl, 
   FormControlLabel, 
   RadioGroup, 
-  Radio,
-  Link
+  Radio
   } from '@mui/material';
 
 
@@ -86,7 +86,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
     const [isHidden, setIsHidden] = useState('');
     const [addBubble, setAddBubble] = useState('hi');
-    console.log(isHidden);
 
 
 // }
@@ -309,8 +308,8 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             />
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
-          <ActionJoin onClick={(event) => { 
-             location.href = '/apply' }} />
+
+          <ActionJoin href="/apply" />
           </section>
            
             

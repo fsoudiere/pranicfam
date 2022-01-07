@@ -3,15 +3,12 @@ import { useState } from 'react';
 
 
 function SVG() {
-    const [flip, set] = useState(false)
     const { x } = useSpring({
-      reset: true,
-      reverse: flip,
+      loop: true,
       from: { x: 0 },
       x: 1,
       delay: 200,
       config: { mass: 1, tension: 280, friction: 120 },
-      onRest: () => set(!flip),
     })
   
     return (
