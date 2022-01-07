@@ -309,7 +309,8 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           <p>{contentCards[8].name}</p>
           <p>{contentCards[8].desc}</p>
 
-          <ActionJoin href="/apply" />
+          <ActionJoin onClick={(event) => { 
+             location.href = '/apply' }} />
           </section>
            
             
