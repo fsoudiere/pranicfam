@@ -30,7 +30,6 @@ const AppComponent = ({ Component, pageProps }) => {
       },
     },
   });
-  theme = responsiveFontSizes(theme);
 
   const [formData, setFormData] = useState({});
   const updateFormData = (newData) => {

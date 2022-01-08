@@ -112,7 +112,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
             
           <section className={`bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
-              <Typography variant="h2">Hi</Typography>
+              <Typography variant="h4">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
               id="fname" 
@@ -135,7 +135,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
-          <Typography variant="h2">Hi {formData.name}</Typography>
+          <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ isHidden.includes('prana') ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
@@ -277,10 +277,10 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
       
           <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
-          <p id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</p>
+          <Typography variant="h6" id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
-              <InputLabel id="pricing">which plan suits you to join us?</InputLabel>
+              <InputLabel id="pricing">Which plan suits you to join us?</InputLabel>
               <Select
                 onChange={(event) => {
                     setPricing(event.target.value);updateFormData({ pricing: event.target.value });}}
@@ -307,7 +307,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             priority
             className="clipped"
             />
-          <p>{contentCards[8].name}</p>
+          <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>
 
           <ActionJoin onClick={(event) => { 

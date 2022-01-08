@@ -15,7 +15,7 @@ export default function Navbar({}) {
                     <Link href='/'>
                         <a>
                           <div className={styles.svg}><SVG /></div>
-                          <Typography variant="h2">Pranic Family</Typography>
+                          <Typography variant="h4">Pranic Family</Typography>
                         </a>
                     </Link>
                 </li>
