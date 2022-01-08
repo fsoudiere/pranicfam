@@ -12,8 +12,8 @@ const AppComponent = ({ Component, pageProps }) => {
     typography: {
       fontSize: 16,
       fontFamily: [
-        'Dosis', sans-serif ,
-        'DM sans', sans-serif ,
+        "'Dosis', sans-serif",
+        "'DM sans', sans-serif",
       ].join(','),
       h2: {
         fontWeight: 400,
