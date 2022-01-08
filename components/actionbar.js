@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './actionbar.module.scss'
 import Link from 'next/link'
-import {  Button } from '@mui/material';
+import {  Button, Typography } from '@mui/material';
 import { KeyboardDoubleArrowDown, PlayArrow, Menu, ArrowForwardIos } from '@mui/icons-material';
 
 
@@ -54,7 +54,7 @@ export  function ActionJoin({href, onClick}) {
               </li>
               
           </ul>
-          <p className={styles.subline}>7 days free then $10/month, cancel anytime.</p>
+          <Typography variant="subtitle2">7 days free then $10/month, cancel anytime.</Typography>
       </div>
 
 

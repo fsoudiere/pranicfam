@@ -16,7 +16,7 @@ function SVG() {
         viewBox="0 0 200 200"
         strokeWidth="6"
         fill="none"
-        stroke="rgb(45, 55, 71)"
+        stroke="rgb(153, 143, 235)"
         transform="rotate(90 100 100)"
         strokeDasharray={156}
         strokeDashoffset={x.to(x => (1 - x) * 156)}>

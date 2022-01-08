@@ -6,7 +6,8 @@
     height: 80px;
     padding: 0;
     z-index: 9999999999;
-    background-color: white;
+    mix-blend-mode: difference;
+    color: #998feb;
 }
 .navmenu {
     display: flex;
@@ -17,7 +18,7 @@
         list-style: none;
         display: none;
     }
-    h4 { padding-left: 80px;}
+    h4 { padding-left: 80px; color: white;}
 }
 
 li.active { display: block; flex-basis: 100%;}

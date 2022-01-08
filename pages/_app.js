@@ -17,13 +17,13 @@ const AppComponent = ({ Component, pageProps }) => {
         font1,
         font2,
       ].join(','),
-      h2: {
-        fontWeight: 400,
+      subtitle2: {
+        textAlign: 'center',
       },
     },
     palette: {
       primary: {
-        main: blue[800],
+        main: '#998feb',
       },
       secondary: {
         main: green[500],
