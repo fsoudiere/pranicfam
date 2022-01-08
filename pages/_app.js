@@ -1,12 +1,26 @@
 import '../styles/globals.scss'
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, responsiveFontSizes  } from '@mui/material/styles';
 import { green, blue } from '@mui/material/colors';
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
 
+
 const AppComponent = ({ Component, pageProps }) => {
 
+  const font1 =  "'Dosis', sans-serif";
+  const font2 = "'DM sans', sans-serif";
+
   const theme = createTheme({
+    typography: {
+      fontSize: 16,
+      fontFamily: [
+        font1,
+        font2,
+      ].join(','),
+      h2: {
+        fontWeight: 400,
+      },
+    },
     palette: {
       primary: {
         main: blue[800],
@@ -16,6 +30,7 @@ const AppComponent = ({ Component, pageProps }) => {
       },
     },
   });
+  theme = responsiveFontSizes(theme);
 
   const [formData, setFormData] = useState({});
   const updateFormData = (newData) => {

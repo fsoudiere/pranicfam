@@ -2,9 +2,9 @@
 .nav {
     position: fixed;
     width: 100vw;
-    top: -16px;
+    top: 0;
     height: 80px;
-    padding: 22px 0;
+    padding: 0;
     z-index: 9999999999;
     background-color: white;
 }
@@ -17,7 +17,7 @@
         list-style: none;
         display: none;
     }
-    span { position: absolute; left: 90px;}
+    h2 { padding-left: 80px;}
 }
 
 li.active { display: block; flex-basis: 100%;}
@@ -31,5 +31,12 @@ li.next {
 .svg { 
     position: absolute;
     left: -180px;
+    top: 20px;
+}
+
+li.next .svg { 
+    position: absolute;
+    left: auto;
+    right: 10px;
     top: 30px;
 }

@@ -15,6 +15,7 @@ import remarkHtml from 'remark-html'
 
 
 import { 
+  Typography,
   Button, 
   TextField, 
   InputLabel, 
@@ -111,7 +112,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
             
           <section className={`bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
-              <h2 className={styles.title}>Hi</h2>
+              <Typography variant="h2">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
               id="fname" 
@@ -134,7 +135,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
-          <h2 className={styles.title}>Hi {formData.name}</h2>
+          <Typography variant="h2">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ isHidden.includes('prana') ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
