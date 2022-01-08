@@ -11,10 +11,7 @@ const AppComponent = ({ Component, pageProps }) => {
   const theme = createTheme({
     typography: {
       fontSize: 16,
-      fontFamily: [
-        "'Dosis', sans-serif",
-        "'DM sans', sans-serif",
-      ].join(','),
+      fontFamily: "'Dosis', sans-serif",
       h2: {
         fontWeight: 400,
       },
