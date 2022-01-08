@@ -7,11 +7,16 @@ import { CookiesProvider } from "react-cookie"
 
 const AppComponent = ({ Component, pageProps }) => {
 
+  const font1 = "'Dosis', sans-serif";
+  const font2 = "'DM sans', sans-serif";
 
   const theme = createTheme({
     typography: {
       fontSize: 16,
-      fontFamily: "'Dosis', sans-serif",
+      fontFamily: [
+        font1,
+        font2,
+      ].join(','),
       h2: {
         fontWeight: 400,
       },
