@@ -29,11 +29,19 @@ a {
   padding: 2em;
   border-radius: 5px;
   display: none;
+  position: relative;
 }
 
 .bubble.active {
   display: block;
 }
+
+.img-wrapper {
+  position: absolute;
+  top: -3em;
+  left: 0;
+}
+.push-down { margin-top: 12rem; }
 
 .bubble.hidden { display: none;}
 .hidden { display: none;}

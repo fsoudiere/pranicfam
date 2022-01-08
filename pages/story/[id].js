@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image';
+import Toggle from '../../components/ImageCrossover'
 import { useState } from 'react';
 import Layout from '../../components/layout'
 import { ActionMenu, ActionNext, ActionJoin, ActionNotif } from '../../components/actionbar'
@@ -31,6 +32,7 @@ import {
   RadioGroup, 
   Radio
   } from '@mui/material';
+import { ToggleOff } from '@mui/icons-material';
 
 
 // posts will be populated at build time by getStaticProps()
@@ -101,17 +103,21 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
           <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
+            <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[1].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
             className="clipped"
-            />
+            /></div>
+            <div className='img-wrapper'>
+            <Toggle src={contentCards[0].attachments[0].url}/>
+            </div>
           </section>
             
-          <section className={`bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
+          <section className={`bubble push-down ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
               <Typography variant="h4">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
@@ -134,7 +140,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
 
-          <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
+          <section className={`bubble push-down ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ isHidden.includes('prana') ? 'hidden' : ''}`}>
