@@ -1,4 +1,3 @@
-// pages/onboarding/[id].js
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image';
@@ -11,9 +10,6 @@ import ReactDOM from 'react-dom';
 import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
-
-
-
 
 import { 
   Typography,
@@ -32,7 +28,6 @@ import {
   RadioGroup, 
   Radio
   } from '@mui/material';
-import { ToggleOff } from '@mui/icons-material';
 
 
 // posts will be populated at build time by getStaticProps()
@@ -87,6 +82,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
       location.hash = "#" + hash;
     }
 
+    
     const [isHidden, setIsHidden] = useState('');
     const [addBubble, setAddBubble] = useState('hi');
 
@@ -113,7 +109,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             className="clipped"
             /></div>
             <div className='img-wrapper'>
-            <Toggle src={contentCards[0].attachments[0].url}/>
             </div>
           </section>
             
@@ -129,7 +124,9 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
                 setName(event.target.value); 
               }}
               />
-              <div className={` ${ isHidden.includes('init') ? 'hidden' : ''}`}>
+              <div className={` ${ 
+                isHidden.includes('init') ? 'hidden' :
+                formData.hide === 'seen' ? 'hidden' : ''}`}>
                 <ActionNext onClick={(event) => {
                     if (name.length > 0) {
                   updateFormData({ name: name });
@@ -143,9 +140,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           <section className={`bubble push-down ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
-            <div className={` ${ isHidden.includes('prana') ? 'hidden' : ''}`}>
+            <div className={` ${ 
+              isHidden.includes('prana') ? 'hidden' :
+              formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
-              setAddBubble('diet'); scrollTo('diet'); setIsHidden(['prana', 'init']);}} /></div>
+              setAddBubble('diet'); scrollTo('diet'); 
+              setIsHidden(['prana', 'init']);}} /></div>
           </section>
 
 
@@ -174,9 +174,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'Liquids'}>Liquids Only</MenuItem>
               </Select>
             </FormControl>
-            <div className={` ${ isHidden.includes('diet') ? 'hidden' : ''}`}>
+            <div className={` ${ 
+              isHidden.includes('diet') ? 'hidden' :
+              formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNext onClick={(event) => { 
-              setAddBubble('dry'); scrollTo('dry');setIsHidden(['prana', 'init', 'diet']);}} /></div>
+              setAddBubble('dry'); scrollTo('dry');
+              setIsHidden(['prana', 'init', 'diet']);}} /></div>
           </section>
 
           <section className={`bubble ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
@@ -241,9 +244,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'Body'}>Health & Body</MenuItem>
               </Select>
             </FormControl>
-            <div className={` ${ isHidden.includes('motive') ? 'hidden' : ''}`}>
+            <div className={` ${ 
+              isHidden.includes('motive') ? 'hidden' :
+              formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
-              setAddBubble('practice'); scrollTo('practice');setIsHidden(['prana', 'diet', 'init', 'motive']);}} /></div>
+              setAddBubble('practice'); scrollTo('practice');
+              setIsHidden(['prana', 'diet', 'init', 'motive']);}} /></div>
    
           </section>
 
@@ -277,9 +283,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               ))}
             </Select>
             </FormControl>
-            <div className={` ${ isHidden.includes('practice') ? 'hidden' : ''}`}>
+            <div className={` ${ 
+              isHidden.includes('practice') ? 'hidden' :
+              formData.hide === 'seen' ? 'hidden' : ''}`}>
               <ActionNext onClick={(event) => { 
-              setAddBubble('focus'); scrollTo('focus');setIsHidden(['prana', 'diet', 'init', 'motive', 'practice']);}} /></div>
+              setAddBubble('focus'); scrollTo('focus');
+              setIsHidden(['prana', 'diet', 'init', 'motive', 'practice']);}} /></div>
           </section>
       
           <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
@@ -299,12 +308,16 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               <MenuItem value={'free'}>7 Day Free Trial for Now!</MenuItem>
               </Select>
             </FormControl>
-            <div className={` ${ isHidden.includes('focus') ? 'hidden' : ''}`}>
+            <div className={` ${ 
+              isHidden.includes('focus') ? 'hidden' : 
+              formData.hide === 'seen' ? 'hidden' : ''}`}>
               <ActionNotif onClick={(event) => { 
-              setAddBubble('connect'); scrollTo('connect');setIsHidden(['prana', 'diet', 'init', 'motive', 'practice', 'focus']);}} /></div>
+              setAddBubble('connect'); scrollTo('connect');
+              updateFormData({ hide: 'seen' });
+              }} /></div>
           </section>
 
-          <section className={`bubble ${addBubble === 'connect' ? 'active' : ''}`} id="connect">
+          <section className={`bubble ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
           <Image
             src={contentCards[8].attachments[0].url} // Route of the image file
             width="620"
@@ -316,8 +329,8 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>
 
-          <ActionJoin onClick={(event) => { 
-             location.href = '/apply' }} />
+              
+          <ActionJoin href='/apply'/>
           </section>
            
             
@@ -348,7 +361,7 @@ export async function getStaticPaths() {
   }
   
   // params will contain the id for each generated page.
-  export async function getStaticProps({ params }) { 
+export async function getStaticProps({ params }) { 
   
     const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
     const posts = await res.json() 
@@ -381,6 +394,6 @@ export async function getStaticPaths() {
       },
       revalidate: 1,
     }
-  }
+}
 
   export default Story

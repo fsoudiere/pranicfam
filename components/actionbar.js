@@ -42,15 +42,14 @@ export  function ActionNext({href, onClick}) {
     )
 }
 
-export  function ActionJoin({href, onClick}) {
+export  function ActionJoin({href}) {
   return (
     <>
       
       <div className={styles.nav} id="join">
           <ul className={styles.navmenu}>
               <li>
-              <Button variant="outlined" type="submit" 
-              onClick={onClick}>Join <ArrowForwardIos /></Button>
+              <Link href={href} ><a>Join <ArrowForwardIos /></a></Link>
               </li>
               
           </ul>

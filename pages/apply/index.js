@@ -28,7 +28,7 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Apply({ contentCards, updateFormData, ...formData }) {
+function Apply({ updateFormData, ...formData }) {
   console.log(formData);
   
   const [referral, setReferral] = useState("");
