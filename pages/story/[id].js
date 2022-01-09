@@ -81,7 +81,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
     function scrollTo(hash) {
       location.hash = "#" + hash;
     }
-
     
     const [isHidden, setIsHidden] = useState('');
     const [addBubble, setAddBubble] = useState('hi');
@@ -144,8 +143,10 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               isHidden.includes('prana') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
-              setAddBubble('diet'); scrollTo('diet'); 
-              setIsHidden(['prana', 'init']);}} /></div>
+                setAddBubble('diet');
+                scrollTo('diet');setIsHidden(['init', 'prana']);
+              }}/>
+              </div>
           </section>
 
 
@@ -178,8 +179,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               isHidden.includes('diet') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNext onClick={(event) => { 
-              setAddBubble('dry'); scrollTo('dry');
-              setIsHidden(['prana', 'init', 'diet']);}} /></div>
+              if (diet.length > 0) {
+                setAddBubble('dry');
+                scrollTo('dry');setIsHidden(['init', 'prana', 'diet']);
+                } else {  }
+              }}/>
+              </div>
           </section>
 
           <section className={`bubble ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
@@ -248,9 +253,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               isHidden.includes('motive') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
             <ActionNotif onClick={(event) => { 
-              setAddBubble('practice'); scrollTo('practice');
-              setIsHidden(['prana', 'diet', 'init', 'motive']);}} /></div>
-   
+              if (motive.length > 0) {
+                setAddBubble('practice');
+                scrollTo('practice');setIsHidden(['init', 'prana', 'diet', 'motive']);
+                } else {  }
+              }}/>
+              </div>   
           </section>
 
           <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
@@ -287,8 +295,12 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               isHidden.includes('practice') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
               <ActionNext onClick={(event) => { 
-              setAddBubble('focus'); scrollTo('focus');
-              setIsHidden(['prana', 'diet', 'init', 'motive', 'practice']);}} /></div>
+                if (practiceName.length > 0) {
+                  setAddBubble('focus');
+                  scrollTo('focus');setIsHidden(['init', 'prana', 'diet', 'motive', 'practice']);
+                  } else {  }
+                }}/>
+              </div>
           </section>
       
           <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
@@ -312,8 +324,10 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               isHidden.includes('focus') ? 'hidden' : 
               formData.hide === 'seen' ? 'hidden' : ''}`}>
               <ActionNotif onClick={(event) => { 
+                if (pricing.length > 0) {
               setAddBubble('connect'); scrollTo('connect');
               updateFormData({ hide: 'seen' });
+            } else {  }
               }} /></div>
           </section>
 
