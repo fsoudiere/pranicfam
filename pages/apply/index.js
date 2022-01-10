@@ -206,7 +206,7 @@ const onSubmit = data => {
             error={errors.signed ? true : false}/>
             <p variant="inherit" color="textSecondary">{errors.signed?.message}</p> 
 
-      <Button variant="outlined" type="submit" form="register" onClick={handleSubmit(onSubmit)}
+      <Button variant="contained" type="submit" form="register" onClick={handleSubmit(onSubmit)}
         >Submit</Button>
       </section>
     

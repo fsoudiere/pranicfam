@@ -47,7 +47,7 @@ export  function ActionJoin({href}) {
       <div className={styles.nav} id="join">
           <ul className={styles.navmenu}>
               <li>
-              <Link href={href} ><a>Join <ArrowForwardIos /></a></Link>
+              <Link href={href}><a className={styles.joinBtn}>Join <ArrowForwardIos /></a></Link>
               </li>
               
           </ul>
