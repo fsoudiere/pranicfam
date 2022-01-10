@@ -11,6 +11,30 @@ const AppComponent = ({ Component, pageProps }) => {
   const font2 = "'DM sans', sans-serif";
 
   const theme = createTheme({
+    components: {
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            borderRadius: 0,
+            boxShadow: '0px 2px 4px -1px rgb(0 0 0 / 20%)',
+            '&:active, &:hover, &:focus': {
+              boxShadow: '0px 2px 4px -1px rgb(0 0 0 / 20%)',
+          }
+            },
+          },
+      },
+    MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 0,
+            boxShadow: '0px 2px 4px -1px rgb(0 0 0 / 20%)',
+            '&:active, &:hover, &:focus': {
+              boxShadow: '0px 2px 4px -1px rgb(0 0 0 / 20%)',
+          }
+            },
+          },
+      },
+    },
     typography: {
       fontSize: 16,
       fontFamily: [

@@ -25,19 +25,17 @@ export  function ActionMenu({href}) {
 }
 
 export  function ActionNext({href, onClick}) {
+
     return (
       <>
-        
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
                 <li id="submit">
-                <Button variant="outlined" type="submit" 
-                onClick={onClick}>Next <ArrowForwardIos /></Button>
+                <Button variant="contained" endIcon={<ArrowForwardIos />} 
+                onClick={onClick} >Next</Button>
                 </li>
             </ul>
         </div>
-
-
       </>
     )
 }

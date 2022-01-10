@@ -220,7 +220,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
           <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
           <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
-          <p><Button onClick={(event) => { setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });setAddBubble('motive');scrollTo('motive');}} variant="outlined">Download</Button></p>
+          <p><Button onClick={(event) => { setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });setAddBubble('motive');scrollTo('motive');}} variant="contained">Download</Button></p>
           </section>
 
           <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
