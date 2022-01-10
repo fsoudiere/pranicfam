@@ -3,10 +3,13 @@ import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
-import { parseCookies } from "../lib/cookieHelper"
 
 
-function Home({data}) {
+
+
+
+export default function Home() {
+
   return (
     <Layout>
     <div className={styles.container}>
@@ -101,26 +104,3 @@ We think it’s best we open our doors to all beings. However, we will offer mor
     </Layout>
   )
 }
-
-Home.getInitialProps = async ({ req, res }) => {
-  const data = parseCookies(req);
-
-
-
-  if (res) {
-    if (Object.keys(data).length === 0 && data.constructor === Object) {
-        res.writeHead(301, { Location: "/story/fabi" })
-        res.end()
-      }
-    }
-
-  return {
-    props: {
-      data: data && data,
-    },
-  }
-}
-
-export default Home
- 
-
