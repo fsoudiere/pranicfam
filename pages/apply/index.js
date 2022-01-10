@@ -63,7 +63,7 @@ function Apply({ updateFormData, ...formData }) {
     resolver: yupResolver(validationSchema)
   });
 const onSubmit = data => {
-    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { registerUser(); location.href = "/apply/later"; }
+    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { registerUser();location.href = "/apply/later"; }
     else {registerUser();addReturningCookie(); location.href = "/apply/success";}  
   };
 
@@ -76,20 +76,22 @@ const onSubmit = data => {
     });
   };
 
+  const dataUser = {
+    email: formData.email,
+    sms: formData.phone,
+    referral: formData.referral,
+    fname: formData.name,
+    diet: formData.diet,
+    motive: formData.motive,
+    initiated: formData.initiated,
+    dry: formData.dry,
+    age: formData.age,
+
+  }
+  
   const registerUser = async event => {
     const res = await fetch('/api/sendinblue', {
-      body: JSON.stringify({
-        email: formData.email,
-        sms: formData.phone,
-        referral: formData.referral,
-        fname: formData.name,
-        diet: formData.diet,
-        motive: formData.motive,
-        initiated: formData.initiated,
-        dry: formData.dry,
-        age: formData.age,
-
-      }),
+      body: JSON.stringify(dataUser),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -98,7 +100,15 @@ const onSubmit = data => {
     const result = await res.json()
   }
 
-
+const listUser = async event => {
+    const res = await fetch("/api/sheet", {
+      body: JSON.stringify(dataUser),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST'
+    })
+  }
 
 
   return (

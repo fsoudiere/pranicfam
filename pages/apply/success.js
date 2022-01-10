@@ -20,7 +20,7 @@ function Success({ contentCards, updateFormData, ...formData }) {
            <p>Welcome to the Family {formData.name}! Here is the group Telegram where you can finalize your subscription:</p>
       </section>
 
-      <Link href="http://telegram.com"><a>Join </a></Link>
+      <Link href="https://t.me/PFInviteBot"><a>Join </a></Link>
     
     </div>
     </Layout>
