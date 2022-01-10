@@ -4,9 +4,13 @@ import Layout from '../components/layout'
 import { StoryRandom } from '../components/actionbar'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button'
+import { ArrowForwardIos } from '@mui/icons-material';
 
 
 export default function Home() {
+  const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
+  const random = Math.floor(Math.random() * members.length);
+  const path = members[random];
 
   return (
     <Layout>
@@ -32,7 +36,9 @@ export default function Home() {
           alt="Fam"
         />
         </div>
-        <StoryRandom/>
+        <Button variant="contained" endIcon={<ArrowForwardIos />} 
+          href={"/story/" + members[random]}  >
+            Apply</Button>
         <div><h1>Values we share</h1></div>
         <div className={styles.grid}>
 
@@ -59,7 +65,6 @@ export default function Home() {
         />
             
             <p>After having run many weekly dry fasting at a timing (7pm Paris) rather difficult for other timezones (than Paris), we are improving! We have decided to create 3 private groups and 3 different times to dry fast together, no matter what! Now if you are in the Pranic Family Asia you can start your Weekly Dry Fast on Sunday evening with a group of supportive beings on the pranic journey!</p>
-            <StoryRandom/>
             </div>
         <div className={styles.grid}>
             <h1>Consciousness of the Group</h1>
@@ -91,7 +96,9 @@ As part of the culture of this community, we share these seeds of joy, these pra
 
 We think it’s best we open our doors to all beings. However, we will offer more energy to those who are already on the pranic journey, ready to volunteer and to initiate others through content and events. To help us cover the cost of maintaining this community, we need to ask for a small membership fee of $10/mo. For anyone who would love to live with us on land, we will ask for a $200/mo rent fee in the near future.</p>
         </div>
-        <StoryRandom/>
+        <Button variant="contained" endIcon={<ArrowForwardIos />} 
+          href={"/story/" + members[random]}  >
+            Apply</Button>
         <div className={styles.grid}>
             <h1>May you all be joyful and free!</h1>
         </div>
