@@ -372,6 +372,12 @@ export async function getStaticPaths() {
     // correct id will 404.
     return { paths: [
         { params: { id: "fabi" } },
+        { params: { id: "tobias" } },
+        { params: { id: "luiza" } },
+        { params: { id: "hrefna" } },
+        { params: { id: "nathan" } },
+        { params: { id: "ray" } },
+        { params: { id: "monika" } },
         { params: { id: "kamilla" } }
       ], 
       fallback: false }
@@ -391,6 +397,30 @@ export async function getStaticProps({ params }) {
         if (params.id === 'fabi') {
             pid = '61ba2e77d9741d7fc9a75e4d';
             return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'tobias') {
+            pid = '61bc8fd878662a71f9458203';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'luiza') {
+            pid = '61cbc5b65bfc5327ae25c62c';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'hrefna') {
+            pid = '61bbae1a66752b3ad447ec8c';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'nathan') {
+            pid = '61bbae0eaf9f8c2284e2a4dd';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'ray') {
+            pid = '61c25cc82a7abf39186de6d6';
+            return card.idList == pid && !card.closed; 
+        } else
+        if (params.id === 'monika') {
+            pid = '61db1ef1e1fe3b22a7c6db44';
+            return card.idList == pid && !card.closed;
         } else
         if (params.id === 'kamilla') {
             pid = '61bbae23f477ee272f05a5c4';
