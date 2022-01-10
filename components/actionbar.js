@@ -5,6 +5,22 @@ import {  Button, Typography } from '@mui/material';
 import { KeyboardDoubleArrowDown, PlayArrow, Menu, ArrowForwardIos } from '@mui/icons-material';
 
 
+
+export function StoryRandom() {
+  const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
+  const random = Math.floor(Math.random() * members.length);
+  const path = members[random];
+  return ( 
+  <>
+      <Button variant="contained" endIcon={<ArrowForwardIos />} 
+      href={"/story/" + members[random]}  >
+        Apply</Button>
+      </>
+    )
+  
+}
+
+
 export  function ActionMenu({href}) {
     return (
       <>
