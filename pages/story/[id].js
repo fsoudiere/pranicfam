@@ -85,7 +85,6 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
     const [isHidden, setIsHidden] = useState('');
     const [addBubble, setAddBubble] = useState('hi');
 
-
 // }
 
   return (
@@ -100,7 +99,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[1].url ? contentCards[0].attachments[1].url : contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -152,7 +151,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
           <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
           <Image
-            src={contentCards[2].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -200,7 +199,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
   
           <section className={`bubble ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <Image
-            src={contentCards[4].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -266,7 +265,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
           <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
           <Image
-            src={contentCards[6].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -336,7 +335,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
           <section className={`bubble ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
           <Image
-            src={contentCards[8].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
