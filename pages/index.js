@@ -4,13 +4,16 @@ import Layout from '../components/layout'
 import { StoryRandom } from '../components/actionbar'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button'
-import { ArrowForwardIos } from '@mui/icons-material';
+import { ArrowForwardIos } from '@mui/icons-material'
+import cookieCutter from 'cookie-cutter'
 
 
 export default function Home() {
   const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
   const random = Math.floor(Math.random() * members.length);
   const path = members[random];
+
+  
 
   return (
     <Layout>
