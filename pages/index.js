@@ -9,11 +9,6 @@ import cookieCutter from 'cookie-cutter'
 
 
 function Home() {
-  const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
-  const random = Math.floor(Math.random() * members.length);
-  const path = members[random];
-
-
 
   return (
     <Layout>
@@ -117,11 +112,14 @@ We think it’s best we open our doors to all beings. However, we will offer mor
 
 export async function getServerSideProps() {
 
+  const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
+  const random = Math.floor(Math.random() * members.length);
+  const path = members[random];
   // or use context.resolvedUrl for conditional redirect
   // if(context.resolvedUrl == "/")
     return {
       redirect: {
-        destination: '/apply',
+        destination: `/story/${path}`,
         permanent: false,
       },
     }
