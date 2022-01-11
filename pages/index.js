@@ -11,24 +11,24 @@ import Router from 'next/router'
 
 function Home() {
 
-  // const [loaded,setLoaded] = useState(false)
-  //   useEffect(() => {
-  //       const {pathname} = Router
-  //       // conditional redirect
-  //       if(pathname == '/' ){
-  //           // with router.push the page may be added to history
-  //           // the browser on history back will  go back to this page and then forward again to the redirected page
-  //           // you can prevent this behaviour using location.replace
-  //           Router.push('/hello-nextjs')
-  //          //location.replace("/hello-nextjs")
-  //       }else{
-  //           setLoaded(true)
-  //       }
-  //     },[]);
+  const [loaded,setLoaded] = useState(false)
+    useEffect(() => {
+        const {pathname} = Router
+        // conditional redirect
+        if(pathname == '/' ){
+            // with router.push the page may be added to history
+            // the browser on history back will  go back to this page and then forward again to the redirected page
+            // you can prevent this behaviour using location.replace
+            Router.push('/story/fabi')
+           //location.replace("/hello-nextjs")
+        }else{
+            setLoaded(true)
+        }
+      },[]);
 
-  //   if(!loaded){
-  //       return <div></div> //show nothing or a loader
-  //   }
+    if(!loaded){
+        return <div></div> //show nothing or a loader
+    }
 
   return (
     <Layout>
@@ -130,20 +130,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
   )
 }
 
-export async function getServerSideProps() {
-
-  const members = ["fabi", "kamilla"];
-  const random = Math.floor(Math.random() * members.length);
-  const path = members[random];
-  // or use context.resolvedUrl for conditional redirect
-  // if(context.resolvedUrl == "/")
-    return {
-      redirect: {
-        destination: `/story/${path}`,
-        permanent: false,
-      },
-    }
-}
 
 
 export default Home
