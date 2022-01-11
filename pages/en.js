@@ -1,37 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
-import SVG from '../components/star'
 import styles from '../styles/Home.module.scss'
-import Button from '@mui/material/Button'
-import { ArrowForwardIos } from '@mui/icons-material'
-import cookieCutter from 'cookie-cutter'
-import React, { useEffect,useState } from "react";
-import Router from 'next/router'
 
 function Home() {
-
-    const [loaded,setLoaded] = useState(false)
-    useEffect(() => {
-        const {pathname} = Router
-        const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
-        const random = Math.floor(Math.random() * members.length);
-        const path = members[random];
-        // conditional redirect
-        if(pathname == '/' ){
-            // with router.push the page may be added to history
-            // the browser on history back will  go back to this page and then forward again to the redirected page
-            // you can prevent this behaviour using location.replace
-            Router.push(`/story/${path}`)
-           //location.replace("/hello-nextjs")
-        }else{
-            setLoaded(true)
-        }
-      },[]);
-
-    if(!loaded){
-        return <div className={styles.loader}><SVG/></div> //show nothing or a loader
-    }
 
   return (
     <Layout>
@@ -115,9 +87,7 @@ As part of the culture of this community, we share these seeds of joy, these pra
 
 We think it’s best we open our doors to all beings. However, we will offer more energy to those who are already on the pranic journey, ready to volunteer and to initiate others through content and events. To help us cover the cost of maintaining this community, we need to ask for a small membership fee of $10/mo. For anyone who would love to live with us on land, we will ask for a $200/mo rent fee in the near future.</p>
         </div>
-        <Button variant="contained" endIcon={<ArrowForwardIos />} 
-          href={"/story/" + members[random]}  >
-            Apply</Button>
+
         <div className={styles.grid}>
             <h1>May you all be joyful and free!</h1>
         </div>
@@ -130,7 +100,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
     </Layout>
   )
 }
-
 
 
 export default Home

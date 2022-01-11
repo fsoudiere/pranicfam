@@ -128,7 +128,12 @@
 
 .bubble.hidden { display: none;}
 
-
+.loader { 
+  position: fixed;
+  z-index: 999999;
+  top: 40%;
+  left: 0;
+  }
 
 
 @media (max-width: 600px) {
