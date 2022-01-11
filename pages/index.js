@@ -11,15 +11,18 @@ import Router from 'next/router'
 
 function Home() {
 
-  const [loaded,setLoaded] = useState(false)
+    const [loaded,setLoaded] = useState(false)
     useEffect(() => {
         const {pathname} = Router
+        const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
+        const random = Math.floor(Math.random() * members.length);
+        const path = members[random];
         // conditional redirect
         if(pathname == '/' ){
             // with router.push the page may be added to history
             // the browser on history back will  go back to this page and then forward again to the redirected page
             // you can prevent this behaviour using location.replace
-            Router.push('/story/fabi')
+            Router.push(`/story/${path}`)
            //location.replace("/hello-nextjs")
         }else{
             setLoaded(true)
