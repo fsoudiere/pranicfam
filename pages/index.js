@@ -6,9 +6,29 @@ import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button'
 import { ArrowForwardIos } from '@mui/icons-material'
 import cookieCutter from 'cookie-cutter'
-
+import React, { useEffect,useState } from "react";
+import Router from 'next/router'
 
 function Home() {
+
+  // const [loaded,setLoaded] = useState(false)
+  //   useEffect(() => {
+  //       const {pathname} = Router
+  //       // conditional redirect
+  //       if(pathname == '/' ){
+  //           // with router.push the page may be added to history
+  //           // the browser on history back will  go back to this page and then forward again to the redirected page
+  //           // you can prevent this behaviour using location.replace
+  //           Router.push('/hello-nextjs')
+  //          //location.replace("/hello-nextjs")
+  //       }else{
+  //           setLoaded(true)
+  //       }
+  //     },[]);
+
+  //   if(!loaded){
+  //       return <div></div> //show nothing or a loader
+  //   }
 
   return (
     <Layout>
