@@ -123,11 +123,6 @@ export async function getServerSideProps() {
         permanent: false,
       },
     }
-
-
-  return {
-    props: {}, // will be passed to the page component as props
-  }
 }
 
 
