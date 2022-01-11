@@ -1,7 +1,7 @@
 const {google} = require('googleapis');
 
 export async function handler (req, res) {
-    
+    const body = req.body;
     const auth = new google.auth.GoogleAuth({
         credentials: {
           client_email: process.env.GSHEET_CLIENT_EMAIL,

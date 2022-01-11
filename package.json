@@ -10,6 +10,7 @@
     "hook": "node lib/addTrelloHook.js"
   },
   "dependencies": {
+    "@google-cloud/storage": "^5.17.0",
     "@hookform/resolvers": "^2.8.5",
     "@mui/icons-material": "^5.2.5",
     "@mui/material": "^5.2.4",
