@@ -8,12 +8,12 @@ import { ArrowForwardIos } from '@mui/icons-material'
 import cookieCutter from 'cookie-cutter'
 
 
-export default function Home() {
+function Home() {
   const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
   const random = Math.floor(Math.random() * members.length);
   const path = members[random];
 
-  
+
 
   return (
     <Layout>
@@ -114,3 +114,23 @@ We think it’s best we open our doors to all beings. However, we will offer mor
     </Layout>
   )
 }
+
+export async function getServerSideProps() {
+
+  // or use context.resolvedUrl for conditional redirect
+  // if(context.resolvedUrl == "/")
+    return {
+      redirect: {
+        destination: '/apply',
+        permanent: false,
+      },
+    }
+
+
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
+
+export default Home
