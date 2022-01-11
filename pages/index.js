@@ -112,7 +112,7 @@ We think it’s best we open our doors to all beings. However, we will offer mor
 
 export async function getServerSideProps() {
 
-  const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
+  const members = ["fabi", "kamilla"];
   const random = Math.floor(Math.random() * members.length);
   const path = members[random];
   // or use context.resolvedUrl for conditional redirect
