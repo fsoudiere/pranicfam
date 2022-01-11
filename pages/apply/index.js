@@ -63,8 +63,8 @@ function Apply({ updateFormData, ...formData }) {
     resolver: yupResolver(validationSchema)
   });
 const onSubmit = data => {
-    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { registerUser();location.href = "/apply/later"; }
-    else {registerUser();addReturningCookie(); location.href = "/apply/success";}  
+    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { listUser();registerUser();location.href = "/apply/later"; }
+    else {listUser();registerUser();addReturningCookie(); location.href = "/apply/success";}  
   };
 
   const [cookie, setCookie] = useCookies(["user"])
