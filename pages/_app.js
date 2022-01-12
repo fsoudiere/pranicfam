@@ -52,6 +52,10 @@ const AppComponent = ({ Component, pageProps }) => {
       secondary: {
         main: green[500],
       },
+      neutral: {
+        main: '#fff',
+        contrastText: '#000',
+      },
     },
   });
 

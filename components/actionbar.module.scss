@@ -9,10 +9,10 @@
     color: #998feb;
 }
 
-.joinBtn { background-color: #998feb;
+.joinBtn { background-color: white;
     width: 50vw;
     padding: 1em 3em 1em 2em;
-    color: white;
+    color: black;
     text-transform: uppercase;
     svg {
         position: absolute;
@@ -41,3 +41,11 @@
     width: 80vw;
     margin: 0 auto;
 }
+
+
+@media (min-width: 600px) {
+    .nav {
+        bottom: 10vh;
+    }
+  }
+    

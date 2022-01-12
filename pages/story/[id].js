@@ -110,7 +110,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             </div>
           </section>
             
-          <section className={`bubble push-down ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
+          <section className={`bubble desc ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
               <Typography variant="h4">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
@@ -135,7 +135,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
 
-          <section className={`bubble push-down ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
+          <section className={`bubble desc ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ 
@@ -150,17 +150,24 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
 
 
           <section className={`bubble ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
-          <Image
+          <div className='img-wrapper'>
+            <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
+            id="diet"
             className="clipped-triangle"
-            />
+            /></div>
+            <div className='img-wrapper'>
+            </div>
+          </section>
+          
+          <section className={`bubble desc ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth>
-              <InputLabel id="diet">{contentCards[2].name}</InputLabel>
+              <InputLabel >{contentCards[2].name}</InputLabel>
               <Select
                 onChange={(event) => {setDiet(event.target.value);updateFormData({ diet: event.target.value });}}
                 value={diet ? diet : formData.diet ? formData.diet  : ""}
@@ -186,7 +193,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
 
-          <section className={`bubble ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
+          <section className={`bubble desc ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
             <p id="dry">{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
@@ -198,14 +205,20 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
   
           <section className={`bubble ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          <Image
+          <div className='img-wrapper'>
+            <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
             className="clipped"
-            />
+            /></div>
+            <div className='img-wrapper'>
+            </div>
+          </section>
+          <section className={`bubble desc ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
+
           <p id="initiated">{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -217,7 +230,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
+          <section className={`bubble desc ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
           <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
           <p><Button onClick={(event) => { 
             window.open('https://bit.ly/3hir5Nz');
@@ -225,7 +238,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             setAddBubble('motive');scrollTo('motive');}} variant="contained">Download</Button></p>
           </section>
 
-          <section className={`bubble ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
+          <section className={`bubble desc ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
           <FormLabel component="legend">Already done an initiation? Maybe would you like to teach with us?</FormLabel>
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
@@ -236,7 +249,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </RadioGroup>
           </section>
 
-          <section className={`bubble ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
+          <section className={`bubble desc ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
             <p>{contentCards[5].desc}</p>
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
@@ -264,15 +277,22 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
-          <Image
+          <div className='img-wrapper'>
+            <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
-            className="clipped-triangle"
-            />
-          <p id="practice">{contentCards[6].desc}</p>
+            id="practice"
+            className="clipped"
+            /></div>
+            <div className='img-wrapper'>
+            </div>
+          </section>
+          <section className={`bubble desc ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
+
+          <p>{contentCards[6].desc}</p>
             <FormControl sx={{ m: 1, width: 300 }}>
             <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
             <Select
@@ -305,7 +325,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
       
-          <section className={`bubble ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
+          <section className={`bubble desc ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
           <Typography variant="h6" id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
@@ -333,15 +353,21 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               }} /></div>
           </section>
 
-          <section className={`bubble ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
-          <Image
+          <section className={`bubble desc ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+          <div className='img-wrapper'>
+            <Image
             src={contentCards[0].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
             className="clipped"
-            />
+            /></div>
+            <div className='img-wrapper'>
+            </div>
+          </section>
+          <section className={`bubble ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+
           <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>
 

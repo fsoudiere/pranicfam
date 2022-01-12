@@ -33,7 +33,7 @@ export  function ActionNext({href, onClick}) {
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
                 <li id="submit">
-                <Button variant="contained" endIcon={<ArrowForwardIos />} 
+                <Button variant="contained" color="neutral" endIcon={<ArrowForwardIos />} 
                 onClick={onClick} >Next</Button>
                 </li>
             </ul>

@@ -5,7 +5,6 @@ import SVG from '../components/star'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button'
 import { ArrowForwardIos } from '@mui/icons-material'
-import cookieCutter from 'cookie-cutter'
 import React, { useEffect,useState } from "react";
 import Router from 'next/router'
 
