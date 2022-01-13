@@ -57,14 +57,23 @@ a {
 .push10 {margin-bottom: 10vh;}
 .push15 {margin-bottom: 15vh;}
 .push20 {margin-bottom: 20vh;}
+.push30 {margin-bottom: 30vh;}
+
+
+.pushup {margin-top: 10vh;}
 
 .toleft {margin-left: -100vw;}
 .toright {margin-left: 100vw;}
 .bubble.toleft, .bubble.toright {width: 110vw;}
 .toup { margin-top: -270px;}
 
+#practice-bubble.toup { margin-top: -120px;}
+#practice-bubble .MuiFormControl-root {
+    display: inline-block;
+    flex: none;
+}
 .MuiFormControl-root.pushdown { margin-top: 84px;}
-.MuiFormGroup-root { float: left;}
+.MuiFormGroup-root { float: left; display: contents;}
 .hrefna {
   .shapeoutsideL {
   shape-outside: polygon(0 0, 0 400px, 190px 400px);
@@ -77,6 +86,12 @@ a {
   .shapeoutsideL2 {
     shape-outside: polygon(-85px -114px, 0 378px, 165px 406px);
     height: 450px;
+    }  
+}
+.fabi {
+  .shapeoutsideL2 {
+    shape-outside: polygon(0 -40px, 0 364px, 180px 307px);
+    height: 280px;
     }  
 }
 

@@ -23,6 +23,7 @@ import {
   MenuItem,
   FormLabel, 
   Checkbox, 
+  FormGroup,
   FormControl, 
   FormControlLabel, 
   RadioGroup, 
@@ -33,7 +34,7 @@ import {
 // posts will be populated at build time by getStaticProps()
 function Story({ contentCards, contentHtml, params, updateFormData, ...formData }) {
 
-  console.log(params.id);
+  console.log(formData);
 
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
@@ -63,21 +64,21 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
     },
   };
 
-  const practices = [
-      'Yoga',
-      'Meditation',
-      'Breathwork',
-    ];
-    const [practiceName, setPracticeName] = useState([]);
-    const handleChange = (event) => {
-      const {
-        target: { value },
-      } = event;
-      setPracticeName(
-        // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value,
-      );
-    };
+  const [practiceName, setPracticeName] = useState({
+    yoga: false,
+    breathwork: false,
+    meditation: false,
+  });
+
+  const handleChange = (event) => {
+    setPracticeName({
+      ...practiceName,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const { yoga, breathwork, meditation } = practiceName;
+  console.log(practiceName);
 
     function scrollTo(hash) {
       location.hash = "#" + hash;
@@ -96,10 +97,10 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-          <section className={`bubble ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
+          <section className={`bubble pushup ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[0].attachments[1].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -107,6 +108,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             className="clipped"
             /></div>
             <div className='img-wrapper'>
+            <Toggle src={contentCards[0].attachments[0].url}/>
             </div>
           </section>
             
@@ -152,7 +154,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           <section className={`bubble toleft ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
           <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[2].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -208,7 +210,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           <section className={`bubble toright ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[4].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -241,7 +243,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
 
 
 
-          <section className={`bubble push20 desc-noimg ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
+          <section className={`bubble push30 desc-noimg ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
             <p>{contentCards[5].desc}</p>
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
@@ -268,10 +270,10 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>   
           </section>
 
-          <section className={`bubble toleft push5 ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
+          <section className={`bubble toleft push5 ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
           <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[6].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
@@ -283,37 +285,41 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
 
-          <section className={`bubble push10 toup ${addBubble === 'practice' ? 'active' : practiceName.length > 0 ? 'active' : ''}`} id="practice-bubble">
+          <section className={`bubble push10 toup ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
           <div className='shapeoutsideL2'></div>
-          <p>{contentCards[6].desc}</p>
-            <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="demo-multiple-checkbox-label">{contentCards[6].name}</InputLabel>
-            <Select
-              labelId="demo-multiple-checkbox-label"
-              id="practices"
-              multiple
-              value={practiceName}
-              onChange={handleChange}
-              input={<OutlinedInput label={contentCards[6].name} />}
-              MenuProps={MenuProps}
-              renderValue={(selected) => selected.join(', ')}
-            >
-              {practices.map((name) => (
-                <MenuItem key={name} value={name}>
-                  <Checkbox checked={practiceName.indexOf(name) > -1} />
-                  <ListItemText primary={name} />
-                </MenuItem>
-              ))}
-            </Select>
+          <div>
+             <p>{contentCards[6].desc}</p>
+              <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+              <FormLabel component="legend">{contentCards[6].name}</FormLabel>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={yoga} onChange={handleChange} name="yoga" />
+                  }
+                  label="Yoga"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={breathwork} onChange={handleChange} name="breahtwork" />
+                  }
+                  label="Breathwork"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={meditation} onChange={handleChange} name="meditation" />
+                  }
+                  label="Meditation"
+                />
+              </FormGroup>
             </FormControl>
+          </div>
             <div className={` ${ 
               isHidden.includes('practice') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
               <ActionNext onClick={(event) => { 
-                if (practiceName.length > 0) {
                   setAddBubble('focus');
+                  updateFormData({ practice: 'checked' });
                   scrollTo('focus');setIsHidden(['init', 'prana', 'diet', 'motive', 'practice']);
-                  } else {  }
                 }}/>
               </div>
           </section>
@@ -349,7 +355,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           <section className={`bubble push5 desc ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
           <div className='img-wrapper'>
             <Image
-            src={contentCards[0].attachments[0].url} // Route of the image file
+            src={contentCards[8].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
