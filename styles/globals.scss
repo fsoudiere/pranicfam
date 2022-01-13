@@ -24,7 +24,7 @@ a {
 }
 
 .bubble {
-  width: 90vw;
+  width: 95vw;
   margin: 2px;
   padding: 2em;
   border-radius: 5px;
@@ -35,20 +35,60 @@ a {
 .bubble.active {
   display: block;
 }
-.shapeoutside {
-  shape-outside: polygon(0 0, 0 200px, 200px 300px);
-  width: 300px;
-  height: 200px;
+.shapeoutsideL {
+  shape-outside: polygon(0 0, 0 400px, 190px 400px);
+  width: 270px;
+  height: 270px;
   float: left;
-  opacity: .2;
 }
+.shapeoutsideL2 {
+  shape-outside: polygon(0 0, 0 400px, 190px 400px);
+  width: 270px;
+  height: 270px;
+  float: left;
+}
+.shapeoutsideR {
+  shape-outside: polygon(90% -76%, 129% 123%, 7% -46%);
+  float: right;
+  width: 250px;
+  height: 320px;
+}
+
+.push5 {margin-bottom: 5vh;}
+.push10 {margin-bottom: 10vh;}
+.push15 {margin-bottom: 15vh;}
+.push20 {margin-bottom: 20vh;}
+
+.toleft {margin-left: -100vw;}
+.toright {margin-left: 100vw;}
+.bubble.toleft, .bubble.toright {width: 110vw;}
+.toup { margin-top: -270px;}
+
+.MuiFormControl-root.pushdown { margin-top: 84px;}
+.MuiFormGroup-root { float: left;}
+.hrefna {
+  .shapeoutsideL {
+  shape-outside: polygon(0 0, 0 400px, 190px 400px);
+  height: 450px;
+  }
+  .toup {margin-left: -55px; margin-top: -325px;}
+  .andyou {display: none;}
+}
+.kamilla {
+  .shapeoutsideL2 {
+    shape-outside: polygon(-85px -114px, 0 378px, 165px 406px);
+    height: 450px;
+    }  
+}
+
+
 .img-wrapper {
   position: absolute;
   top: -6em;
   left: 0;
 }
-.desc { padding-top: 10em; margin-bottom: 4rem;}
-.desc-noimg { padding-top: 0; margin-bottom: 10rem;}
+.desc { padding-top: 10em;}
+.desc-noimg { padding-top: 0;}
 
 .bubble.hidden { display: none;}
 .hidden { display: none;}
@@ -68,6 +108,9 @@ a {
 
 .clipped-triangle {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.clipped-downtriangle {
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
 }
 
 .clipped-bubble {

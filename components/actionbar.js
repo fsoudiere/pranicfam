@@ -35,7 +35,7 @@ export  function ActionNext({href, onClick}) {
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
                 <li id="submit">
-                <Button variant="contained" color="neutral" endIcon={<SVG_next stroke="rgb(153, 143, 235)" style={{width: 20, height: 20}}/>} 
+                <Button variant="contained" color="primary" endIcon={<SVG_next stroke="rgba(0, 0, 0, 0.87)" style={{width: 20, height: 20}}/>} 
                 onClick={onClick} >Next</Button>
                 </li>
             </ul>

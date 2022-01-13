@@ -8,7 +8,7 @@ import { ArrowForwardIos } from '@mui/icons-material'
 import React, { useEffect,useState } from "react";
 import Router from 'next/router'
 
-function Home() {
+function Home({updateFormData, ...formData}) {
 
     const [loaded,setLoaded] = useState(false)
     useEffect(() => {
@@ -16,13 +16,9 @@ function Home() {
         const members = ["tobias", "fabi", "kamilla", "monika", "luiza", "nathan", "ray", "hrefna"];
         const random = Math.floor(Math.random() * members.length);
         const path = members[random];
-        // conditional redirect
         if(pathname == '/' ){
-            // with router.push the page may be added to history
-            // the browser on history back will  go back to this page and then forward again to the redirected page
-            // you can prevent this behaviour using location.replace
+            updateFormData({ page: path });
             Router.push(`/story/${path}`)
-           //location.replace("/hello-nextjs")
         }else{
             setLoaded(true)
         }
