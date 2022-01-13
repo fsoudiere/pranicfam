@@ -35,46 +35,24 @@ a {
 .bubble.active {
   display: block;
 }
-
+.shapeoutside {
+  shape-outside: polygon(0 0, 0 200px, 200px 300px);
+  width: 300px;
+  height: 200px;
+  float: left;
+  opacity: .2;
+}
 .img-wrapper {
   position: absolute;
   top: -6em;
   left: 0;
 }
 .desc { padding-top: 10em; margin-bottom: 4rem;}
+.desc-noimg { padding-top: 0; margin-bottom: 10rem;}
 
 .bubble.hidden { display: none;}
 .hidden { display: none;}
 
-.noise {
-  background:
-    //linear-gradient(blue, transparent),
-    url('/images/noise.svg');
-    //filter: contrast(170%) brightness(1000%);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
-}
-
-._overlay {
-  background: moccasin;
-  mix-blend-mode: multiply;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.isolate {
-  isolation: isolate;
-  position: fixed;
-  z-index: -1;
-  /* ... */
-}
 
 .clipped {
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);

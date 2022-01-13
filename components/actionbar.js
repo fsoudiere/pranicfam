@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import styles from './actionbar.module.scss'
+import {SVG_next} from './SVG/SVG_next'
 import Link from 'next/link'
 import {  Button, Typography } from '@mui/material';
 import { KeyboardDoubleArrowDown, PlayArrow, Menu, ArrowForwardIos } from '@mui/icons-material';
+import { SVG_scroll } from './SVG/SVG_scroll';
 
 
 
@@ -33,7 +35,7 @@ export  function ActionNext({href, onClick}) {
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
                 <li id="submit">
-                <Button variant="contained" color="neutral" endIcon={<ArrowForwardIos />} 
+                <Button variant="contained" color="neutral" endIcon={<SVG_next stroke="rgb(153, 143, 235)" style={{width: 20, height: 20}}/>} 
                 onClick={onClick} >Next</Button>
                 </li>
             </ul>
@@ -49,7 +51,7 @@ export  function ActionJoin({href}) {
       <div className={styles.nav} id="join">
           <ul className={styles.navmenu}>
               <li>
-              <Link href={href}><a className={styles.joinBtn}>Join <ArrowForwardIos /></a></Link>
+              <Link href={href}><a className={styles.joinBtn}>Join <SVG_next stroke='white' style={{width: 20, height: 20}}/></a></Link>
               </li>
               
           </ul>
@@ -80,15 +82,15 @@ export  function ActionPlay({href}) {
     )
 }
 
-export  function ActionNotif({href, onClick}) {
+export  function ActionScroll({href, onClick}) {
     return (
       <>
         
         <div className={styles.nav}>
             <ul className={styles.navmenu}>
                 <li id="swipe">
-                <Button variant="outlined" type="submit" 
-                onClick={onClick}>Scroll <KeyboardDoubleArrowDown /></Button>
+                <Button variant="outlined" type="submit" endIcon={<SVG_scroll style={{width: 20, height: 20}}/>}
+                onClick={onClick}>Scroll</Button>
                 </li>
             </ul>
         </div>

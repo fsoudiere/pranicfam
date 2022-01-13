@@ -93,9 +93,6 @@ We think it’s best we open our doors to all beings. However, we will offer mor
         </div>
       </main>
 
-      <footer className={styles.footer}>
-
-      </footer>
     </div>
     </Layout>
   )

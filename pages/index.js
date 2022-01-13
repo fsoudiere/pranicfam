@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
-import SVG from '../components/star'
+import Loader from '../components/loader'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button'
 import { ArrowForwardIos } from '@mui/icons-material'
@@ -29,7 +29,7 @@ function Home() {
       },[]);
 
     if(!loaded){
-        return <div className={styles.loader}><SVG/></div> //show nothing or a loader
+        return <Loader/> //show nothing or a loader
     }
 
   return (

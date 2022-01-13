@@ -2,28 +2,26 @@ import { useSpring, animated } from 'react-spring'
 import { useState } from 'react';
 
 
-function SVG() {
+function SVG_check() {
     const { x } = useSpring({
       loop: true,
-      from: { x: 0 },
+      from: { x: -2 },
       x: 1,
-      delay: 200,
-      config: { mass: 1, tension: 280, friction: 120 },
+      delay: 0,
+      config: { mass: 100, tension: 180, friction: 12 },
     })
   
     return (
-      <animated.svg style={{ width: 50, height: 50}}
+      <animated.svg style={{ width: 32, height: 32}}
         viewBox="0 0 200 200"
-        strokeWidth="6"
+        strokeWidth="8"
         fill="none"
         stroke="rgb(153, 143, 235)"
-        transform="rotate(90 100 100)"
         strokeDasharray={156}
         strokeDashoffset={x.to(x => (1 - x) * 156)}>
-        <path d="m53.5001,15l92.9999,0l-46.49995,85l46.49995,85l-93,0l46.50005,-85l-46.49995,-85z" 
-        />
+        <path d="m12.50001,90.96124l18.80412,-19.80619l51.51359,54.23257l85.8715,-90.38762l18.81077,19.7922l-104.68227,110.20781" />
       </animated.svg>
     )
   }
 
-  export default SVG
+  export default SVG_check

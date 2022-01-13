@@ -1,18 +1,22 @@
 import Navbar from './navbar'
+import NoiseBG from './noise'
+import { useSpring, animated } from 'react-spring'
 
 
 export default function Layout({ children }) {
+  const props = useSpring({
+    to: [
+      { opacity: 1, },
+    ],
+    from: { opacity: 0,},
+    config: {duration: 2000,},
+  })
     return (
       <>
         
         <Navbar />
-        <main>{children}</main>
-        <section>
-          <div className="isolate">
-            <div className="noise"></div>
-            <div className="overlay"></div>
-          </div>
-        </section>
+        <animated.main style={props}>{children}</animated.main>
+        <NoiseBG/>
 
       </>
     )

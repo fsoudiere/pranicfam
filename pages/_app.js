@@ -54,7 +54,7 @@ const AppComponent = ({ Component, pageProps }) => {
       },
       neutral: {
         main: '#fff',
-        contrastText: '#000',
+        contrastText: '#998feb',
       },
     },
   });

@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Toggle from '../../components/ImageCrossover'
 import { useState } from 'react';
 import Layout from '../../components/layout'
-import { ActionMenu, ActionNext, ActionJoin, ActionNotif } from '../../components/actionbar'
-import styles from '../../styles/Home.module.scss'
+import { ActionMenu, ActionNext, ActionJoin, ActionScroll } from '../../components/actionbar'
+import styles from '../../styles/Story.module.scss'
 import ReactDOM from 'react-dom';
 import {unified} from 'unified'
 import remarkParse from 'remark-parse'
@@ -141,7 +141,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             <div className={` ${ 
               isHidden.includes('prana') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
-            <ActionNotif onClick={(event) => { 
+            <ActionScroll onClick={(event) => { 
                 setAddBubble('diet');
                 scrollTo('diet');setIsHidden(['init', 'prana']);
               }}/>
@@ -165,6 +165,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </section>
           
           <section className={`bubble desc ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
+            <div className='shapeoutside'></div>
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth>
               <InputLabel >{contentCards[2].name}</InputLabel>
@@ -193,7 +194,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
 
-          <section className={`bubble desc ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
+          <section className={`bubble desc-noimg ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
             <p id="dry">{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
@@ -230,7 +231,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </RadioGroup>
           </section>
 
-          <section className={`bubble desc ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
+          <section className={`bubble desc-noimg ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
           <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
           <p><Button onClick={(event) => { 
             window.open('https://bit.ly/3hir5Nz');
@@ -238,7 +239,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             setAddBubble('motive');scrollTo('motive');}} variant="contained">Download</Button></p>
           </section>
 
-          <section className={`bubble desc ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
+          <section className={`bubble desc-noimg ${addBubble === 'teacher' ? 'active' : formData.initiated ==='Yes' ? 'active' : ''}`} id="teacher">
           <FormLabel component="legend">Already done an initiation? Maybe would you like to teach with us?</FormLabel>
           <RadioGroup form="register" value={teacher ? teacher : formData.teacher ? formData.teacher : ""} onChange={(event) => {
             setTeacher(event.target.value);updateFormData({ teacher: event.target.value });
@@ -249,7 +250,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
           </RadioGroup>
           </section>
 
-          <section className={`bubble desc ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
+          <section className={`bubble desc-noimg ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
             <p>{contentCards[5].desc}</p>
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
@@ -267,7 +268,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             <div className={` ${ 
               isHidden.includes('motive') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
-            <ActionNotif onClick={(event) => { 
+            <ActionScroll onClick={(event) => { 
               if (motive.length > 0) {
                 setAddBubble('practice');
                 scrollTo('practice');setIsHidden(['init', 'prana', 'diet', 'motive']);
@@ -325,7 +326,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
               </div>
           </section>
       
-          <section className={`bubble desc ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
+          <section className={`bubble desc-noimg ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
           <Typography variant="h6" id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
@@ -345,7 +346,7 @@ function Story({ contentCards, contentHtml, updateFormData, ...formData }) {
             <div className={` ${ 
               isHidden.includes('focus') ? 'hidden' : 
               formData.hide === 'seen' ? 'hidden' : ''}`}>
-              <ActionNotif onClick={(event) => { 
+              <ActionScroll onClick={(event) => { 
                 if (pricing.length > 0) {
               setAddBubble('connect'); scrollTo('connect');
               updateFormData({ hide: 'seen' });

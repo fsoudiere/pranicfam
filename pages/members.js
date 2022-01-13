@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
+import Loader from '../components/loader'
+
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
 
@@ -15,11 +17,9 @@ export default function Members() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <p className={styles.description}>
-          Beings living joyfully free
-        </p>
-        </main>
+      <Loader/>
+
+      
     </div>
     </Layout>
   )

@@ -121,7 +121,7 @@ const listUser = async event => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className={`${styles.bubble} ${styles.question}`} id="apply-bubble">
+      <section className={`bubble active`} id="apply-bubble">
 
       <h2>Few last details...</h2>
       <p></p>
