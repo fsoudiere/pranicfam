@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600;800&display=swap');
 
-
 html,
 body {
   padding: 0;
@@ -117,6 +116,7 @@ a {
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
 }
 
+#tsparticles {opacity: 0.75;}
 
 @media (min-width: 600px) {
   .bubble {
