@@ -213,7 +213,7 @@ const listUser = async event => {
             error={errors.email ? true : false}
             />
             <p variant="inherit" color="textSecondary">{errors.email?.message}</p> 
-            <FormLabel component="legend">By signing your name you agree to the <Link href="https://docs.google.com/document/d/18RvseS_7tTNCmfKpO1Q30sDjTvTDyxrmxpPJETWTLIg"><a>terms</a></Link> and to receive our newsletter.</FormLabel>
+            <FormLabel component="legend">By signing your name you agree to the <Link href="https://docs.google.com/document/d/18RvseS_7tTNCmfKpO1Q30sDjTvTDyxrmxpPJETWTLIg"><a style={{textDecoration:'underline'}}>terms</a></Link> and to receive our newsletter.</FormLabel>
             <TextField 
             id="signed" 
             type="text"
