@@ -21,8 +21,8 @@ function Success({ contentCards, updateFormData, ...formData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="bubble active" id="success-bubble">
-           <Typography variant='h4'>You've been accepted!</Typography>
-           <p>Welcome to the Family {formData.name}! Here is the link to our private Telegram. Enjoy you free 7 day trial with us! We can't wait to meet you for dry fasting on Sunday!</p>
+           <Typography variant='h4'>You&apos;ve been accepted!</Typography>
+           <p>Welcome to the Family {formData.name}! Here is the link to our private Telegram. Enjoy you free 7 day trial with us! We can&apos;t wait to meet you for dry fasting on Sunday!</p>
       </section>
       <Button href="https://t.me/PFInviteBot"  variant="contained"> Join Group ❤️</Button>
       <p></p>
