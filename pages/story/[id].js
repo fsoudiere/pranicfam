@@ -112,7 +112,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
             
-          <section className={`bubble desc ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
+          <section className={`hi bubble desc ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
               <Typography variant="h4">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
@@ -137,7 +137,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>
           </section>
 
-          <section className={`bubble push15 desc ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
+          <section className={`hi bubble push15 desc ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ 
@@ -300,7 +300,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
                 />
                 <FormControlLabel
                   control={
-                    <Checkbox checked={breathwork} onChange={handleChange} name="breahtwork" />
+                    <Checkbox checked={breathwork} onChange={handleChange} name="breathwork" />
                   }
                   label="Breathwork"
                 />
@@ -352,7 +352,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               }} /></div>
           </section>
 
-          <section className={`bubble push5 desc ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+          <section className={`bye bubble push5 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
           <div className='img-wrapper'>
             <Image
             src={contentCards[8].attachments[0].url} // Route of the image file
@@ -365,7 +365,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             <div className='img-wrapper'>
             </div>
           </section>
-          <section className={`bubble ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+          <section className={`hi bubble push10 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
 
           <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>

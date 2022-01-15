@@ -146,7 +146,14 @@ const listUser = async event => {
                   error={errors.referral ? true : false}            >
                   <MenuItem value={'Fabi'}>Fabi</MenuItem>
                   <MenuItem value={'Kamilla'}>Kamilla</MenuItem>
+                  <MenuItem value={'Hrefna'}>Hrefna</MenuItem>
+                  <MenuItem value={'Monika'}>Monika</MenuItem>
+                  <MenuItem value={'Tobias'}>Tobias</MenuItem>
+                  <MenuItem value={'Luiza'}>Luiza</MenuItem>
+                  <MenuItem value={'Rai'}>Rai</MenuItem>
                   <MenuItem value={'Nathan'}>Nathan</MenuItem>
+                  <MenuItem value={'Facebook'}>Facebook</MenuItem>
+                  <MenuItem value={'Nathan'}>Other</MenuItem>
                 </Select>
               </FormControl>
                 )}
@@ -206,7 +213,7 @@ const listUser = async event => {
             error={errors.email ? true : false}
             />
             <p variant="inherit" color="textSecondary">{errors.email?.message}</p> 
-            <FormLabel component="legend">By signing your name you agree to the <Link href="/"><a>terms</a></Link> and to receive our newsletter.</FormLabel>
+            <FormLabel component="legend">By signing your name you agree to the <Link href="https://docs.google.com/document/d/18RvseS_7tTNCmfKpO1Q30sDjTvTDyxrmxpPJETWTLIg"><a>terms</a></Link> and to receive our newsletter.</FormLabel>
             <TextField 
             id="signed" 
             type="text"

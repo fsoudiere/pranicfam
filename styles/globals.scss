@@ -10,7 +10,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 * {
@@ -73,7 +73,8 @@ a {
     flex: none;
 }
 .MuiFormControl-root.pushdown { margin-top: 84px;}
-.MuiFormGroup-root { float: left; display: contents;}
+#initiated-bubble .MuiFormGroup-root,
+#practice-bubble .MuiFormGroup-root { float: left; display: contents;}
 .hrefna {
   .shapeoutsideL {
   shape-outside: polygon(0 0, 0 400px, 190px 400px);
@@ -134,11 +135,35 @@ a {
 #tsparticles {opacity: 0.75;}
 
 @media (min-width: 600px) {
-  .bubble {
-    width: 40vw;
-    height: 60vh;
-    //overflow: hidden;
+  p { font-size: 1.1em;}
+  .main { 
+    //align-items: flex-start
   }
-  .desc { padding-top: 0; margin-right: 12rem; }
+ .img-wrapper {
+   width: 45vw;
+ }
+ .bubble {
+   width: 40vw;
+ }
+ .toleft { margin-left: 0;}
+ //.toright { margin-left: 0;}
+ .toup {    
+   margin-top: -20vh;
+  margin-left: -10vw;
+  }
+ .pushup {
+  margin-top: 20vh;
+  margin-left: -56vw;
+}
+  .bye {margin-left: -56vw;}
+  .hi.bubble  {
+    padding: 0;
+    margin-left: 40vw;
+  }
+  .push5 {margin-bottom: 10vh;}
+  .push10 {margin-bottom: 30vh;}
+  .push15 {margin-bottom: 50vh;}
+  .push20 {margin-bottom: 60vh;}
+  .push30 {margin-bottom: 70vh;}
 }
   

@@ -2,7 +2,11 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
+import { ActionMenu, ActionNext, ActionJoin, ActionScroll } from '../../components/actionbar'
 
+import { 
+  Button, Typography, 
+  } from '@mui/material';
 
 function Success({ contentCards, updateFormData, ...formData }) {
 
@@ -17,10 +21,12 @@ function Success({ contentCards, updateFormData, ...formData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="bubble active" id="success-bubble">
-           <p>Welcome to the Family {formData.name}! Here is the group Telegram where you can finalize your subscription:</p>
+           <Typography variant='h4'>You've been accepted!</Typography>
+           <p>Welcome to the Family {formData.name}! Here is the link to our private Telegram. Enjoy you free 7 day trial with us! We can't wait to meet you for dry fasting on Sunday!</p>
       </section>
-
-      <Link href="https://t.me/PFInviteBot"><a>Join </a></Link>
+      <Button href="https://t.me/PFInviteBot"  variant="contained"> Join Group ❤️</Button>
+      <p></p>
+      <Link href="/"><a>Back to Homepage</a></Link>
     
     </div>
     </Layout>
