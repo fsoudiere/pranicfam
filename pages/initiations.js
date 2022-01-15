@@ -20,9 +20,9 @@ function Events({contentCards}) {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h4'>{contentCards[0].name}</Typography>
+        <Typography variant='h4'>Initiations</Typography>
         <p className={styles.description}>
-        {contentCards[0].desc} </p>
+        Re-connecting deeply to our values through intensive workshops and pranic initiations.</p>
 
         <Grid container direction="row" justifyContent="center" alignItems="center" 
         spacing={{ xs: 1, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
