@@ -68,6 +68,15 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
     yoga: false,
     breathwork: false,
     meditation: false,
+    chanting: false,
+    qigong: false,
+    reading: false,
+    walks: false,
+    writing: false,
+    dance: false,
+    art: false,
+    cleansing: false,
+    tantra: false,
   });
 
   const handleChange = (event) => {
@@ -77,8 +86,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
     });
   };
 
-  const { yoga, breathwork, meditation } = practiceName;
-  console.log(practiceName);
+  const { yoga, breathwork, meditation, chanting, qigong, reading, walks, writing, dance, art, cleansing, tantra } = practiceName;
+
 
     function scrollTo(hash) {
       location.hash = "#" + hash;
@@ -167,8 +176,11 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
           
           <section className={`bubble toup push10 desc ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
-            <div className='shapeoutsideL'></div>
-            <p>{contentCards[2].desc}</p><Typography className='andyou' variant="h4">& You?</Typography>
+            <div className='shapewrap'>
+              <div className='shapeoutsideL'></div>
+              <Typography className='bubble-introL' variant="h4">Oh, that diet!</Typography>
+            </div>
+            <p>{contentCards[2].desc}</p>
             <FormControl fullWidth className='pushdown'>
               <InputLabel >{contentCards[2].name}</InputLabel>
               <Select
@@ -184,6 +196,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               <MenuItem value={'Liquids'}>Liquids Only</MenuItem>
               </Select>
             </FormControl>
+
             <div className={` ${ 
               isHidden.includes('diet') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
@@ -196,7 +209,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>
           </section>
 
-          <section className={`bubble push15 desc-noimg ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
+          <section className={`bubble push30 desc-noimg ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
             <p id="dry">{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
@@ -221,7 +234,10 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
           <section className={`bubble toup push10 desc ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          <div className='shapeoutsideR'></div>
+          <div className='shapewrap'>
+              <div className='shapeoutsideR'></div>
+              <Typography className='bubble-introR' variant="h4">Realizations... Realizations...</Typography>
+            </div>
           <p id="initiated">{contentCards[4].desc}</p>
           <FormLabel component="legend">{contentCards[4].name}</FormLabel>
           <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -286,30 +302,39 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bubble push10 toup ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
-          <div className='shapeoutsideL2'></div>
+          <div className='shapewrap'>
+              <div className='shapeoutsideL'></div>
+              <Typography className='bubble-introL' variant="h4">Another<br /> joyful day!</Typography>
+            </div>
           <div>
              <p>{contentCards[6].desc}</p>
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
               <FormLabel component="legend">{contentCards[6].name}</FormLabel>
               <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox checked={yoga} onChange={handleChange} name="yoga" />
-                  }
-                  label="Yoga"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox checked={breathwork} onChange={handleChange} name="breathwork" />
-                  }
-                  label="Breathwork"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox checked={meditation} onChange={handleChange} name="meditation" />
-                  }
-                  label="Meditation"
-                />
+                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" />
+                  } label="Yoga"/>
+                  <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" />
+                  } label="Breathwork"/>
+                <FormControlLabel control={<Checkbox checked={meditation} onChange={handleChange} name="meditation" />
+                  } label="Meditation" />
+                <FormControlLabel control={<Checkbox checked={chanting} onChange={handleChange} name="chanting" />
+                  } label="Chanting" />
+                <FormControlLabel control={<Checkbox checked={qigong} onChange={handleChange} name="qigong" />
+                  } label="QiGong"/>
+                <FormControlLabel control={<Checkbox checked={reading} onChange={handleChange} name="reading" />
+                  } label="Reading"/>
+                <FormControlLabel control={<Checkbox checked={walks} onChange={handleChange} name="walks" />
+                  } label="Walks"/>
+                <FormControlLabel control={<Checkbox checked={writing} onChange={handleChange} name="writing" />
+                  } label="Writing"/>
+                <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" />
+                  } label="Dance"/>
+                <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" />
+                  } label="Art"/>
+                <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" />
+                  } label="Cleansing"/>
+                <FormControlLabel control={<Checkbox checked={tantra} onChange={handleChange} name="tantra" />
+                  } label="Tantra"/>
               </FormGroup>
             </FormControl>
           </div>
@@ -352,7 +377,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               }} /></div>
           </section>
 
-          <section className={`bye bubble push5 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+          <section className={`bye bubble push30 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
           <div className='img-wrapper'>
             <Image
             src={contentCards[8].attachments[0].url} // Route of the image file
@@ -438,7 +463,7 @@ export async function getStaticProps({ params }) {
             pid = '61bbae0eaf9f8c2284e2a4dd';
             return card.idList == pid && !card.closed; 
         } else
-        if (params.id === 'rai') {
+        if (params.id === 'rai  ') {
             pid = '61c25cc82a7abf39186de6d6';
             return card.idList == pid && !card.closed; 
         } else
