@@ -16,6 +16,22 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import CheckIcon from '@mui/icons-material/Check';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import CreateIcon from '@mui/icons-material/Create';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
+import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
+import BookIcon from '@mui/icons-material/Book';
+import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
+import GroupWorkOutlinedIcon from '@mui/icons-material/GroupWorkOutlined';
+import GroupWorkIcon from '@mui/icons-material/GroupWork';
+import AirIcon from '@mui/icons-material/Air';
+
 import { 
   Typography,
   Button, 
@@ -305,29 +321,29 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
               <FormLabel component="legend">{contentCards[6].name}</FormLabel>
               <FormGroup>
-                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" icon={<ColorLensOutlinedIcon />} checkedIcon={<ColorLensIcon />}/>
+                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Yoga"/>
-                  <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" />
+                  <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" icon={<AirIcon />} checkedIcon={<AirIcon />}/>
                   } label="Breathwork"/>
-                <FormControlLabel control={<Checkbox checked={meditation} onChange={handleChange} name="meditation" />
+                <FormControlLabel control={<Checkbox checked={meditation} onChange={handleChange} name="meditation" icon={<PsychologyOutlinedIcon />} checkedIcon={<PsychologyIcon />}/>
                   } label="Meditation" />
-                <FormControlLabel control={<Checkbox checked={chanting} onChange={handleChange} name="chanting" />
+                <FormControlLabel control={<Checkbox checked={chanting} onChange={handleChange} name="chanting" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Chanting" />
-                <FormControlLabel control={<Checkbox checked={qigong} onChange={handleChange} name="qigong" />
+                <FormControlLabel control={<Checkbox checked={qigong} onChange={handleChange} name="qigong" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="QiGong"/>
-                <FormControlLabel control={<Checkbox checked={reading} onChange={handleChange} name="reading" />
+                <FormControlLabel control={<Checkbox checked={reading} onChange={handleChange} name="reading" icon={<BookOutlinedIcon />} checkedIcon={<BookIcon />}/>
                   } label="Reading"/>
-                <FormControlLabel control={<Checkbox checked={walks} onChange={handleChange} name="walks" />
+                <FormControlLabel control={<Checkbox checked={walks} onChange={handleChange} name="walks" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Walks"/>
-                <FormControlLabel control={<Checkbox checked={writing} onChange={handleChange} name="writing" />
+                <FormControlLabel control={<Checkbox checked={writing} onChange={handleChange} name="writing" icon={<CreateOutlinedIcon />} checkedIcon={<CreateIcon />}/>
                   } label="Writing"/>
-                <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" />
+                <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" icon={<WhatshotOutlinedIcon />} checkedIcon={<WhatshotIcon />}/>
                   } label="Dance"/>
                 <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" icon={<ColorLensOutlinedIcon />} checkedIcon={<ColorLensIcon />}/>
                   } label="Art"/>
-                <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" />
+                <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" icon={<LocalDrinkOutlinedIcon />} checkedIcon={<LocalDrinkIcon />}/>
                   } label="Cleansing"/>
-                <FormControlLabel control={<Checkbox checked={tantra} onChange={handleChange} name="tantra" />
+                <FormControlLabel control={<Checkbox checked={tantra} onChange={handleChange} name="tantra" icon={<GroupWorkOutlinedIcon />} checkedIcon={<GroupWorkIcon />}/>
                   } label="Tantra"/>
               </FormGroup>
             </FormControl>
