@@ -25,7 +25,7 @@ a {
 .MuiGrid-root { text-align: center;}
 
 .bubble {
-  width: 95vw;
+  width: 90vw;
   margin: 2px;
   padding: 6vw;
   border-radius: 5px;
@@ -113,17 +113,14 @@ a {
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
 }
 
-#tsparticles {opacity: 0.75;}
+#apply-later, #apply-success { text-align: center;}
+#tsparticles {opacity: 0.75; z-index: 0;}
+#tsparticlesHearts { position: fixed; z-index: -1;}
 .bye {margin-top: 6em;}
 
-#dry {width: 100vw; height: 20vh;}
-#motive {width: 100vw; height: 20vh;}
-#focus {width: 100vw; height: 20vh;}
+#dry, #motive, #focus, #dryguide {height: 20vh;}
 
 @media (min-width: 600px) {
-  #dry {width: 100vw; height: 20vh;}
-  #motive {width: 100vw; height: 20vh;}
-  #focus {width: 100vw; height: 20vh;}
   p { font-size: 1.1em;}
   .main { 
     //align-items: flex-start

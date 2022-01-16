@@ -1,6 +1,6 @@
 import Navbar from './navbar'
 import NoiseBG from './noise'
-import ParticlesBG from './particles'
+import {ParticlesBG} from './particles'
 import { useSpring, animated } from 'react-spring'
 
 

@@ -10,7 +10,12 @@ import ReactDOM from 'react-dom';
 import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkHtml from 'remark-html'
-
+import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import CheckIcon from '@mui/icons-material/Check';
 import { 
   Typography,
   Button, 
@@ -210,8 +215,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio />} label="No" />
+              <FormControlLabel value="yes" control={<Radio icon={<CheckOutlinedIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" />
+              <FormControlLabel value="no" control={<Radio icon={<CloseOutlinedIcon />} checkedIcon={<CloseIcon />}/>} label="No" />
             </RadioGroup>
           </section>
   
@@ -236,13 +241,13 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
               }} 
               required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
-              <FormControlLabel value="no" control={<Radio />} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
+              <FormControlLabel value="yes" control={<Radio icon={<CheckOutlinedIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
+              <FormControlLabel value="no" control={<Radio icon={<CloseOutlinedIcon />} checkedIcon={<CloseIcon />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
             </RadioGroup>
           </section>
 
-          <section className={`bubble push10 ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
-          <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
+          <section className={`bubble push10 ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`}>
+          <div id="dryguide"></div><p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
           <p><Button onClick={(event) => { 
             window.open('https://bit.ly/3hir5Nz');
             setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });
@@ -300,7 +305,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
               <FormLabel component="legend">{contentCards[6].name}</FormLabel>
               <FormGroup>
-                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" />
+                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" icon={<ColorLensOutlinedIcon />} checkedIcon={<ColorLensIcon />}/>
                   } label="Yoga"/>
                   <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" />
                   } label="Breathwork"/>
@@ -318,7 +323,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
                   } label="Writing"/>
                 <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" />
                   } label="Dance"/>
-                <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" />
+                <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" icon={<ColorLensOutlinedIcon />} checkedIcon={<ColorLensIcon />}/>
                   } label="Art"/>
                 <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" />
                   } label="Cleansing"/>
