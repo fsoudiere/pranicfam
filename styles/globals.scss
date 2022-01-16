@@ -25,7 +25,7 @@ a {
 .MuiGrid-root { text-align: center;}
 
 .bubble {
-  width: 100vw;
+  width: 95vw;
   margin: 2px;
   padding: 6vw;
   border-radius: 5px;
@@ -37,69 +37,45 @@ a {
   display: block;
 }
 
-.shapewrap {
-  width: 100vw;
-  height: 370px;
+
 //  h4 {mix-blend-mode: overlay;}
-  .bubble-introL {padding: 50% 0 0 0;}
-  .bubble-introR {padding: 25% 0 0 0;}
-  .shapeoutsideL {
-    shape-outside: polygon(0 -20%, 0 100%, 58% 100%);
-    width: 100%;
-    height: 100%;
-    float: left;
-  }
-  .shapeoutsideR {
-    shape-outside: polygon(75% -25%, 20% -25%, 75% 80%);
-    float: right;
-    width: 100%;
-    height: 100%;
-  }
+.bubble-introL {
+  position: absolute;
+  margin-top: -4em;
+  margin-left: 20vw;
+  text-align: right;
 }
+.bubble-introR {    
+  position: absolute;
+  margin-top: -4em;
+}
+
 
 
 .push5 {margin-bottom: 5vh;}
 .push10 {margin-bottom: 10vh;}
 .push15 {margin-bottom: 15vh;}
+.push25 {margin-bottom: 25vh;}
 .push20 {margin-bottom: 20vh;}
 .push30 {margin-bottom: 30vh;}
 
 
-.pushup {margin-top: 10vh;}
+.pushup {margin-top: 10vh; margin-bottom: 12em;}
 
 .toleft {margin-left: -50vw;}
 .toright {margin-left: 50vw;}
-.bubble.toleft, .bubble.toright {width: 110vw;}
-.toup { margin-top: -270px;}
+//.bubble.toleft, .bubble.toright {width: 110vw;}
+// .toup { margin-top: -270px;}
 
-#practice-bubble.toup { margin-top: -120px;}
 #practice-bubble .MuiFormControl-root {
     display: inline-block;
     flex: none;
 }
 //.MuiFormControl-root.pushdown { margin-top: 84px;}
 #initiated-bubble .MuiFormGroup-root,
+#dry-bubble .MuiFormGroup-root,
 #practice-bubble .MuiFormGroup-root { float: left; display: contents;}
-.hrefna {
-  .shapeoutsideL {
-  shape-outside: polygon(0 0, 0 400px, 190px 400px);
-  height: 450px;
-  }
-  .toup {margin-left: -55px; margin-top: -325px;}
-  .andyou {display: none;}
-}
-.kamilla {
-  .shapeoutsideL2 {
-    shape-outside: polygon(-85px -114px, 0 378px, 165px 406px);
-    height: 450px;
-    }  
-}
-.fabi {
-  .shapeoutsideL2 {
-    shape-outside: polygon(0 -40px, 0 364px, 180px 307px);
-    height: 280px;
-    }  
-}
+
 
 
 .img-wrapper {
@@ -107,7 +83,7 @@ a {
   top: -6em;
   left: 0;
 }
-.desc { padding-top: 10em;}
+//.desc { padding-top: 17em;}
 .desc-noimg { padding-top: 0;}
 
 .bubble.hidden { display: none;}
@@ -138,8 +114,16 @@ a {
 }
 
 #tsparticles {opacity: 0.75;}
+.bye {margin-top: 6em;}
+
+#dry {width: 100vw; height: 20vh;}
+#motive {width: 100vw; height: 20vh;}
+#focus {width: 100vw; height: 20vh;}
 
 @media (min-width: 600px) {
+  #dry {width: 100vw; height: 20vh;}
+  #motive {width: 100vw; height: 20vh;}
+  #focus {width: 100vw; height: 20vh;}
   p { font-size: 1.1em;}
   .main { 
     //align-items: flex-start
@@ -148,28 +132,30 @@ a {
    width: 45vw;
  }
  .bubble {
-   width: 40vw;
+   width: 50vw;
  }
- .toleft { margin-left: 0;}
- //.toright { margin-left: 0;}
- .toup {    
-   margin-top: -20vh;
-  margin-left: -10vw;
-  }
+ .bubble.left {margin-left: -40vw;}
+ .bubble.right {margin-left: 20vw;}
+ .toleft { margin-left: 50vw;}
+ .toright { margin-left: -50vw;}
+
  .pushup {
-  margin-top: 20vh;
+  margin-top: 14vh;
   margin-left: -56vw;
+  margin-bottom: 0;
 }
-  .bye {margin-left: -56vw;}
+  .bye {margin-left: -56vw; margin-top: 6em;}
   .hi.bubble  {
     padding: 0;
     margin-left: 40vw;
   }
+  .bubble-introL, .bubble-introR {margin-top: -3em;}
+
   .push5 {margin-bottom: 10vh;}
-  .push10 {margin-bottom: 30vh;}
-  .push15 {margin-bottom: 50vh;}
-  .push20 {margin-bottom: 60vh;}
-  .push30 {margin-bottom: 70vh;}
+  .push10 {margin-bottom: 0;}
+  .push15 {margin-bottom: 6em;}
+  .push20 {margin-bottom: 8em;}
+  .push30 {margin-bottom: 6em;}
   .MuiGrid-root { text-align: left;}
 }
   

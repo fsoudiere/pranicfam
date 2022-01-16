@@ -116,12 +116,10 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             priority
             className="clipped"
             /></div>
-            <div className='img-wrapper'>
-            <Toggle src={contentCards[0].attachments[0].url}/>
-            </div>
+
           </section>
             
-          <section className={`hi bubble desc ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
+          <section className={`hi bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
               <Typography variant="h4">Hi</Typography>
               <p>{contentCards[0].desc}</p>
               <TextField 
@@ -140,13 +138,13 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
                     if (name.length > 0) {
                   updateFormData({ name: name });
                   setAddBubble('prana');
-                  scrollTo('prana');setIsHidden(['init']);
+                  setIsHidden(['init']);
                   } else {  }
                 }}/>
               </div>
           </section>
 
-          <section className={`hi bubble push15 desc ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
+          <section className={`hi bubble push25 ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
             <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
             <div className={` ${ 
@@ -155,12 +153,12 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             <ActionScroll onClick={(event) => { 
                 setAddBubble('diet');
                 scrollTo('diet');setIsHidden(['init', 'prana']);
-              }}/>
+              }}/> 
               </div>
           </section>
 
 
-          <section className={`bubble toleft ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
+          <section className={`bubble toleft push30 ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
           <div className='img-wrapper'>
             <Image
             src={contentCards[2].attachments[0].url} // Route of the image file
@@ -175,11 +173,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
           
-          <section className={`bubble toup push10 desc ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
-            <div className='shapewrap'>
-              <div className='shapeoutsideL'></div>
-              <Typography className='bubble-introL' variant="h4">Oh, that diet!</Typography>
-            </div>
+          <section className={`bubble left push15 ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
+            <Typography className='bubble-introL' variant="h4">Oh, that diet!</Typography>
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth className='pushdown'>
               <InputLabel >{contentCards[2].name}</InputLabel>
@@ -209,8 +204,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>
           </section>
 
-          <section className={`bubble push30 desc-noimg ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`}>
-            <p id="dry">{contentCards[3].desc}</p>
+          <section className={`bubble push30 ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`} id="dry-bubble">
+            <div id="dry"></div><p>{contentCards[3].desc}</p>
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
@@ -220,7 +215,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </RadioGroup>
           </section>
   
-          <section className={`bubble toright ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
+          <section className={`bubble toright push30 ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <div className='img-wrapper'>
             <Image
             src={contentCards[4].attachments[0].url} // Route of the image file
@@ -233,23 +228,20 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             <div className='img-wrapper'>
             </div>
           </section>
-          <section className={`bubble toup push10 desc ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          <div className='shapewrap'>
-              <div className='shapeoutsideR'></div>
-              <Typography className='bubble-introR' variant="h4">Realizations... Realizations...</Typography>
-            </div>
-          <p id="initiated">{contentCards[4].desc}</p>
-          <FormLabel component="legend">{contentCards[4].name}</FormLabel>
-          <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
-            setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
-            }} 
-            required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
-            <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
-            <FormControlLabel value="no" control={<Radio />} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
-          </RadioGroup>
+          <section className={`bubble push10 right ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
+            <Typography className='bubble-introR' variant="h4">Realizations... Realizations...</Typography>
+            <p id="initiated">{contentCards[4].desc}</p>
+            <FormLabel component="legend">{contentCards[4].name}</FormLabel>
+            <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
+              setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
+              }} 
+              required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
+              <FormControlLabel value="no" control={<Radio />} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
+            </RadioGroup>
           </section>
 
-          <section className={`bubble desc-noimg ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
+          <section className={`bubble push10 ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`} id="dryguide">
           <p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
           <p><Button onClick={(event) => { 
             window.open('https://bit.ly/3hir5Nz');
@@ -259,8 +251,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
 
 
 
-          <section className={`bubble push30 desc-noimg ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`} id="motive">
-            <p>{contentCards[5].desc}</p>
+          <section className={`bubble push30 ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`}>
+          <div id="motive"></div><p>{contentCards[5].desc}</p>
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
               <Select
@@ -286,7 +278,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>   
           </section>
 
-          <section className={`bubble toleft push5 ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
+          <section className={`bubble toleft push30 ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
           <div className='img-wrapper'>
             <Image
             src={contentCards[6].attachments[0].url} // Route of the image file
@@ -301,11 +293,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
 
-          <section className={`bubble push10 toup ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
-          <div className='shapewrap'>
-              <div className='shapeoutsideL'></div>
+          <section className={`bubble push10 left ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
               <Typography className='bubble-introL' variant="h4">Another<br /> joyful day!</Typography>
-            </div>
           <div>
              <p>{contentCards[6].desc}</p>
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
@@ -349,8 +338,8 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
               </div>
           </section>
       
-          <section className={`bubble push15 desc-noimg ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
-          <Typography variant="h6" id="focus">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
+          <section className={`bubble push15 ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
+          <div id="focus"></div><Typography variant="h6">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
           <p>{contentCards[7].desc}</p>
           <FormControl fullWidth>
               <InputLabel id="pricing">Which plan suits you to join us?</InputLabel>
@@ -394,6 +383,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
 
           <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>
+          <div className='push15'></div>
 
               
           <ActionJoin href='/apply'/>
