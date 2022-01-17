@@ -41,13 +41,13 @@ a {
 //  h4 {mix-blend-mode: overlay;}
 .bubble-introL {
   position: absolute;
-  margin-top: -4em;
-  margin-left: 20vw;
+  top: -4em;
+  left: 20vw;
   text-align: right;
 }
 .bubble-introR {    
   position: absolute;
-  margin-top: -4em;
+  top: -4em;
 }
 
 
@@ -146,7 +146,7 @@ a {
     padding: 0;
     margin-left: 40vw;
   }
-  .bubble-introL, .bubble-introR {margin-top: -3em;}
+  .bubble-introL, .bubble-introR {top: -3em;}
 
   .push5 {margin-bottom: 10vh;}
   .push10 {margin-bottom: 0;}
