@@ -51,7 +51,6 @@ import {
   Radio
   } from '@mui/material';
 import TextColor from '../../components/textColor';
-import { Numbers } from '@mui/icons-material';
 
 
 // posts will be populated at build time by getStaticProps()
@@ -245,6 +244,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             width="620"
             height="620"
             alt="Fam"
+            id="initiated" 
             priority
             className="clipped-downtriangle"
             /></div>
@@ -253,7 +253,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
           <section className={`bubble push10 right ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <TextColor className='bubble-introR' text='Realizations... Realizations...' />
-            <p id="initiated">{contentCards[4].desc}</p>
+            <p>{contentCards[4].desc}</p>
             <FormLabel component="legend">{contentCards[4].name}</FormLabel>
             <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
               setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
@@ -317,7 +317,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bubble push10 left ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
-          <TextColor className='bubble-introL' text='Another Joyful Day' />
+          <TextColor className='bubble-introL' text='Daily Joy' />
           <div>
              <p>{contentCards[6].desc}</p>
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
@@ -396,13 +396,14 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             width="620"
             height="620"
             alt="Fam"
+            id="connect"
             priority
             className="clipped"
             /></div>
             <div className='img-wrapper'>
             </div>
           </section>
-          <section className={`hi bubble push10 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
+          <section className={`hi bubble push10 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`}>
 
           <Typography variant="h6">{contentCards[8].name}</Typography>
           <p>{contentCards[8].desc}</p>
