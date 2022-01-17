@@ -3,10 +3,10 @@ import { useSpring, animated } from 'react-spring'
 export default function TextColor({className, text} ) {
   const props = useSpring({
     loop: true,
-    to: { color: 'blue',}, 
+    to: { color: '#000',}, 
     from: { color: 'yellow',},
     delay: 3000,
-    config: { mass: 2, tension: 2000, friction: 200 },
+    config: { mass: 5, tension: 2000, friction: 200 },
   })
     return (
       <>
