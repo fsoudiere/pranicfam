@@ -237,9 +237,9 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </RadioGroup>
           </section>
   
-          <div id="initiated">
+          <div id="initiated"></div>
           <section className={`bubble toright push30 ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          </div><div className='img-wrapper'>
+          <div className='img-wrapper'>
             <Image
             src={contentCards[4].attachments[0].url} // Route of the image file
             width="620"
