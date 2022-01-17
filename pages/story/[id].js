@@ -238,13 +238,13 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
   
           <section className={`bubble toright push30 ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-          <div className='img-wrapper'>
+          <div id="initiated"></div><div className='img-wrapper'>
             <Image
             src={contentCards[4].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
-            id="initiated" 
+           
             priority
             className="clipped-downtriangle"
             /></div>
@@ -302,14 +302,14 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bubble toleft push30 ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
-          <div className='img-wrapper'>
+          <div id="practice"></div><div className='img-wrapper'>
             <Image
             src={contentCards[6].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
             priority
-            id="practice"
+           
             className="clipped-triangle"
             /></div>
             <div className='img-wrapper'>
@@ -390,13 +390,13 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bye bubble push30 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`} id="connect">
-          <div className='img-wrapper'>
+          <div id="connect"></div><div className='img-wrapper'>
             <Image
             src={contentCards[8].attachments[0].url} // Route of the image file
             width="620"
             height="620"
             alt="Fam"
-            id="connect"
+            
             priority
             className="clipped"
             /></div>
