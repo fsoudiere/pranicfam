@@ -37,8 +37,14 @@ a {
   display: block;
 }
 
+h4 {
+  margin: 0;
+  font-family: 'Dosis',sans-serif,'DM sans',sans-serif;
+  font-weight: 400;
+  font-size: 2.4285714285714284rem;
+  line-height: 1.235;
+}
 
-//  h4 {mix-blend-mode: overlay;}
 .bubble-introL {
   position: absolute;
   top: -4em;

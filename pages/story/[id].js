@@ -50,6 +50,8 @@ import {
   RadioGroup, 
   Radio
   } from '@mui/material';
+import TextColor from '../../components/textColor';
+import { Numbers } from '@mui/icons-material';
 
 
 // posts will be populated at build time by getStaticProps()
@@ -195,7 +197,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
           
           <section className={`bubble left push15 ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
-            <Typography className='bubble-introL' variant="h4">Oh, that diet!</Typography>
+            <TextColor className='bubble-introL' text='Oh, that diet!' />
             <p>{contentCards[2].desc}</p>
             <FormControl fullWidth className='pushdown'>
               <InputLabel >{contentCards[2].name}</InputLabel>
@@ -250,7 +252,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
             </div>
           </section>
           <section className={`bubble push10 right ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
-            <Typography className='bubble-introR' variant="h4">Realizations... Realizations...</Typography>
+          <TextColor className='bubble-introR' text='Realizations... Realizations...' />
             <p id="initiated">{contentCards[4].desc}</p>
             <FormLabel component="legend">{contentCards[4].name}</FormLabel>
             <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
@@ -315,7 +317,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bubble push10 left ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
-              <Typography className='bubble-introL' variant="h4">Another<br /> joyful day!</Typography>
+          <TextColor className='bubble-introL' text='Another Joyful Day' />
           <div>
              <p>{contentCards[6].desc}</p>
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
@@ -443,6 +445,7 @@ export async function getStaticPaths() {
       fallback: false }
   }
   
+
   // params will contain the id for each generated page.
 export async function getStaticProps({ params }) { 
   
@@ -452,6 +455,7 @@ export async function getStaticProps({ params }) {
     
 
     let pid;
+
     let contentCards = posts.cards.filter(card => {
 
         if (params.id === 'fabi') {
@@ -503,4 +507,5 @@ export async function getStaticProps({ params }) {
     }
 }
 
-  export default Story
+
+export default Story
