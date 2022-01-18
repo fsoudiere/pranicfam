@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { Typography } from '@mui/material';
 
 function Mission({contentCards}) {
 
@@ -18,6 +19,7 @@ function Mission({contentCards}) {
       </Head>
 
       <main className={styles.main}>
+      <Typography variant='h1'>Mission</Typography>
         <p className={styles.description}>
           Inspiring beings to live joyfully free
         </p>

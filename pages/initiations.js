@@ -18,7 +18,7 @@ function Events({contentCards}) {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h4'>Initiations</Typography>
+        <Typography variant='h1'>Initiations</Typography>
         <p className={styles.description}>
         Re-connecting deeply to our values through intensive workshops and pranic initiations.</p>
 
@@ -39,7 +39,7 @@ function Events({contentCards}) {
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
-              <Stack spacing={2} direction="row">
+              <Stack spacing={2} direction="row" justifyContent="center">
                 <Button variant="contained" href='/'>Register</Button>
                 <Button href='/'>Contact {data.labels[0].name}</Button>
               </Stack>

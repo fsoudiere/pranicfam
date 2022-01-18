@@ -18,7 +18,7 @@ function Channels({contentCards}) {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h4'>Channels</Typography>
+        <Typography variant='h1'>Channels</Typography>
         <p className={styles.description}>
         Reflecting our essence in a multitude of colors, sounds, tastes, smells, and touches.</p>
 
@@ -27,7 +27,7 @@ function Channels({contentCards}) {
 
         {contentCards.map((data)=>{
             return (
-              <Grid item xs={10} sm={6} key={data.id}>
+              <Grid item xs={10} sm={4} key={data.id} justifyContent="center">
               <div className='img'>
                 <Image
                 src={data.attachments[0].url}
@@ -39,7 +39,7 @@ function Channels({contentCards}) {
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
-              <Stack spacing={2} direction="row">
+              <Stack spacing={2} direction="row" justifyContent="center">
                 <Button variant="contained" href='/'>Join Group</Button>
                 <Button href='/'>Contact {data.labels[0].name}</Button>
               </Stack>

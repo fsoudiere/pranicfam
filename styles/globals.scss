@@ -22,7 +22,7 @@ a {
   font-weight: 400;
 }
 
-.MuiGrid-root { text-align: center;}
+.MuiGrid-item, .MuiGrid-root { text-align: center;}
 
 .bubble {
   width: 90vw;
@@ -160,6 +160,5 @@ h4 {
   .push15 {margin-bottom: 6em;}
   .push20 {margin-bottom: 8em;}
   .push30 {margin-bottom: 6em;}
-  .MuiGrid-root { text-align: left;}
 }
   

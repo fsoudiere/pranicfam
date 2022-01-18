@@ -17,7 +17,7 @@ function Members({contentCards}) {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h4'>Members</Typography>
+        <Typography variant='h1'>Members</Typography>
         <p className={styles.description}>
         From every corner of the world, we are here to remind each other of the Love we are.</p>
 
@@ -38,7 +38,7 @@ function Members({contentCards}) {
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
-              <Stack spacing={2} direction="row">
+              <Stack spacing={2} direction="row" justifyContent="center">
                 <Button href='/'>Contact {data.name}</Button>
               </Stack>
             </Grid>
