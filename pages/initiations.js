@@ -38,7 +38,7 @@ function Events({contentCards}) {
                 className="clipped"/>
               </div>
               <h2>{data.name}</h2>
-              <ReactMarkdown children={data.desc} remarkPlugins={[remarkGfm]} />
+              <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
               <Stack spacing={2} direction="row">
                 <Button variant="contained" href='/'>Register</Button>
                 <Button href='/'>Contact {data.labels[0].name}</Button>

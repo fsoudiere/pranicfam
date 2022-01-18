@@ -37,7 +37,7 @@ function Members({contentCards}) {
                 className="clipped"/>
               </div>
               <h2>{data.name}</h2>
-              <p>{data.desc}</p>
+              <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
               <Stack spacing={2} direction="row">
                 <Button href='/'>Contact {data.name}</Button>
               </Stack>

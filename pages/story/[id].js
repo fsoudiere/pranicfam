@@ -137,7 +137,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
 
           <section className={`hi bubble push25 ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
-          <ReactMarkdown id="prana" children={contentCards[1].desc} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown id="prana" source={contentCards[1].desc} remarkPlugins={[remarkGfm]} />
             <div className={` ${ 
               isHidden.includes('prana') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
@@ -166,7 +166,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           
           <section className={`bubble left push15 ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
             <TextColor className='bubble-introL' text='Oh, that diet!' />
-            <ReactMarkdown children={contentCards[2].desc} remarkPlugins={[remarkGfm]} />
+            <ReactMarkdown source={contentCards[2].desc} remarkPlugins={[remarkGfm]} />
             <FormControl fullWidth className='pushdown'>
               <InputLabel >{contentCards[2].name}</InputLabel>
               <Select
@@ -196,7 +196,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           </section>
 
           <section className={`bubble push30 ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`} id="dry-bubble">
-            <div id="dry"></div><ReactMarkdown children={contentCards[3].desc} remarkPlugins={[remarkGfm]} />
+            <div id="dry"></div><ReactMarkdown source={contentCards[3].desc} remarkPlugins={[remarkGfm]} />
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
@@ -223,7 +223,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           </section>
           <section className={`bubble push10 right ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <TextColor className='bubble-introR' text='Realizations... Realizations...' />
-          <ReactMarkdown children={contentCards[4].desc} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown source={contentCards[4].desc} remarkPlugins={[remarkGfm]} />
             <FormLabel component="legend">{contentCards[4].name}</FormLabel>
             <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
               setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
@@ -245,7 +245,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
 
 
           <section className={`bubble push30 ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`}>
-          <div id="motive"></div><ReactMarkdown children={contentCards[5].desc} remarkPlugins={[remarkGfm]} />
+          <div id="motive"></div><ReactMarkdown source={contentCards[5].desc} remarkPlugins={[remarkGfm]} />
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
               <Select
@@ -289,7 +289,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           <section className={`bubble push10 left ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
           <TextColor className='bubble-introL' text='Daily Joy' />
           <div>
-          <ReactMarkdown children={contentCards[6].desc} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown source={contentCards[6].desc} remarkPlugins={[remarkGfm]} />
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
               <FormLabel component="legend">{contentCards[6].name}</FormLabel>
               <FormGroup>
@@ -333,7 +333,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
       
           <section className={`bubble push15 ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
           <div id="focus"></div><Typography variant="h6">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
-          <ReactMarkdown children={contentCards[7].desc} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown source={contentCards[7].desc} remarkPlugins={[remarkGfm]} />
           <FormControl fullWidth>
               <InputLabel id="pricing">Which plan suits you to join us?</InputLabel>
               <Select
@@ -376,7 +376,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           <section className={`hi bubble push10 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`}>
 
           <Typography variant="h6">{contentCards[8].name}</Typography>
-          <ReactMarkdown children={contentCards[8].desc} remarkPlugins={[remarkGfm]} />
+          <ReactMarkdown source={contentCards[8].desc} remarkPlugins={[remarkGfm]} />
           <div className='push15'></div>
 
               
