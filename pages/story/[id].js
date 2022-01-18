@@ -94,7 +94,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
         <meta property="og:url" content={'https://pranicfamily.com/story/' + `${params.id ? params.id : ''}`} key="ogurl" />
         <meta property="og:image" content={'/images/' + `${params.id ? params.id : 'joy'}` + '.jpg'} key="ogimage" />
         <meta property="og:site_name" content='Pranic Family' key="ogsitename" />
-        <meta property="og:title" content={'Onboarding with' + `${params.id ? params.id : 'Love'}`} key="ogtitle" />
+        <meta property="og:title" content={'Onboarding with' + `${params.id ? params.id : 'Grace'}`} key="ogtitle" />
         <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
       </Head>
           <section className={`bubble pushup ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
@@ -404,14 +404,14 @@ export async function getStaticPaths() {
     // fallback: false means pages that don’t have the
     // correct id will 404.
     return { paths: [
-        { params: { id: "Fabi" } },
-        { params: { id: "Tobias" } },
-        { params: { id: "Luiza" } },
-        { params: { id: "Hrefna" } },
-        { params: { id: "Nathan" } },
-        { params: { id: "Rai" } },
-        { params: { id: "Monika" } },
-        { params: { id: "Kamilla" } }
+        { params: { id: "fabi" } },
+        { params: { id: "tobias" } },
+        { params: { id: "luiza" } },
+        { params: { id: "hrefna" } },
+        { params: { id: "nathan" } },
+        { params: { id: "rai" } },
+        { params: { id: "monika" } },
+        { params: { id: "kamilla" } }
       ], 
       fallback: false }
   }
