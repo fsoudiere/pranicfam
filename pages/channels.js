@@ -2,13 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/Page.module.scss'
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { Typography, Button, Grid, Stack } from '@mui/material';
 
 function Channels({contentCards}) {
-  console.log(contentCards)
 
   return (
     <Layout>
@@ -40,7 +38,7 @@ function Channels({contentCards}) {
                 className="clipped"/>
               </div>
               <h2>{data.name}</h2>
-              <p>{data.desc}</p>
+              <ReactMarkdown children={data.desc} remarkPlugins={[remarkGfm]} />
               <Stack spacing={2} direction="row">
                 <Button variant="contained" href='/'>Join Group</Button>
                 <Button href='/'>Contact {data.labels[0].name}</Button>
@@ -69,15 +67,9 @@ function Channels({contentCards}) {
         });
 
 
-    const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(contentCards[1].desc)
-    const contentHtml = processedContent.toString()
-
     return {
       props: {
-        contentCards, contentHtml
+        contentCards
       },
       revalidate: 1,
     }

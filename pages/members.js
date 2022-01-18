@@ -2,14 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/Page.module.scss'
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { Typography, Button, Grid, Stack } from '@mui/material';
 
 function Members({contentCards}) {
-  console.log(contentCards)
-
   return (
     <Layout>
     <div className={styles.container}>
@@ -67,16 +64,9 @@ function Members({contentCards}) {
             return card.idList == '61ba2edabce7c0409a317adc' && !card.closed;
         });
 
-
-    const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(contentCards[1].desc)
-    const contentHtml = processedContent.toString()
-
     return {
       props: {
-        contentCards, contentHtml
+        contentCards,
       },
       revalidate: 1,
     }

@@ -3,44 +3,24 @@ import Link from 'next/link'
 import Image from 'next/image';
 import Toggle from '../../components/ImageCrossover'
 import { useState, useEffect } from 'react';
-import Layout from '../../components/layout'
-import { ActionMenu, ActionNext, ActionJoin, ActionScroll } from '../../components/actionbar'
+import Layout from '../../components/layout';
+import TextColor from '../../components/textColor';
+import { ActionNext, ActionJoin, ActionScroll } from '../../components/actionbar'
 import styles from '../../styles/Story.module.scss'
-import ReactDOM from 'react-dom';
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
-import ColorLensIcon from '@mui/icons-material/ColorLens';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { useRouter } from 'next/router';
 import CloseIcon from '@mui/icons-material/Close';
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import CheckIcon from '@mui/icons-material/Check';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import CreateIcon from '@mui/icons-material/Create';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
-import LocalDrinkIcon from '@mui/icons-material/LocalDrink';
-import LocalDrinkOutlinedIcon from '@mui/icons-material/LocalDrinkOutlined';
-import PsychologyIcon from '@mui/icons-material/Psychology';
-import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
-import BookIcon from '@mui/icons-material/Book';
-import BookOutlinedIcon from '@mui/icons-material/BookOutlined';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
-import WhatshotOutlinedIcon from '@mui/icons-material/WhatshotOutlined';
-import GroupWorkOutlinedIcon from '@mui/icons-material/GroupWorkOutlined';
-import GroupWorkIcon from '@mui/icons-material/GroupWork';
-import AirIcon from '@mui/icons-material/Air';
 
 import { 
   Typography,
   Button, 
   TextField, 
   InputLabel, 
-  NativeSelect , 
   Select,
-  OutlinedInput,
-  ListItemText,
   MenuItem,
   FormLabel, 
   Checkbox, 
@@ -50,11 +30,8 @@ import {
   RadioGroup, 
   Radio
   } from '@mui/material';
-import TextColor from '../../components/textColor';
 
-
-// posts will be populated at build time by getStaticProps()
-function Story({ contentCards, contentHtml, params, updateFormData, ...formData }) {
+function Story({ contentCards, params, updateFormData, ...formData }) {
 
   console.log(formData);
 
@@ -66,9 +43,9 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
   const [teacher, setTeacher] = useState("");
   const [pricing, setPricing] = useState("");
   const [dryguide, setDryGuide] = useState("");
+  const [isHidden, setIsHidden] = useState('');
+  const [addBubble, setAddBubble] = useState('hi');
 
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
   const MenuProps = {
     anchorOrigin: {
       vertical: "top", 
@@ -77,12 +54,6 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
     transformOrigin: {
       vertical: "bottom",
       horizontal: "center"
-    },
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
     },
   };
 
@@ -100,24 +71,18 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
     cleansing: false,
     tantra: false,
   });
-
   const handleChange = (event) => {
     setPracticeName({
       ...practiceName,
       [event.target.name]: event.target.checked,
     });
   };
-
   const { yoga, breathwork, meditation, chanting, qigong, reading, walks, writing, dance, art, cleansing, tantra } = practiceName;
 
-
-    function scrollTo(hash) {
+  function scrollTo(hash) {
       location.hash = "#" + hash;
-    }
-    
-    const [isHidden, setIsHidden] = useState('');
-    const [addBubble, setAddBubble] = useState('hi');
-// }
+  }
+
 
   return (
     
@@ -126,7 +91,11 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
       <Head>
         <title>Pranic Family - Onboarding</title>
         <meta name="description" content="Inspiring beings to live joyfully free" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:url" content='https://pranicfamily.com' key="ogurl" />
+        <meta property="og:image" content='/images/joy.jpg' key="ogimage" />
+        <meta property="og:site_name" content='Pranic Family' key="ogsitename" />
+        <meta property="og:title" content='Onboarding' key="ogtitle" />
+        <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
       </Head>
           <section className={`bubble pushup ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <div className='img-wrapper'>
@@ -168,7 +137,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
 
           <section className={`hi bubble push25 ${addBubble === 'diet' ? 'active' : formData.name  ? 'active' : ''}`}>
           <Typography variant="h4">Hi {formData.name}</Typography>
-            <div id="prana" dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          <ReactMarkdown id="prana" children={contentCards[1].desc} remarkPlugins={[remarkGfm]} />
             <div className={` ${ 
               isHidden.includes('prana') ? 'hidden' :
               formData.hide === 'seen' ? 'hidden' : ''}`}>
@@ -197,7 +166,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           
           <section className={`bubble left push15 ${addBubble === 'diet' ? 'active' : formData.diet ? 'active' : ''}`}>
             <TextColor className='bubble-introL' text='Oh, that diet!' />
-            <p>{contentCards[2].desc}</p>
+            <ReactMarkdown children={contentCards[2].desc} remarkPlugins={[remarkGfm]} />
             <FormControl fullWidth className='pushdown'>
               <InputLabel >{contentCards[2].name}</InputLabel>
               <Select
@@ -227,13 +196,13 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
 
           <section className={`bubble push30 ${addBubble === 'dry' ? 'active' : formData.dry ? 'active' : ''}`} id="dry-bubble">
-            <div id="dry"></div><p>{contentCards[3].desc}</p>
+            <div id="dry"></div><ReactMarkdown children={contentCards[3].desc} remarkPlugins={[remarkGfm]} />
             <FormLabel component="legend">{contentCards[3].name}</FormLabel>
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio icon={<CheckOutlinedIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" />
-              <FormControlLabel value="no" control={<Radio icon={<CloseOutlinedIcon />} checkedIcon={<CloseIcon />}/>} label="No" />
+              <FormControlLabel value="yes" control={<Radio icon={<CheckIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" />
+              <FormControlLabel value="no" control={<Radio icon={<CloseIcon />} checkedIcon={<CloseIcon />}/>} label="No" />
             </RadioGroup>
           </section>
   
@@ -254,14 +223,14 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           </section>
           <section className={`bubble push10 right ${addBubble === 'initiated' ? 'active' : formData.initiated ? 'active' : ''}`} id="initiated-bubble">
           <TextColor className='bubble-introR' text='Realizations... Realizations...' />
-            <p>{contentCards[4].desc}</p>
+          <ReactMarkdown children={contentCards[4].desc} remarkPlugins={[remarkGfm]} />
             <FormLabel component="legend">{contentCards[4].name}</FormLabel>
             <RadioGroup form="register" value={initiated ? initiated : formData.initiated ? formData.initiated : ""} onChange={(event) => {
               setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
               }} 
               required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio icon={<CheckOutlinedIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
-              <FormControlLabel value="no" control={<Radio icon={<CloseOutlinedIcon />} checkedIcon={<CloseIcon />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
+              <FormControlLabel value="yes" control={<Radio icon={<CheckIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
+              <FormControlLabel value="no" control={<Radio icon={<CloseIcon />} checkedIcon={<CloseIcon />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
             </RadioGroup>
           </section>
 
@@ -276,7 +245,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
 
 
           <section className={`bubble push30 ${addBubble === 'motive' ? 'active' : formData.motive ? 'active' : ''}`}>
-          <div id="motive"></div><p>{contentCards[5].desc}</p>
+          <div id="motive"></div><ReactMarkdown children={contentCards[5].desc} remarkPlugins={[remarkGfm]} />
             <FormControl fullWidth>
               <InputLabel>{contentCards[5].name}</InputLabel>
               <Select
@@ -320,33 +289,33 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           <section className={`bubble push10 left ${addBubble === 'practice' ? 'active' : formData.practice ? 'active': ''}`} id="practice-bubble">
           <TextColor className='bubble-introL' text='Daily Joy' />
           <div>
-             <p>{contentCards[6].desc}</p>
+          <ReactMarkdown children={contentCards[6].desc} remarkPlugins={[remarkGfm]} />
               <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
               <FormLabel component="legend">{contentCards[6].name}</FormLabel>
               <FormGroup>
-                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
+                <FormControlLabel control={<Checkbox checked={yoga} onChange={handleChange} name="yoga" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Yoga"/>
-                  <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" icon={<AirIcon />} checkedIcon={<AirIcon />}/>
+                  <FormControlLabel control={<Checkbox checked={breathwork} onChange={handleChange} name="breathwork" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Breathwork"/>
-                <FormControlLabel control={<Checkbox checked={meditation} onChange={handleChange} name="meditation" icon={<PsychologyOutlinedIcon />} checkedIcon={<PsychologyIcon />}/>
+                <FormControlLabel control={<Checkbox checked={meditation} onChange={handleChange} name="meditation" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Meditation" />
-                <FormControlLabel control={<Checkbox checked={chanting} onChange={handleChange} name="chanting" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
+                <FormControlLabel control={<Checkbox checked={chanting} onChange={handleChange} name="chanting" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Chanting" />
-                <FormControlLabel control={<Checkbox checked={qigong} onChange={handleChange} name="qigong" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
+                <FormControlLabel control={<Checkbox checked={qigong} onChange={handleChange} name="qigong" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="QiGong"/>
-                <FormControlLabel control={<Checkbox checked={reading} onChange={handleChange} name="reading" icon={<BookOutlinedIcon />} checkedIcon={<BookIcon />}/>
+                <FormControlLabel control={<Checkbox checked={reading} onChange={handleChange} name="reading" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Reading"/>
-                <FormControlLabel control={<Checkbox checked={walks} onChange={handleChange} name="walks" icon={<FavoriteOutlinedIcon />} checkedIcon={<FavoriteIcon />}/>
+                <FormControlLabel control={<Checkbox checked={walks} onChange={handleChange} name="walks" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Walks"/>
-                <FormControlLabel control={<Checkbox checked={writing} onChange={handleChange} name="writing" icon={<CreateOutlinedIcon />} checkedIcon={<CreateIcon />}/>
+                <FormControlLabel control={<Checkbox checked={writing} onChange={handleChange} name="writing" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Writing"/>
-                <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" icon={<WhatshotOutlinedIcon />} checkedIcon={<WhatshotIcon />}/>
+                <FormControlLabel control={<Checkbox checked={dance} onChange={handleChange} name="dance" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Dance"/>
-                <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" icon={<ColorLensOutlinedIcon />} checkedIcon={<ColorLensIcon />}/>
+                <FormControlLabel control={<Checkbox checked={art} onChange={handleChange} name="art" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Art"/>
-                <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" icon={<LocalDrinkOutlinedIcon />} checkedIcon={<LocalDrinkIcon />}/>
+                <FormControlLabel control={<Checkbox checked={cleansing} onChange={handleChange} name="cleansing" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Cleansing"/>
-                <FormControlLabel control={<Checkbox checked={tantra} onChange={handleChange} name="tantra" icon={<GroupWorkOutlinedIcon />} checkedIcon={<GroupWorkIcon />}/>
+                <FormControlLabel control={<Checkbox checked={tantra} onChange={handleChange} name="tantra" icon={<FavoriteBorderIcon />} checkedIcon={<FavoriteIcon />}/>
                   } label="Tantra"/>
               </FormGroup>
             </FormControl>
@@ -364,7 +333,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
       
           <section className={`bubble push15 ${addBubble === 'focus' ? 'active' : formData.pricing ? 'active': ''}`} >
           <div id="focus"></div><Typography variant="h6">Ready for more meaningful discussion & projects, {contentCards[7].name}</Typography>
-          <p>{contentCards[7].desc}</p>
+          <ReactMarkdown children={contentCards[7].desc} remarkPlugins={[remarkGfm]} />
           <FormControl fullWidth>
               <InputLabel id="pricing">Which plan suits you to join us?</InputLabel>
               <Select
@@ -407,7 +376,7 @@ function Story({ contentCards, contentHtml, params, updateFormData, ...formData 
           <section className={`hi bubble push10 ${addBubble === 'connect' ? 'active' : formData.hide ? 'active' : ''}`}>
 
           <Typography variant="h6">{contentCards[8].name}</Typography>
-          <p>{contentCards[8].desc}</p>
+          <ReactMarkdown children={contentCards[8].desc} remarkPlugins={[remarkGfm]} />
           <div className='push15'></div>
 
               
@@ -495,15 +464,9 @@ export async function getStaticProps({ params }) {
     });
 
 
-    const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(contentCards[1].desc)
-    const contentHtml = processedContent.toString()
-
     return {
       props: {
-        contentCards, contentHtml, params
+        contentCards, params
       },
       revalidate: 1,
     }

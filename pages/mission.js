@@ -3,19 +3,11 @@ import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
 import Button from '@mui/material/Button';
-import Particles from "react-tsparticles";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
+function Mission({contentCards}) {
 
-export default function Mission() {
-  const particlesInit = (main) => {
-    console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-  };
-
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
   return (
     <Layout>
     <div className={styles.container}>
@@ -32,15 +24,28 @@ export default function Mission() {
         <div className={styles.grid}>
             <h1>May you all be joyful and free!</h1>
         </div>
-        <Particles
-      id="tsparticles"
-      init={particlesInit}
-      loaded={particlesLoaded}
-      url="/data/tsparticles.json"
-    />
+        
         </main>
     </div>
     </Layout>
   )
 }
 
+  // params will contain the id for each generated page.
+export async function getStaticProps() { 
+  
+    const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
+    const posts = await res.json() 
+    let contentCards = posts.cards.filter(card => {
+            return card.idList == '61ba2edabce7c0409a317adc' && !card.closed;
+        });
+
+    return {
+      props: {
+        contentCards,
+      },
+      revalidate: 1,
+    }
+}
+
+export default Mission

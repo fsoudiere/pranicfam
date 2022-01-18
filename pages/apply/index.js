@@ -4,22 +4,16 @@ import styles from '../../styles/Home.module.scss'
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCookies } from "react-cookie"
-
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-
 import { 
   Button, 
   TextField, 
   InputLabel, 
-  NativeSelect , 
   Select,
-  OutlinedInput,
-  ListItemText,
   MenuItem,
   FormLabel, 
-  Checkbox, 
   FormControl, 
   FormControlLabel, 
   RadioGroup, 

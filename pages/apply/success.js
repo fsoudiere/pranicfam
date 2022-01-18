@@ -27,7 +27,7 @@ function Success({ contentCards, updateFormData, ...formData }) {
       </section>
       <Button href="https://t.me/PFInviteBot"  variant="contained"> Join Group ❤️</Button>
       <p></p>
-      <Link href="/"><a>Back to Homepage</a></Link>
+      <Link href="/en"><a>Back to Homepage</a></Link>
       <ParticlesHearts />
     
     </div>
