@@ -4,9 +4,9 @@ export default function TextColor({className, text} ) {
   const props = useSpring({
     loop: true,
     to: { color: '#000',}, 
-    from: { color: 'yellow',},
+    from: { color: '#e2e2ff',},
     delay: 3000,
-    config: { mass: 5, tension: 2000, friction: 200 },
+    config: { mass: 50, tension: 2000, friction: 200 },
   })
     return (
       <>

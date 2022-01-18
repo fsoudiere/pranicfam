@@ -31,11 +31,6 @@ function Home({updateFormData, ...formData}) {
   return (
     <Layout>
     <div className={styles.container}>
-      <Head>
-        <title>Pranic Family</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <main className={styles.main}>
 
