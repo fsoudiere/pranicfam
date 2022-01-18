@@ -33,8 +33,6 @@ import {
 
 function Story({ contentCards, params, updateFormData, ...formData }) {
 
-  console.log(formData);
-
   const [name, setName] = useState("");
   const [diet, setDiet] = useState("");
   const [dry, setDry] = useState("");
@@ -97,13 +95,14 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
         <meta property="og:title" content={'Onboarding with' + `${params.id ? params.id : 'Grace'}`} key="ogtitle" />
         <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
       </Head>
+
           <section className={`bubble pushup ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">
             <div className='img-wrapper'>
             <Image
             src={contentCards[0].attachments[1].url} // Route of the image file
             width="620"
             height="620"
-            alt="Fam"
+            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped"
             /></div>
@@ -155,7 +154,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[2].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt="Fam"
+            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             id="diet"
             className="clipped-triangle"
@@ -213,8 +212,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[4].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt="Fam"
-           
+            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped-downtriangle"
             /></div>
@@ -277,9 +275,8 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[6].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt="Fam"
+            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
-           
             className="clipped-triangle"
             /></div>
             <div className='img-wrapper'>
@@ -365,8 +362,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[8].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt="Fam"
-            
+            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped"
             /></div>
@@ -382,11 +378,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
               
           <ActionJoin href='/apply'/>
           </section>
-           
-            
 
-          
-    
     </div>
     </Layout>
     
@@ -395,10 +387,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
 }
 
 
-// In getStaticPaths(), you need to return the list of
-// ids of product pages (/products/[id]) that you’d
-// like to pre-render at build time. To do so,
-// you can fetch all products from a database.
 export async function getStaticPaths() {
   
     // fallback: false means pages that don’t have the
@@ -422,11 +410,8 @@ export async function getStaticProps({ params }) {
   
     const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
     const posts = await res.json() 
-
     
-
     let pid;
-
     let contentCards = posts.cards.filter(card => {
 
         if (params.id === 'fabi') {

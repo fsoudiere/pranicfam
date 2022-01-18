@@ -2,22 +2,15 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
-import { useState } from 'react'
-import { 
-  Button, Typography, 
-  } from '@mui/material';
+import { Typography } from '@mui/material';
 
 function Later({ updateFormData, ...formData }) {
-
-  console.log(formData);
 
   return (
     <Layout>
     <div className={styles.main}>
         <Head>
-        <title>Pranic Family - Onboarding</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Pranic Family - May you be joyful & free!</title>
         </Head>
 
       <section className="bubble active" id="apply-later">

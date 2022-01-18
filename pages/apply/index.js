@@ -22,9 +22,7 @@ import {
 
 
 // posts will be populated at build time by getStaticProps()
-function Apply({ updateFormData, ...formData }) {
-  console.log(formData);
-  
+function Apply({ updateFormData, ...formData }) {  
   const [referral, setReferral] = useState("");
   const [age, setAge] = useState("");
   const [medication, setMedication] = useState("");
@@ -110,9 +108,7 @@ const listUser = async event => {
       <div className={styles.main}>
 
       <Head>
-        <title>Pranic Family - Onboarding</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Pranic Family - Last Step</title>
       </Head>
 
       <section className={`bubble active`} id="apply-bubble">
@@ -128,7 +124,7 @@ const listUser = async event => {
                   formState,
                 }) => (
                 <FormControl sx={{ minWidth: 240 }}>
-                <InputLabel id="demo-simple-select-label">Who referred you?</InputLabel>
+                <InputLabel>Who referred you?</InputLabel>
                 <Select
                   id="referral"
                   {...register('referral')}

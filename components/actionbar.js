@@ -1,12 +1,9 @@
-import Image from 'next/image'
 import styles from './actionbar.module.scss'
 import {SVG_next} from './SVG/SVG_next'
 import Link from 'next/link'
 import {  Button, Typography } from '@mui/material';
-import { KeyboardDoubleArrowDown, PlayArrow, Menu, ArrowForwardIos } from '@mui/icons-material';
+import { PlayArrow, Menu } from '@mui/icons-material';
 import { SVG_scroll } from './SVG/SVG_scroll';
-
-
 
 
 export  function ActionMenu({href}) {

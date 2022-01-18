@@ -37,7 +37,7 @@ export default function Loader() {
     config: {duration: 2000,},
   })
     return (
-      <animated.div className={styles.loadingwrap}>
+      <animated.div style={props} className={styles.loadingwrap}>
         <SVG_loading/><NoiseBG/>
       </animated.div>
       

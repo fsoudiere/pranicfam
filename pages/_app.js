@@ -1,16 +1,13 @@
 import '../styles/globals.scss'
-import { createTheme, ThemeProvider, responsiveFontSizes  } from '@mui/material/styles';
-import { green, blue } from '@mui/material/colors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
 import HeadTags from '../components/head';
 
-
-const AppComponent = ({ Component, pageProps }) => {
+export default function AppComponent({ Component, pageProps }) {
 
   const font1 = "'Dosis', sans-serif";
   const font2 = "'DM sans', sans-serif";
-
   const theme = createTheme({
     components: {
       MuiPaper: {
@@ -50,16 +47,12 @@ const AppComponent = ({ Component, pageProps }) => {
       primary: {
         main: '#998feb',
       },
-      secondary: {
-        main: green[500],
-      },
       neutral: {
         main: '#fff',
         contrastText: '#998feb',
       },
     },
   });
-
   const [formData, setFormData] = useState({});
   const updateFormData = (newData) => {
       setFormData({ ...formData, ...newData });
@@ -77,7 +70,3 @@ const AppComponent = ({ Component, pageProps }) => {
   );
 }
 
-
-
-
-export default AppComponent

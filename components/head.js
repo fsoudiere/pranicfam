@@ -4,7 +4,7 @@ export default function HeadTags() {
 
     return (
         <Head>
-        <title>Pranic Family - Onboarding</title>
+        <title>Pranic Family</title>
         <meta name="description" content="Inspiring beings to live joyfully free" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:url" content='https://pranicfamily.com' key="ogurl" />
