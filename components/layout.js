@@ -2,6 +2,7 @@ import Navbar from './navbar'
 import NoiseBG from './noise'
 import {ParticlesBG} from './particles'
 import { useSpring, animated } from 'react-spring'
+import HeadTags from './head'
 
 
 export default function Layout({ children }) {
@@ -14,7 +15,7 @@ export default function Layout({ children }) {
   })
     return (
       <>
-        
+        <HeadTags />
         <Navbar />
         <animated.main style={props}>{children}</animated.main>
         <ParticlesBG/>

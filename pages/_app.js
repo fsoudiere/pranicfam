@@ -3,7 +3,6 @@ import { createTheme, ThemeProvider, responsiveFontSizes  } from '@mui/material/
 import { green, blue } from '@mui/material/colors';
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
-import HeadTags from '../components/head';
 
 
 const AppComponent = ({ Component, pageProps }) => {
@@ -67,7 +66,6 @@ const AppComponent = ({ Component, pageProps }) => {
   
   return (
   <>
-  <HeadTags />
   <CookiesProvider>
   <ThemeProvider theme={theme}>
   <Component {...pageProps} {...formData} updateFormData={updateFormData} />
