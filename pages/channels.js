@@ -38,7 +38,7 @@ function Channels({contentCards}) {
                 className="clipped"/>
               </div>
               <h2>{data.name}</h2>
-              <ReactMarkdown source={data.desc} remarkPlugins={[remarkGfm]} />
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
                 <Button variant="contained" href='/'>Join Group</Button>
                 <Button href='/'>Contact {data.labels[0].name}</Button>
