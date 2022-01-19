@@ -199,7 +199,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-              <FormControlLabel value="no" control={<Radio  />}/>} label="No" />
+              <FormControlLabel value="no" control={<Radio  />} label="No" />
             </RadioGroup>
           </section>
   
@@ -225,7 +225,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
               }} 
               required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
               <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
-              <FormControlLabel value="no" control={<Radio  />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
+              <FormControlLabel value="no" control={<Radio  />} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
             </RadioGroup>
           </section>
 
