@@ -198,8 +198,8 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             <RadioGroup form="register" value={dry ? dry : formData.dry ? formData.dry : ""} onChange={(event) => {
               setAddBubble('initiated');scrollTo('initiated');setDry(event.target.value);updateFormData({ dry: event.target.value });}} 
               required row aria-label="dry" id="dry" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio icon={<CheckIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" />
-              <FormControlLabel value="no" control={<Radio icon={<CloseIcon />} checkedIcon={<CloseIcon />}/>} label="No" />
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+              <FormControlLabel value="no" control={<Radio  />}/>} label="No" />
             </RadioGroup>
           </section>
   
@@ -224,8 +224,8 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
               setInitiated(event.target.value);updateFormData({ initiated: event.target.value });
               }} 
               required row aria-label="initiated" id="initiated" name="row-radio-buttons-group">
-              <FormControlLabel value="yes" control={<Radio icon={<CheckIcon />} checkedIcon={<CheckIcon />}/>} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
-              <FormControlLabel value="no" control={<Radio icon={<CloseIcon />} checkedIcon={<CloseIcon />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
+              <FormControlLabel value="yes" control={<Radio />} label="Yes" onClick={(event) => { setAddBubble('motive');scrollTo('motive'); }}/>
+              <FormControlLabel value="no" control={<Radio  />}/>} label="No" onClick={(event) => { setAddBubble('dryguide');scrollTo('dryguide'); }}/>
             </RadioGroup>
           </section>
 
