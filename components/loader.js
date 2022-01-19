@@ -1,6 +1,7 @@
 import styles from './loader.module.scss'
 import NoiseBG from './noise'
 import { useSpring, animated } from 'react-spring'
+import { Paper } from '@mui/material'
 
 
 function SVG_loading() {
@@ -34,12 +35,12 @@ export default function Loader() {
       { opacity: 1, },
     ],
     from: { opacity: 0,},
-    config: {duration: 2000,},
+    config: {duration: 1000,},
   })
     return (
-      <animated.div style={props} className={styles.loadingwrap}>
+      <Paper><animated.div style={props} className={styles.loadingwrap}>
         <SVG_loading/><NoiseBG/>
-      </animated.div>
+      </animated.div></Paper>
       
 
     )

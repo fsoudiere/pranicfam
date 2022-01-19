@@ -18,6 +18,13 @@ a {
   scroll-behavior: smooth;
 }
 
+.MuiButtonBase-root.colormode {
+  position: fixed;
+    left: auto;
+    right: 15px;
+    top: 15px;
+    z-index: 9999999999;
+}
 .MuiFormLabel-root {
   font-weight: 400;
 }

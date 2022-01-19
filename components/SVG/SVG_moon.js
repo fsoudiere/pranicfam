@@ -2,21 +2,21 @@ import { useSpring, animated } from 'react-spring'
 import { useState } from 'react';
 
 
-export function SVG_moon() {
+export function SVG_moon({style, stroke}) {
     const { x } = useSpring({
       loop: true,
       from: { x: -2 },
       x: 1,
-      delay: 0,
+      delay: 1000,
       config: { mass: 100, tension: 180, friction: 12 },
     })
   
     return (
-      <animated.svg style={{ width: 32, height: 32}}
+      <animated.svg style={style}
         viewBox="0 0 200 200"
         strokeWidth="8"
         fill="none"
-        stroke="rgb(153, 143, 235)"
+        stroke={stroke}
         strokeDasharray={156}
         transform="rotate(0 0 0)"
         strokeDashoffset={x.to(x => (1 - x) * 156)}>

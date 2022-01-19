@@ -102,7 +102,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[0].attachments[1].url} // Route of the image file
             width="620"
             height="620"
-            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped"
             /></div>
@@ -154,7 +153,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[2].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             id="diet"
             className="clipped-triangle"
@@ -212,7 +210,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[4].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped-downtriangle"
             /></div>
@@ -275,7 +272,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[6].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped-triangle"
             /></div>
@@ -362,7 +358,6 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
             src={contentCards[8].attachments[0].url} // Route of the image file
             width="620"
             height="620"
-            alt={`${params.id ? params.id : 'Love'}` + ' from the Pranic Family'}
             priority
             className="clipped"
             /></div>
@@ -410,7 +405,7 @@ export async function getStaticProps({ params }) {
   
     const res = await fetch('https://trello.com/b/aOOx3O4Q.json')
     const posts = await res.json() 
-    
+
     let pid;
     let contentCards = posts.cards.filter(card => {
 
