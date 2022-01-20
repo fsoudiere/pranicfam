@@ -14,10 +14,9 @@ export default function Layout({ children }) {
   })
     return (
       <>
-        <Paper>
         <Navbar /><animated.main style={props}>{children}</animated.main>
         <ParticlesBG/>
-        <NoiseBG/></Paper>
+        <NoiseBG/>
 
       </>
     )

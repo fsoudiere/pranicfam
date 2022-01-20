@@ -38,9 +38,9 @@ export default function Loader() {
     config: {duration: 1000,},
   })
     return (
-      <Paper><animated.div style={props} className={styles.loadingwrap}>
+      <animated.div style={props} className={styles.loadingwrap}>
         <SVG_loading/><NoiseBG/>
-      </animated.div></Paper>
+      </animated.div>
       
 
     )

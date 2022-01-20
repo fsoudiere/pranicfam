@@ -1,14 +1,13 @@
 import '../styles/globals.scss'
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 import { useState } from 'react'
 import { CookiesProvider } from "react-cookie"
 import HeadTags from '../components/head';
 import {SVG_sun} from '../components/SVG/SVG_sun';
 import {SVG_moon} from '../components/SVG/SVG_moon';
+import { CssBaseline } from '@mui/material';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -79,7 +78,7 @@ export default function AppComponent({ Component, pageProps }) {
     palette: {
       mode,
       background: {
-        paper: 'rgba(255, 255, 255, 0)',
+        default: 'rgba(255, 255, 255, 0)',
       },
       primary: {
         main: '#998feb',
@@ -106,7 +105,7 @@ export default function AppComponent({ Component, pageProps }) {
   <HeadTags />
   <CookiesProvider>
   <ColorModeContext.Provider value={colorMode}>
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}><CssBaseline />
     <ColorMode />
   <Component {...pageProps} {...formData} updateFormData={updateFormData} />
   </ThemeProvider></ColorModeContext.Provider>
