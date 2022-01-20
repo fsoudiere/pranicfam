@@ -14,7 +14,6 @@ let createContact = new SibApiV3Sdk.CreateContact();
 
 let attr = {
     "FIRSTNAME": body.fname,
-    "SMS": body.sms,
     "DIET": body.diet,
     "REFERRAL": body.referral,
     "DRYFASTED": body.dry,

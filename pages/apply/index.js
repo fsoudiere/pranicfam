@@ -186,7 +186,7 @@ const listUser = async event => {
             type="phone"
             {...register('phone')}
             onChange={(event) => {setPhone(event.target.value);updateFormData({ phone: event.target.value });}}
-            label="What's your Telegram?"
+            label="What's your Telegram number?"
             variant="standard"
             value={phone ? phone : formData.phone ? formData.phone : ""}
             error={errors.phone ? true : false}
