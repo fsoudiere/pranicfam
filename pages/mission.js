@@ -1,12 +1,23 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout from '../components/layout'
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Page.module.scss'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Typography, Button, Grid, Stack } from '@mui/material';
+import { Typography, Button, Grid, Stack, ImageList, ImageListItem } from '@mui/material';
+
+
 
 function Mission({contentCards}) {
+
+  function srcset(image, size, rows = 1, cols = 1) {
+    return {
+      src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
+      srcSet: `${image}?w=${size * cols}&h=${
+        size * rows
+      }&fit=crop&auto=format&dpr=2 2x`,
+    }; 
+  }
 
   return (
     <Layout>
@@ -27,10 +38,25 @@ function Mission({contentCards}) {
         spacing={{ xs: 1, sm: 4 }} columns={{ xs: 12, sm: 12 }}>
 
         {contentCards.map((data)=>{
+          console.log(data);
             return (
               <Grid item xs={12} sm={12} key={data.id} justifyContent="center">
-              <h2>{data.name}</h2>
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
+              {
+              data.attachments.length > 0
+              ?
+              <div>
+                  <Image
+                    src={data.attachments[0].url}
+                    width='620'
+                    height='400'
+                    layout='responsive'
+                    alt={data.name}
+                    priority
+                    />
+                </div>
+              : <div><h2>{data.name}</h2>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown></div>
+              }
             </Grid>
             
 
