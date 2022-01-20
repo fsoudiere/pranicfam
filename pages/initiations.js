@@ -19,6 +19,7 @@ function Events({contentCards}) {
 
       <main className={styles.main}>
         <Typography variant='h1'>Initiations</Typography>
+        <div className={styles.dash}></div>
         <p className={styles.description}>
         Re-connecting deeply to our values through intensive workshops and pranic initiations.</p>
 
@@ -35,13 +36,13 @@ function Events({contentCards}) {
                 height="200"
                 alt={data.name}
                 priority
-                className="clipped"/>
+                className="clipped-triangle"/>
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                <Button variant="contained" href='/'>Register</Button>
-                <Button href='/'>Contact {data.labels[0].name}</Button>
+                <Button variant="contained" href='https://t.me/PFInviteBot'>Register</Button>
+                <Button href='https://t.me/thatfabi'>Contact Host</Button>
               </Stack>
             </Grid>
             

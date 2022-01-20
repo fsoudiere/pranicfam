@@ -18,11 +18,12 @@ function Channels({contentCards}) {
 
       <main className={styles.main}>
         <Typography variant='h1'>Channels</Typography>
+        <div className={styles.dash}></div>
         <p className={styles.description}>
         Reflecting our essence in a multitude of colors, sounds, tastes, smells, and touches.</p>
 
         <Grid container direction="row" justifyContent="center" alignItems="center" 
-        spacing={{ xs: 1, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
+        spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
 
         {contentCards.map((data)=>{
             return (
@@ -34,7 +35,7 @@ function Channels({contentCards}) {
                 height="200"
                 alt={data.name}
                 priority
-                className="clipped"/>
+                className="clipped-circle"/>
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>

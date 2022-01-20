@@ -17,7 +17,10 @@ a {
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-
+h2, h1 {
+  font-weight: 400;
+  font-family: 'Dosis',sans-serif;
+}
 .MuiButtonBase-root.colormode {
   position: fixed;
     left: auto;
@@ -47,7 +50,7 @@ a {
 
 h4 {
   margin: 0;
-  font-family: 'Dosis',sans-serif,'DM sans',sans-serif;
+  font-family: 'Dosis',sans-serif;
   font-weight: 400;
   font-size: 2.4285714285714284rem;
   line-height: 1.235;
@@ -125,6 +128,11 @@ h4 {
 
 .clipped-bubble {
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+
+.clipped-circle {
+  clip-path: circle(50% at 50% 50%);
+
 }
 
 #apply-later, #apply-success { text-align: center;}

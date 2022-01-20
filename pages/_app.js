@@ -67,10 +67,7 @@ export default function AppComponent({ Component, pageProps }) {
     },
     typography: {
       fontSize: 16,
-      fontFamily: [
-        font1,
-        font2,
-      ].join(','),
+      fontFamily: [font1],
       subtitle2: {
         textAlign: 'center',
       },

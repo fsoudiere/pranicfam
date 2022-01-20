@@ -30,6 +30,7 @@ function Members({contentCards}) {
 
       <main className={styles.main}>
         <Typography variant='h1'>Members</Typography>
+        <div className={styles.dash}></div>
         <p className={styles.description}>
         From every corner of the world, we are here to remind each other of the Love we are.</p>
 

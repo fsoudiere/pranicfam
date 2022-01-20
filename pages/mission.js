@@ -19,6 +19,7 @@ function Mission({contentCards}) {
 
       <main className={styles.main}>
         <Typography variant='h1'>Mission</Typography>
+        <div className={styles.dash}></div>
         <p className={styles.description}>
         Inspiring beings to live Joyfully Free</p>
 
