@@ -81,19 +81,20 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
       location.hash = "#" + hash;
   }
 
+  function capitalizeFirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
 
   return (
     
     <Layout>
       <div className={styles.main + ` ${params.id ? params.id : ''}`}>
       <Head>
-        <title>Pranic Family - Onboarding</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
+        <title>Pranic Family - {capitalizeFirst(params.id)}'s Journey</title>
         <meta property="og:url" content={'https://pranicfamily.com/story/' + `${params.id ? params.id : ''}`} key="ogurl" />
-        <meta property="og:image" content={'/images/' + `${params.id ? params.id : 'joy'}` + '.jpg'} key="ogimage" />
-        <meta property="og:site_name" content='Pranic Family' key="ogsitename" />
-        <meta property="og:title" content={'Onboarding with' + `${params.id ? params.id : 'Grace'}`} key="ogtitle" />
-        <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
+        <meta property="og:image" content={'https://pranicfamily.com/images/' + `${params.id ? params.id : 'joy'}` + '.jpg'} key="ogimage" />
+        <meta property="og:title" content={'Join the Pranic Family with' + ` ${params.id ? capitalizeFirst(params.id) : 'Grace'}`} key="ogtitle" />
       </Head>
 
           <section className={`bubble pushup ${addBubble === 'hi' ? 'active' : formData.name ? 'active' : ''}`} id="hi-img">

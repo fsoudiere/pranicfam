@@ -12,11 +12,8 @@ function Channels({contentCards}) {
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - Channels</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
         <meta property="og:url" content='https://pranicfamily.com/channels' key="ogurl" />
-        <meta property="og:image" content='/images/joy.jpg' key="ogimage" />
-        <meta property="og:title" content='Channels' key="ogtitle" />
-        <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
+        <meta property="og:title" content='Pranic Family - Channels' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
@@ -42,8 +39,7 @@ function Channels({contentCards}) {
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                <Button variant="contained" href='/'>Join Group</Button>
-                <Button href='/'>Contact {data.labels[0].name}</Button>
+                <Button variant="contained" href='https://t.me/PFInviteBot'>Join Group</Button>
               </Stack>
             </Grid>
             

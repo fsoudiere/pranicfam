@@ -6,17 +6,26 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Typography, Button, Grid, Stack } from '@mui/material';
 
+const memberUrls = {
+  fabi: 'https://t.me/thatfabi',
+  luiza: 'https://t.me/luxolu',
+  kamilla: 'https://t.me/PFInviteBot',
+  hrefna: 'https://t.me/PFInviteBot',
+  tobias: 'https://t.me/PFInviteBot',
+  monika: 'https://t.me/PFInviteBot',
+  rai: 'https://t.me/PFInviteBot',
+  nathan: 'https://t.me/PFInviteBot',
+}
+
+
 function Members({contentCards}) {
   return (
     <Layout>
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - Members</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
         <meta property="og:url" content='https://pranicfamily.com/members' key="ogurl" />
-        <meta property="og:image" content='/images/joy.jpg' key="ogimage" />
-        <meta property="og:title" content='Members' key="ogtitle" />
-        <meta property="og:description" content='Inspiring being to live Joyfully Free' key="ogdesc" />
+        <meta property="og:title" content='Pranic Family - Members' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
@@ -42,7 +51,7 @@ function Members({contentCards}) {
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                <Button href='/'>Contact {data.name}</Button>
+                <Button href="https://t.me/PFInviteBot">Contact {data.name}</Button>
               </Stack>
             </Grid>
             
