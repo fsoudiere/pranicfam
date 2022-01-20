@@ -91,7 +91,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
     <Layout>
       <div className={styles.main + ` ${params.id ? params.id : ''}`}>
       <Head>
-        <title>Pranic Family - {capitalizeFirst(params.id)}'s Journey</title>
+        <title>Pranic Family - {capitalizeFirst(params.id)}&apos;s Journey</title>
         <meta property="og:url" content={'https://pranicfamily.com/story/' + `${params.id ? params.id : ''}`} key="ogurl" />
         <meta property="og:image" content={'https://pranicfamily.com/images/' + `${params.id ? params.id : 'joy'}` + '.jpg'} key="ogimage" />
         <meta property="og:title" content={'Join the Pranic Family with' + ` ${params.id ? capitalizeFirst(params.id) : 'Grace'}`} key="ogtitle" />
