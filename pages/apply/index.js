@@ -55,7 +55,7 @@ function Apply({ updateFormData, ...formData }) {
     resolver: yupResolver(validationSchema)
   });
 const onSubmit = data => {
-    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { listUser();registerUser();location.href = "/apply/later"; }
+    if (formData.medication == 'yes' || formData.diet == 'Omnivore' || formData.problems == 'yes' || formData.motive == 'Body' ) { registerUser();location.href = "/apply/later"; }
     else {listUser();registerUser();addReturningCookie(); location.href = "/apply/success";}  
   };
 
@@ -143,7 +143,7 @@ const listUser = async event => {
                   <MenuItem value={'Rai'}>Rai</MenuItem>
                   <MenuItem value={'Nathan'}>Nathan</MenuItem>
                   <MenuItem value={'Facebook'}>Facebook</MenuItem>
-                  <MenuItem value={'Nathan'}>Other</MenuItem>
+                  <MenuItem value={'Other'}>Other</MenuItem>
                 </Select>
               </FormControl>
                 )}
@@ -183,6 +183,7 @@ const listUser = async event => {
             <p></p>
             <TextField 
             id="sms" 
+            fullWidth
             type="phone"
             {...register('phone')}
             onChange={(event) => {setPhone(event.target.value);updateFormData({ phone: event.target.value });}}
@@ -194,6 +195,7 @@ const listUser = async event => {
             <p variant="inherit" color="textSecondary">{errors.phone?.message}</p> 
             <TextField 
             id="email" 
+            fullWidth
             type="email"
             {...register('email')}
             onChange={(event) => {setEmail(event.target.value);updateFormData({ email: event.target.value });}}

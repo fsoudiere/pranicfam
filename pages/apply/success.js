@@ -14,7 +14,7 @@ function Success({ contentCards, ...formData }) {
     <Layout>
         <div className={styles.main}>
         <Head>
-        <title>Pranic Family - Welcome Aboard!</title>
+        <title>Pranic Family - You&apos;ve been accepted!</title>
       </Head>
       <section className="bubble active" id="apply-success">
            <Typography variant='h4'>You&apos;ve been accepted!</Typography>
