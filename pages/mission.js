@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import Layout from '../components/layout'
 import styles from '../styles/Page.module.scss'
 import ReactMarkdown from 'react-markdown'
@@ -33,6 +34,13 @@ function Mission({contentCards}) {
         <div className={styles.dash}></div>
         <p className={styles.description}>
         Inspiring beings to live Joyfully Free</p>
+        <div className='push5'>
+          <Image
+          src={'/images/ceremony.jpg'} // Route of the image file
+          height={380} // Desired size with correct aspect ratio
+          width={1024} // Desired size with correct aspect ratio
+          alt="Fam"
+        /></div>
 
         <Grid container direction="row" justifyContent="center" alignItems="center" 
         spacing={{ xs: 1, sm: 4 }} columns={{ xs: 12, sm: 12 }}>
@@ -64,6 +72,7 @@ function Mission({contentCards}) {
           })}
 
         </Grid>
+        <Link href="/en"><a>Back to Menu</a></Link>
 
         </main>
     </div>

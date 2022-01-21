@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import Layout from '../components/layout'
 import styles from '../styles/Page.module.scss'
 import ReactMarkdown from 'react-markdown'
@@ -51,7 +52,7 @@ function Events({contentCards}) {
           })}
 
         </Grid>
-
+        <Link href="/en"><a>Back to Menu</a></Link>
         </main>
     </div>
     </Layout>

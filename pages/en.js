@@ -3,16 +3,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
-import { Typography, Button, Grid, Stack } from '@mui/material';
-import {SVG_next, SVG_air, SVG_earth, SVG_water, SVG_fire} from '../components/SVG/SVG_next'
+import { Typography, Grid } from '@mui/material';
+import { SVG_air, SVG_earth, SVG_water, SVG_fire} from '../components/SVG/SVG_next'
 
 
 function Home({contentCards}) {
-  console.log(contentCards)
-
   return (
     <Layout>
     <div className={styles.container}>
@@ -27,12 +22,7 @@ function Home({contentCards}) {
 
       <main className={styles.main}>
         <div className='push5'>
-          <Image
-          src="/images/ceremony.jpg" // Route of the image file
-          height={420} // Desired size with correct aspect ratio
-          width={1200} // Desired size with correct aspect ratio
-          alt="Fam"
-        /></div>
+          </div>
 
         <Grid container direction="row" justifyContent="center" alignItems="center" 
         spacing={{ xs: 1, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
@@ -84,16 +74,9 @@ function Home({contentCards}) {
             return card.idList == '61e319776024995656aee657' && !card.closed;
         });
 
-
-    const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process(contentCards[1].desc)
-    const contentHtml = processedContent.toString()
-
     return {
       props: {
-        contentCards, contentHtml
+        contentCards
       },
       revalidate: 1,
     }
