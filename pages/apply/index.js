@@ -115,39 +115,19 @@ const listUser = async event => {
 
       <h2>Few last details...</h2>
       <p></p>
-              <Controller
-                control={control}
-                name="referral"
-                render={({
-                  field: { onChange, onBlur, value, name, ref },
-                  fieldState: { invalid, isTouched, isDirty, error },
-                  formState,
-                }) => (
-                <FormControl sx={{ minWidth: 240 }}>
-                <InputLabel>Who referred you?</InputLabel>
-                <Select
-                  id="referral"
+  
+                <TextField 
+                  id="referral" 
+                  type="text"
+                  value={ referral ? referral : formData.referral ? formData.referral : ""}
                   {...register('referral')}
+                  onChange={(event) => {setReferral(event.target.value);updateFormData({ referral: event.target.value });}}
                   label="Who referred you?"
-                  onChange={(event) => {
-                    setReferral(event.target.value);updateFormData({ referral: event.target.value });
-                    }}   
-                  value={referral ? referral : formData.referral ? formData.referral : ""}  
-                  error={errors.referral ? true : false}            >
-                  <MenuItem value={'Fabi'}>Fabi</MenuItem>
-                  <MenuItem value={'Kamilla'}>Kamilla</MenuItem>
-                  <MenuItem value={'Hrefna'}>Hrefna</MenuItem>
-                  <MenuItem value={'Monika'}>Monika</MenuItem>
-                  <MenuItem value={'Tobias'}>Tobias</MenuItem>
-                  <MenuItem value={'Luiza'}>Luiza</MenuItem>
-                  <MenuItem value={'Rai'}>Rai</MenuItem>
-                  <MenuItem value={'Nathan'}>Nathan</MenuItem>
-                  <MenuItem value={'Facebook'}>Facebook</MenuItem>
-                  <MenuItem value={'Other'}>Other</MenuItem>
-                </Select>
-              </FormControl>
-                )}
-              />
+                  variant="standard"
+                  error={errors.referral ? true : false}
+                  /> 
+              
+              
               <p variant="inherit" color="textSecondary">{errors.referral?.message}</p>              
             <p></p> 
             <TextField 
