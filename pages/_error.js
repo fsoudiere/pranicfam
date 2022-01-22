@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import styles from '../styles/Page.module.scss'
 import { Typography, Button, Grid, Stack } from '@mui/material';
 
-function Custom404({contentCards}) {
+function FourOhFour({contentCards}) {
 
   return (
     <Layout>
@@ -28,5 +28,5 @@ function Custom404({contentCards}) {
   )
 }
 
-export default Custom404
+export default FourOhFour
 
