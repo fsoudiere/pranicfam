@@ -11,6 +11,7 @@ function Later({ updateFormData, ...formData }) {
     <div className={styles.main}>
         <Head>
         <title>Pranic Family - May you be joyful & free!</title>
+        <meta name="robots" content="noindex,nofollow" />
         </Head>
 
       <section className="bubble active" id="apply-later">

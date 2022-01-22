@@ -110,6 +110,7 @@ const listUser = async event => {
 
       <Head>
         <title>Pranic Family - Last Step</title>
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
 
       <section className={`bubble active`} id="apply-bubble">

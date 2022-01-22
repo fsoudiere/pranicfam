@@ -12,6 +12,7 @@ function FourOhFour({contentCards}) {
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - 404</title>
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
 
       <main className={styles.main}>

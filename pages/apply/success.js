@@ -15,6 +15,7 @@ function Success({ contentCards, ...formData }) {
         <div className={styles.main}>
         <Head>
         <title>Pranic Family - You&apos;ve been accepted!</title>
+        <meta name="robots" content="noindex,nofollow" />
       </Head>
       <section className="bubble active" id="apply-success">
            <Typography variant='h4'>You&apos;ve been accepted!</Typography>
