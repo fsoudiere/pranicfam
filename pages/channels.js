@@ -50,7 +50,7 @@ function Channels({contentCards}) {
           })}
 
         </Grid>
-        <Link href="/en"><a>Back to Menu</a></Link>
+        <Button variant='contained' href="/en"><a>Back to Menu</a></Button>
         </main>
     </div>
     </Layout>

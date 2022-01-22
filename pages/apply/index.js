@@ -17,7 +17,8 @@ import {
   FormControl, 
   FormControlLabel, 
   RadioGroup, 
-  Radio, 
+  Radio,
+  Typography, 
   } from '@mui/material';
 
 
@@ -113,7 +114,7 @@ const listUser = async event => {
 
       <section className={`bubble active`} id="apply-bubble">
 
-      <h2>Few last details...</h2>
+      <Typography variant="h4">Few more details...</Typography>
       <p></p>
   
                 <TextField 
