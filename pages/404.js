@@ -19,7 +19,7 @@ function Custom404({contentCards}) {
         <Typography variant='h1'>404</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
-        Oops this page doesn't seem to exist...</p>
+        Oops this page doesn&apos;t seem to exist...</p>
 
         <Button variant='contained' href="/"><a>Back to Menu</a></Button>
         </main>
