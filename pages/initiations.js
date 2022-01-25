@@ -52,7 +52,7 @@ function Events({contentCards}) {
           })}
 
         </Grid>
-        <Button variant='contained' href="/en"><a>Back to Menu</a></Button>
+        <Button className='push5' variant='outlined' href="/en"><a>Back to Menu</a></Button>
         </main>
     </div>
     </Layout>

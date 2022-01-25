@@ -83,6 +83,15 @@
   left: 0;
   }
 
+  .three {
+  padding: 5rem 0;
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
 
 @media (max-width: 600px) {
   .grid {
