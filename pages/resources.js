@@ -9,7 +9,6 @@ import { Typography, Button, Grid, Stack } from '@mui/material';
 
 function Resources({contentCards}) {
   console.log(contentCards)
-  const author = "61efff4406366b147941a941"
   return (
     <Layout>
     <div className={styles.container}>
