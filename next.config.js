@@ -15,7 +15,7 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['trello.com'],
+    domains: ['trello.com', 'bit.ly'],
   },
   reactStrictMode: true,
 }
