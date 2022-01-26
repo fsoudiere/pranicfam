@@ -64,13 +64,17 @@ export default function AppComponent({ Component, pageProps }) {
             },
           },
       },
+      MuiListItemText: {
+        styleOverrides: {
+        root: {
+          paddingLeft: 20,
+          },
+        },
+      },
     },
     typography: {
       fontSize: 16,
       fontFamily: [font1],
-      subtitle2: {
-        textAlign: 'center',
-      },
     },
     palette: {
       mode,

@@ -7,17 +7,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Typography, Button, Grid, Stack } from '@mui/material';
 
-const memberUrls = {
-  fabi: 'https://t.me/thatfabi',
-  luiza: 'https://t.me/luxolu',
-  kamilla: 'https://t.me/PFInviteBot',
-  hrefna: 'https://t.me/PFInviteBot',
-  tobias: 'https://t.me/PFInviteBot',
-  monika: 'https://t.me/PFInviteBot',
-  rai: 'https://t.me/PFInviteBot',
-  nathan: 'https://t.me/PFInviteBot',
-}
-
 
 function Members({contentCards}) {
   return (
@@ -52,9 +41,14 @@ function Members({contentCards}) {
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
-              <Stack spacing={2} direction="row" justifyContent="center">
-                <Button href="https://t.me/PFInviteBot">Contact {data.name}</Button>
-              </Stack>
+                {data.attachments[1] 
+                ?
+                <Stack spacing={2} direction="row" justifyContent="center">
+                    <Button href={data.attachments[1].url}>Contact {data.attachments[1].name}</Button>
+                </Stack>
+                : ''
+                }
+
             </Grid>
             
 
