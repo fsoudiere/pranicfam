@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
 import { Typography, Grid } from '@mui/material';
 import { SVG_air, SVG_earth, SVG_water, SVG_fire} from '../components/SVG/SVG_next'
-
+import {SVG_hand} from '../components/SVG/SVG_hand'
 
 function Home({contentCards}) {
   return (
@@ -54,6 +54,13 @@ function Home({contentCards}) {
             <SVG_earth stroke="rgba(0, 0, 0, 0.87)" style={{width: 60, height: 60}}/>
               <Typography variant='h4'>{contentCards[3].name}</Typography>
               <p>{contentCards[3].desc}</p>
+            </a></Link>
+            </Grid>
+            <Grid item xs={10} sm={6} key={contentCards[4].id}>
+            <Link href="/library"><a>
+            <SVG_hand stroke="rgba(0, 0, 0, 0.87)" style={{width: 60, height: 60}}/>
+              <Typography variant='h4'>{contentCards[4].name}</Typography>
+              <p>{contentCards[4].desc}</p>
             </a></Link>
             </Grid>
 
