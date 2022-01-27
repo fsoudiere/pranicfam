@@ -232,7 +232,7 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
 
           <section className={`bubble push10 ${addBubble === 'dryguide' ? 'active' : formData.dryguide ? 'active' : ''}`}>
           <div id="dryguide"></div><p>First time you hear this? Well Here&apos;s our pranic initiation guide!</p>
-          <p><Button onClick={(event) => { 
+          <p><Button className="guidetag" onClick={(event) => { 
             window.open('https://bit.ly/3hir5Nz');
             setDryGuide(dryguide);updateFormData({ dryguide: 'clicked' });
             setAddBubble('motive');scrollTo('motive');}} variant="contained">Download</Button></p>
