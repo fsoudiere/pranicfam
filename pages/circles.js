@@ -41,7 +41,10 @@ function Channels({contentCards}) {
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                <Button variant="contained" href='https://t.me/PFInviteBot'>Join Group</Button>
+                { data.attachments[1] ? 
+                <Button variant="outlined" href={`${data.attachments[1].url}`}>Reminder</Button>
+                 : ''}
+              <Button variant="contained" href='/'>Join the Fam</Button>
               </Stack>
             </Grid>
             

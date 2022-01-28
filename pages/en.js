@@ -43,7 +43,7 @@ function Home({contentCards}) {
             </a></Link>
             </Grid>
             <Grid item xs={10} sm={6} key={contentCards[2].id}>
-            <Link href="/channels"><a>
+            <Link href="/circles"><a>
                <SVG_water stroke="rgba(0, 0, 0, 0.87)" style={{width: 60, height: 60}}/>
               <Typography variant='h4'>{contentCards[2].name}</Typography>
               <p>{contentCards[2].desc}</p>
