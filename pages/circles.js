@@ -12,13 +12,13 @@ function Channels({contentCards}) {
     <Layout>
     <div className={styles.container}>
     <Head>
-        <title>Pranic Family - Channels</title>
+        <title>Pranic Family - Circles</title>
         <meta property="og:url" content='https://pranicfamily.com/channels' key="ogurl" />
         <meta property="og:title" content='Pranic Family - Channels' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h1'>Channels</Typography>
+        <Typography variant='h1'>Circles</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
         Reflecting our essence in a multitude of colors, sounds, tastes, smells, and touches.</p>
@@ -50,7 +50,8 @@ function Channels({contentCards}) {
           })}
 
         </Grid>
-        <Button className='push5' variant='outlined' href="/en"><a>Back to Menu</a></Button>
+        <div className='push5'></div>
+        <Button variant='outlined' href="/en"><a>Back to Menu</a></Button>
         </main>
     </div>
     </Layout>

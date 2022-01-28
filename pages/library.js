@@ -11,12 +11,13 @@ import { useState, useEffect } from 'react';
 import {TabList, TabContext, TabPanel} from '@mui/lab';
 
 
-function Library({contentCards}) {
+function Library({contentCards, videoCards}) {
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+    
   return (
     <Layout>
     <div className={styles.container}>
@@ -42,7 +43,7 @@ function Library({contentCards}) {
           centered
           >
             <Tab label="Books" value="1" />
-            <Tab label="Videos" value="2" disabled />
+            <Tab label="Videos" value="2" />
             <Tab label="Recipes" value="3" disabled />
           </TabList>
         </Box>
@@ -80,7 +81,30 @@ function Library({contentCards}) {
             })}
           </Grid>
         </TabPanel>
-        <TabPanel value="2">Videos coming soon</TabPanel>
+
+        <TabPanel value="2">
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 1, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
+
+          {videoCards.map((data)=>{
+              return (
+                <Grid item xs={10} sm={6} key={data.id}>
+                <iframe width="400" height="225" 
+                src={'https://youtube.com/embed/' + `${ data.attachments[0].name ? data.attachments[0].name : 'aR_C2NNB-wI'}`}
+                title="YouTube video player" 
+                frameborder="0" 
+                loading='lazy'
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+                <h2>{data.name}</h2>
+              </Grid>
+              )
+          })}
+
+        </Grid>
+        
+        </TabPanel>
+
         <TabPanel value="3">Recipes coming soon</TabPanel>
       </TabContext>
     </Box>
@@ -104,10 +128,13 @@ function Library({contentCards}) {
     let contentCards = posts.cards.filter(card => {
             return card.idList == '61effee2102ffb21ea79a6ff' && !card.closed;
         });
+    let videoCards = posts.cards.filter(card => {
+          return card.idList == '61f406d163af42120d10d605' && !card.closed;
+      });
 
     return {
       props: {
-        contentCards
+        contentCards, videoCards
       },
       revalidate: 1,
     }
