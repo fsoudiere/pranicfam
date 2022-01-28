@@ -92,10 +92,9 @@ function Library({contentCards, videoCards}) {
                 <iframe width="400" height="225" 
                 src={'https://youtube.com/embed/' + `${ data.attachments[0].name ? data.attachments[0].name : 'aR_C2NNB-wI'}`}
                 title="YouTube video player" 
-                frameborder="0" 
                 loading='lazy'
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+                ></iframe>
                 <h2>{data.name}</h2>
               </Grid>
               )
