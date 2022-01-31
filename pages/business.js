@@ -112,10 +112,18 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[8].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[8].desc}</ReactMarkdown>
-          <div className='img'>
-            <Image src={contentCards[8].attachments[0].url}
-            width="200" height="200" priority className="clipped-circle"/>
-          </div>
+          
+            { contentCards[8].attachments.map((url)=> {
+              console.log(url)
+              return (
+                <div className='img'>
+                  <Image src='/images/joy.jpg'
+                width="200" height="200" priority className="clipped-circle"/>
+                </div>
+              )
+            })}
+            
+          
       </section>
 
       <div className='push5'></div>
@@ -128,16 +136,16 @@ function Business({contentCards}) {
 
         <div className='push5'></div>
         <Stack spacing={2} direction="row" justifyContent="center">
-        <Button variant='contained' href="mailto:fabi@pranicfamily.com"><a>Get in touch</a></Button>
+        <Button variant='contained' href="mailto:fabi@pranicfamily.com">Get in touch</Button>
         <Button variant='outlined' href="https://docs.google.com/presentation/d/1BRxaGS2_G8OrAtYW6iDw5Q7SXbvUfu-uWUf4T_pbfig/edit?usp=sharing" 
-        endIcon={<PrintIcon/>}><a>Print</a></Button>
+        endIcon={<PrintIcon/>}>Print</Button>
         </Stack>
 
         <div className='push5'></div>
         <section className='biz active' id="thankyou">
-          <Typography variant='h1'>{contentCards[11].name}</Typography>
+          <Typography variant='h1'>{contentCards[10].name}</Typography>
           <div className={styles.dash}></div>
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[11].desc}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[10].desc}</ReactMarkdown>
       </section>
 
         </main>
