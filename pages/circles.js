@@ -13,8 +13,8 @@ function Channels({contentCards}) {
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - Circles</title>
-        <meta property="og:url" content='https://pranicfamily.com/channels' key="ogurl" />
-        <meta property="og:title" content='Pranic Family - Channels' key="ogtitle" />
+        <meta property="og:url" content='https://pranicfamily.com/circles' key="ogurl" />
+        <meta property="og:title" content='Pranic Family - Circles' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
@@ -26,7 +26,7 @@ function Channels({contentCards}) {
         <Grid container direction="row" justifyContent="center" alignItems="center" 
         spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
 
-        {contentCards.map((data)=>{
+        {contentCards.map((data)=>{       
             return (
               <Grid item xs={10} sm={4} key={data.id} justifyContent="center">
               <div className='img'>
@@ -41,10 +41,18 @@ function Channels({contentCards}) {
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                { data.attachments[1] ? 
-                <Button variant="outlined" href={`${data.attachments[1].url}`}>Reminder</Button>
-                 : ''}
-              <Button variant="contained" href='/'>Join the Fam</Button>
+                { data.attachments[1].name === "cal" ? 
+                <Button variant="outlined" href={`${data.attachments[1].url}`}>Reminder</Button> 
+                : data.attachments[2] && data.attachments[2].name === "cal" ? 
+                <Button variant="outlined" href={`${data.attachments[2].url}`}>Reminder</Button>
+                 : '' }
+
+
+                { data.attachments[2] && data.attachments[2].name === "link" ? 
+                <Button variant="contained" href={`${data.attachments[2].url}`}>Join Group</Button>
+                : data.attachments[1].name === "link" ? 
+                <Button variant="contained" href={`${data.attachments[1].url}`}>Join Group</Button>
+                 : '' }
               </Stack>
             </Grid>
             

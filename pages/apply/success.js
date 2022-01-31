@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import Link from 'next/link'
-import {ParticlesHearts} from '../../components/particles'
 
 import { 
   Button, Typography, 
@@ -24,7 +23,6 @@ function Success({ contentCards, ...formData }) {
       <Button href="https://t.me/PFInviteBot"  variant="contained"> Join Group ❤️</Button>
       <p></p>
       <Link href="/en"><a>Back to Homepage</a></Link>
-      <ParticlesHearts />
     
     </div>
     </Layout>

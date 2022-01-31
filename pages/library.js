@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import {TabList, TabContext, TabPanel} from '@mui/lab';
 
 
-function Library({contentCards, videoCards}) {
+function Library({contentCards, videoCards, meditCards}) {
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
@@ -23,8 +23,8 @@ function Library({contentCards, videoCards}) {
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - Library</title>
-        <meta property="og:url" content='https://pranicfamily.com/resources' key="ogurl" />
-        <meta property="og:title" content='Pranic Family - Resources' key="ogtitle" />
+        <meta property="og:url" content='https://pranicfamily.com/library' key="ogurl" />
+        <meta property="og:title" content='Pranic Family - Library' key="ogtitle" />
       </Head>
     
       <main className={styles.main}>
@@ -44,7 +44,8 @@ function Library({contentCards, videoCards}) {
           >
             <Tab label="Books" value="1" />
             <Tab label="Videos" value="2" />
-            <Tab label="Recipes" value="3" disabled />
+            <Tab label="Practices" value="3" />
+            <Tab label="Recipes" value="4" disabled />
           </TabList>
         </Box>
         <TabPanel value="1">
@@ -103,8 +104,29 @@ function Library({contentCards, videoCards}) {
         </Grid>
         
         </TabPanel>
+        <TabPanel value="3">
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 1, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
 
-        <TabPanel value="3">Recipes coming soon</TabPanel>
+          {meditCards.map((data)=>{
+              return (
+                <Grid item xs={10} sm={6} key={data.id}>
+                <iframe width="400" height="225" 
+                src={'https://youtube.com/embed/' + `${ data.attachments[0].name ? data.attachments[0].name : 'aR_C2NNB-wI'}`}
+                title="YouTube video player" 
+                loading='lazy'
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                ></iframe>
+                <h2>{data.name}</h2>
+              </Grid>
+              )
+          })}
+
+        </Grid>
+        
+        </TabPanel>
+
+        <TabPanel value="4">Recipes coming soon</TabPanel>
       </TabContext>
     </Box>
         
@@ -130,10 +152,13 @@ function Library({contentCards, videoCards}) {
     let videoCards = posts.cards.filter(card => {
           return card.idList == '61f406d163af42120d10d605' && !card.closed;
       });
+    let meditCards = posts.cards.filter(card => {
+        return card.idList == '61f83937828c6d60b1f87158' && !card.closed;
+    });
 
     return {
       props: {
-        contentCards, videoCards
+        contentCards, videoCards, meditCards
       },
       revalidate: 1,
     }
