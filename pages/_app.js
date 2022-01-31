@@ -42,6 +42,13 @@ export default function AppComponent({ Component, pageProps }) {
   );
   const getDesignTokens = (mode) => ({
     components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            overflowX: 'hidden',
+          },
+        },
+      },
       MuiPaper: {
         styleOverrides: {
           root: {

@@ -24,28 +24,31 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[0].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[0].desc}</ReactMarkdown>
-          <li className='img rai'><Image src={contentCards[0].attachments[0].url}
-            width="200" height="200" priority className="clipped"/></li>
-          <li className='img monika'><Image src={contentCards[0].attachments[1].url}
-            width="200" height="200" priority className="clipped"/></li>
-          <li className='img fabi'><Image src={contentCards[0].attachments[2].url}
-            width="200" height="200" priority className="clipped-triangle"/></li>
-          <li className='img tobias'><Image src={contentCards[0].attachments[3].url}
+          <ul className='bizSlides'>
+            <li className='img tobias'><Image src={contentCards[0].attachments[3].url}
             width="200" height="200" priority className="clipped"/></li>
           <li className='img luiza'><Image src={contentCards[0].attachments[4].url}
-            width="200" height="200" priority className="clipped-circle"/></li>
-          <li className='img kamilla'><Image src={contentCards[0].attachments[5].url}
-            width="300" height="300" priority className="clipped-circle"/></li>
-          <li className='img nathan'><Image src={contentCards[0].attachments[6].url}
-            width="200" height="200" priority className="clipped"/></li>
+            width="260" height="260" priority className="clipped"/></li>
           <li className='img hrefna'><Image src={contentCards[0].attachments[7].url}
-            width="200" height="200" priority className="clipped-triangle"/></li>
+            width="300" height="300" priority className="clipped-triangle"/></li>
+          <li className='img kamilla'><Image src={contentCards[0].attachments[5].url}
+            width="360" height="360" priority className="clipped-circle"/></li>
+          <li className='img monika'><Image src={contentCards[0].attachments[1].url}
+            width="320" height="320" priority className="clipped-circle"/></li>
+          <li className='img nathan'><Image src={contentCards[0].attachments[6].url}
+            width="200" height="200" priority className="clipped-circle"/></li>
+          <li className='img rai'><Image src={contentCards[0].attachments[0].url}
+            width="260" height="260" priority className="clipped"/></li>    
+          <li className='img fabi'><Image src={contentCards[0].attachments[2].url}
+            width="360" height="360" priority className="clipped-triangle"/></li>
+            </ul>   
       </section>
 
       <div className='push5'></div>
       <section className='biz active' id="why">
           <Typography variant='h1'>{contentCards[1].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[1].desc}</ReactMarkdown>
           <div className='img toright'>
             <Image src={contentCards[1].attachments[0].url}
@@ -57,10 +60,11 @@ function Business({contentCards}) {
       <section className='biz active' id="how">
           <Typography variant='h1'>{contentCards[2].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[2].desc}</ReactMarkdown>
           <div className='img toleft'>
             <Image src={contentCards[2].attachments[0].url}
-            width="620" height="620" priority className="clipped-downtriangle"/>
+            width="620" height="620" priority className="clipped-triangle"/>
           </div>
       </section>
 
@@ -68,6 +72,7 @@ function Business({contentCards}) {
       <section className='biz active' id="when">
           <Typography variant='h1'>{contentCards[3].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[3].desc}</ReactMarkdown>
           <div className='img toright'>
             <Image src={contentCards[3].attachments[0].url}
@@ -79,6 +84,7 @@ function Business({contentCards}) {
       <section className='biz active' id="where">
           <Typography variant='h1'>{contentCards[4].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[4].desc}</ReactMarkdown>
           <div className='img'>
             <Image src={contentCards[4].attachments[0].url}
@@ -90,11 +96,12 @@ function Business({contentCards}) {
       <section className='biz active' id="employee">
           <Typography variant='h1'>{contentCards[5].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[5].desc}</ReactMarkdown>
           <Grid container direction="row" justifyContent="center" alignItems="center" 
           spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
             { contentCards[6].attachments.map((url)=> {
-              console.log(contentCards)
+              
               return (
                 <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
@@ -109,11 +116,12 @@ function Business({contentCards}) {
       <section className='biz active' id="company">
           <Typography variant='h1'>{contentCards[6].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[6].desc}</ReactMarkdown>
           <Grid container direction="row" justifyContent="center" alignItems="center" 
           spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
             { contentCards[6].attachments.map((url)=> {
-              console.log(contentCards)
+              
               return (
                 <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
@@ -128,13 +136,14 @@ function Business({contentCards}) {
       <section className='biz active' id="team">
           <Typography variant='h1'>{contentCards[7].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[7].desc}</ReactMarkdown>
           <Grid container direction="row" justifyContent="center" alignItems="center" 
           spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
             { contentCards[0].attachments.map((url)=> {
-              console.log(contentCards)
+              
               return (
-                <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
+                <Grid item xs={10} sm={3} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped" />
                   <Typography variant='h6'>{url.name}</Typography>
                 </Grid>
@@ -147,12 +156,13 @@ function Business({contentCards}) {
       <section className='biz active' id="practices">
           <Typography variant='h1'>{contentCards[8].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[8].desc}</ReactMarkdown>
           
           <Grid container direction="row" justifyContent="center" alignItems="center" 
           spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
             { contentCards[8].attachments.map((url)=> {
-              console.log(contentCards)
+              
               return (
                 <Grid item xs={10} sm={3} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
@@ -169,6 +179,7 @@ function Business({contentCards}) {
       <section className='biz active' id="expenses">
           <Typography variant='h1'>{contentCards[9].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[9].desc}</ReactMarkdown>
       </section>
 
@@ -181,9 +192,10 @@ function Business({contentCards}) {
         </Stack>
 
         <div className='push5'></div>
-        <section className='biz active' id="thankyou">
+        <section className='active' id="thankyou">
           <Typography variant='h1'>{contentCards[10].name}</Typography>
           <div className={styles.dash}></div>
+          <div className='push5'></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[10].desc}</ReactMarkdown>
       </section>
 
