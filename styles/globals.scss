@@ -145,6 +145,11 @@ h4 {
 #dry, #motive, #focus, #dryguide {height: 20vh;}
 #connect {height: 10vh;}
 
+.biz li {display: inline-flex;}
+li .rai {
+  margin-left: 300px;
+}
+
 @media (min-width: 600px) {
   p { font-size: 1.1em;}
   .main { 

@@ -24,10 +24,22 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[0].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[0].desc}</ReactMarkdown>
-          <div className='img'>
-            <Image src={contentCards[0].attachments[1].url}
-            width="620" height="620" priority className="clipped"/>
-          </div>
+          <li className='img rai'><Image src={contentCards[0].attachments[0].url}
+            width="200" height="200" priority className="clipped"/></li>
+          <li className='img monika'><Image src={contentCards[0].attachments[1].url}
+            width="200" height="200" priority className="clipped"/></li>
+          <li className='img fabi'><Image src={contentCards[0].attachments[2].url}
+            width="200" height="200" priority className="clipped-triangle"/></li>
+          <li className='img tobias'><Image src={contentCards[0].attachments[3].url}
+            width="200" height="200" priority className="clipped"/></li>
+          <li className='img luiza'><Image src={contentCards[0].attachments[4].url}
+            width="200" height="200" priority className="clipped-circle"/></li>
+          <li className='img kamilla'><Image src={contentCards[0].attachments[5].url}
+            width="300" height="300" priority className="clipped-circle"/></li>
+          <li className='img nathan'><Image src={contentCards[0].attachments[6].url}
+            width="200" height="200" priority className="clipped"/></li>
+          <li className='img hrefna'><Image src={contentCards[0].attachments[7].url}
+            width="200" height="200" priority className="clipped-triangle"/></li>
       </section>
 
       <div className='push5'></div>
@@ -79,10 +91,18 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[5].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[5].desc}</ReactMarkdown>
-          <div className='img'>
-            <Image src={contentCards[5].attachments[0].url}
-            width="200" height="200" priority className=""/>
-          </div>
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
+            { contentCards[6].attachments.map((url)=> {
+              console.log(contentCards)
+              return (
+                <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
+                  <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
+                  <Typography variant='h6'>{url.name}</Typography>
+                </Grid>
+              )
+            })}
+            </Grid>
       </section>
 
       <div className='push5'></div>
@@ -90,10 +110,18 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[6].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[6].desc}</ReactMarkdown>
-          <div className='img'>
-            <Image src={contentCards[6].attachments[0].url}
-            width="200" height="200" priority className=""/>
-          </div>
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
+            { contentCards[6].attachments.map((url)=> {
+              console.log(contentCards)
+              return (
+                <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
+                  <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
+                  <Typography variant='h6'>{url.name}</Typography>
+                </Grid>
+              )
+            })}
+            </Grid>
       </section>
 
       <div className='push5'></div>
@@ -101,10 +129,18 @@ function Business({contentCards}) {
           <Typography variant='h1'>{contentCards[7].name}</Typography>
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[7].desc}</ReactMarkdown>
-          <div className='img'>
-            <Image src={contentCards[0].attachments[1].url}
-            width="620" height="620" priority className="clipped"/>
-          </div>
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
+            { contentCards[0].attachments.map((url)=> {
+              console.log(contentCards)
+              return (
+                <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
+                  <Image src={url.url} width="200" height="200" priority className="clipped" />
+                  <Typography variant='h6'>{url.name}</Typography>
+                </Grid>
+              )
+            })}
+            </Grid>
       </section>
 
       <div className='push5'></div>
@@ -113,15 +149,18 @@ function Business({contentCards}) {
           <div className={styles.dash}></div>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[8].desc}</ReactMarkdown>
           
+          <Grid container direction="row" justifyContent="center" alignItems="center" 
+          spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
             { contentCards[8].attachments.map((url)=> {
-              console.log(url)
+              console.log(contentCards)
               return (
-                <div className='img'>
-                  <Image src='/images/joy.jpg'
-                width="200" height="200" priority className="clipped-circle"/>
-                </div>
+                <Grid item xs={10} sm={3} key={url.id} justifyContent="center">                
+                  <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
+                  <Typography variant='h6'>{url.name}</Typography>
+                </Grid>
               )
             })}
+            </Grid>
             
           
       </section>
