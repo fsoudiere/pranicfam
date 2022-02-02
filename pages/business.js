@@ -143,7 +143,7 @@ function Business({contentCards}) {
             { contentCards[0].attachments.map((url)=> {
               
               return (
-                <Grid item xs={10} sm={3} key={url.id} justifyContent="center">                
+                <Grid item xs={3} sm={3} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped" />
                   <Typography variant='h6'>{url.name}</Typography>
                 </Grid>
@@ -164,7 +164,7 @@ function Business({contentCards}) {
             { contentCards[8].attachments.map((url)=> {
               
               return (
-                <Grid item xs={10} sm={3} key={url.id} justifyContent="center">                
+                <Grid item xs={3} sm={3} key={url.id} justifyContent="center">                
                   <Image src={url.url} width="200" height="200" priority className="clipped-circle" />
                   <Typography variant='h6'>{url.name}</Typography>
                 </Grid>
@@ -185,7 +185,7 @@ function Business({contentCards}) {
 
 
         <div className='push5'></div>
-        <Stack spacing={2} direction="row" justifyContent="center">
+        <Stack spacing={2} className='bottomFixed' direction="row" justifyContent="center">
         <Button variant='contained' href="mailto:fabi@pranicfamily.com">Get in touch</Button>
         <Button variant='outlined' href="https://docs.google.com/presentation/d/1BRxaGS2_G8OrAtYW6iDw5Q7SXbvUfu-uWUf4T_pbfig/edit?usp=sharing" 
         endIcon={<PrintIcon/>}>Print</Button>

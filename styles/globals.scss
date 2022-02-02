@@ -137,6 +137,12 @@ h4 {
 
 }
 
+
+.bottomFixed {
+  position: fixed;
+  bottom: 5vh;
+}
+
 #apply-later, #apply-success { text-align: center;}
 #tsparticles {opacity: 0.75; z-index: 0;}
 #tsparticlesHearts { position: fixed; z-index: -1;}
@@ -145,8 +151,12 @@ h4 {
 #dry, #motive, #focus, #dryguide {height: 20vh;}
 #connect {height: 10vh;}
 
-
-.biz p {width: 50vw; margin: 0 auto; margin-bottom: 50px;}
+.biz {min-height: 70vh; margin-top: 10vh;
+  .toleft {right: auto; margin-top: auto; margin-right: auto; margin-left: auto; position: relative;}
+  .toright {left: auto; margin-top: auto; margin-left: auto; position: relative;}
+}
+.biz ul { padding: 0;}
+.biz p {width: 90vw; margin: 50px auto;}
 .bizSlides {
   position: relative;
   width: 1000px;
@@ -204,9 +214,7 @@ li.hrefna {
 
 @media (min-width: 600px) {
   p { font-size: 1.1em;}
-  .main { 
-    //align-items: flex-start
-  }
+  .biz p {width: 50vw; margin-bottom: 50px;}
  .img-wrapper {
    width: 45vw;
  }
@@ -218,7 +226,7 @@ li.hrefna {
 .toleft { margin-left: 50vw;}
 .toright { margin-left: -50vw;}
  .biz {min-height: 100vh;
-  .toleft {right: -360px; margin-top: -50vh; margin-right: auto; position: absolute;}
+  .toleft {right: -360px; margin-top: -50vh; margin-right: auto; margin-left: auto; position: absolute;}
   .toright {left: -360px; margin-top: -50vh; margin-left: auto; position: absolute;}
 }
  .pushup {
@@ -238,5 +246,10 @@ li.hrefna {
   .push15 {margin-bottom: 6em;}
   .push20 {margin-bottom: 8em;}
   .push30 {margin-bottom: 6em;}
+
+  .bottomFixed {
+    position: relative;
+    bottom: auto;
+  }
 }
   

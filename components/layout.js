@@ -18,7 +18,8 @@ export default function Layout({ children }) {
   })
     return (
       <>
-        <Navbar /><animated.main style={props}>{children}</animated.main>
+        { router.pathname === '/business' ? null : <Navbar /> }
+        <animated.main style={props}>{children}</animated.main>
         { router.pathname === '/apply/success' ? <ParticlesHearts/> : <ParticlesBG/> }
         <NoiseBG/>
         <Footer />

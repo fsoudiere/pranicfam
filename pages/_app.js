@@ -106,8 +106,18 @@ export default function AppComponent({ Component, pageProps }) {
     },
 
   })
+
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
+  theme.typography.h1 = {
+    fontSize: '3rem',
+    fontWeight: 400,
+    '@media (min-width:600px)': {
+      fontSize: '6rem',
+      fontWeight: 300,
+    },
+  };
+  
   return (
   <>
   <HeadTags />
