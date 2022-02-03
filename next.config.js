@@ -12,6 +12,16 @@ module.exports = {
         permanent: false,
         destination: '/en',
       },
+      {
+        source: '/channels',
+        permanent: true,
+        destination: '/circles',
+      },
+      {
+        source: '/initiations',
+        permanent: true,
+        destination: '/events',
+      },
     ]
   },
   images: {

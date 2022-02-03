@@ -1032,7 +1032,7 @@ export function ParticlesHearts() {
               "sync": false,
               "destroy": "none",
               "startValue": "random",
-              "minimumValue": 150
+              "minimumValue": 3
             }
           },
           "stroke": {

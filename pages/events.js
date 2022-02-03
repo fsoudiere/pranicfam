@@ -13,13 +13,13 @@ function Events({contentCards}) {
     <Layout>
     <div className={styles.container}>
     <Head>
-        <title>Pranic Family - Initiations</title>
-        <meta property="og:url" content='https://pranicfamily.com/initiations' key="ogurl" />
-        <meta property="og:title" content='Pranic Family - Initiations' key="ogtitle" />
+        <title>Pranic Family - Events</title>
+        <meta property="og:url" content='https://pranicfamily.com/events' key="ogurl" />
+        <meta property="og:title" content='Pranic Family - Events' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h1'>Initiations</Typography>
+        <Typography variant='h1'>Events</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
         Re-connecting deeply to our values through intensive workshops and pranic initiations.</p>
