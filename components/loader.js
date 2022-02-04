@@ -1,7 +1,6 @@
 import styles from './loader.module.scss'
 import NoiseBG from './noise'
 import { useSpring, animated } from 'react-spring'
-import { Paper } from '@mui/material'
 
 
 function SVG_loading() {
