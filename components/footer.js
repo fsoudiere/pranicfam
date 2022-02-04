@@ -1,7 +1,5 @@
 import styles from './footer.module.scss'
-import { Typography} from '@mui/material';
 import Link from 'next/link'
-import { AllInclusive, Favorite, Call, EventAvailable, Telegram, PeopleAlt } from '@mui/icons-material';
 import { useRouter } from 'next/router'
 
 export default function Footer({href}) {

@@ -21,6 +21,7 @@ export default function Layout({ children }) {
         <animated.main style={props}>{children}</animated.main>
         { router.pathname === '/apply/success' ? <ParticlesHearts/> : <ParticlesBG/> }
         { router.pathname === '/apply/later' ? null : null }
+        { router.pathname === '/circles' ? null : null }
         <NoiseBG/>
         <Footer />
 
