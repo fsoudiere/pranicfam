@@ -42,7 +42,7 @@ function Events({contentCards}) {
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
               <Stack spacing={2} direction="row" justifyContent="center">
-                <Button variant="contained" href='https://t.me/PFInviteBot'>Join the Fam</Button>
+                <Button variant="contained" href='/'>Join the Fam</Button>
                 <Button href={`${ data.attachments[1].url ? data.attachments[1].url : 'https://t.me/PFInviteBot'}`}>Contact {data.labels[0].name} </Button>
               </Stack>
             </Grid>
