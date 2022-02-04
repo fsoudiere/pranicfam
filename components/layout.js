@@ -3,12 +3,19 @@ import Footer from './footer'
 import NoiseBG from './noise'
 import {ParticlesBG, ParticlesHearts} from './particles'
 import { useSpring, animated } from 'react-spring'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 
 export default function Layout({ children }) {
-  const router = useRouter()
+  const {pathname} = Router
 
+    useEffect(() => {
+        if(pathname == '/apply/success' ){
+          return <ParticlesHearts/>
+        }else{
+            return <ParticlesBG/>
+        }
+      },[]);
 
   const props = useSpring({
     to: [
@@ -19,7 +26,7 @@ export default function Layout({ children }) {
   })
     return (
       <>
-        { router.pathname === '/business' ? null : <Navbar /> }
+        { pathname === '/business' ? null : <Navbar /> }
         <animated.main style={props}>{children}</animated.main>
         <NoiseBG/>
         <Footer />
