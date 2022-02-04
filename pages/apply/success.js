@@ -7,7 +7,7 @@ import {
   Button, Typography, 
   } from '@mui/material';
 
-function Success({ contentCards, ...formData }) {
+function Success({ ...formData }) {
 
   return (
     <Layout>

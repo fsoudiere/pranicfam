@@ -12,7 +12,7 @@ export default function Layout({ children }) {
     return (
       <>
         { router.pathname === '/business' ? null : <Navbar /> }
-        <main style={props}>{children}</main>
+        <main>{children}</main>
         { router.pathname === '/apply/success' ? <ParticlesHearts/> : <ParticlesBG/> }
         <NoiseBG/>
         <Footer />
