@@ -3,7 +3,6 @@ import Footer from './footer'
 import NoiseBG from './noise'
 import {ParticlesBG, ParticlesHearts} from './particles'
 import { useSpring, animated } from 'react-spring'
-import { Paper } from '@mui/material'
 import { useRouter } from 'next/router'
 
 
@@ -21,6 +20,7 @@ export default function Layout({ children }) {
         { router.pathname === '/business' ? null : <Navbar /> }
         <animated.main style={props}>{children}</animated.main>
         { router.pathname === '/apply/success' ? <ParticlesHearts/> : <ParticlesBG/> }
+        { router.pathname === '/apply/later' ? null : null }
         <NoiseBG/>
         <Footer />
 
