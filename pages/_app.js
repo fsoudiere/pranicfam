@@ -1,19 +1,18 @@
 import '../styles/globals.scss'
-import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
-import { useState } from 'react'
+import { useState, useContext, createContext, useMemo, } from 'react'
 import { CookiesProvider } from "react-cookie"
 import HeadTags from '../components/head';
 import {SVG_sun} from '../components/SVG/SVG_sun';
 import {SVG_moon} from '../components/SVG/SVG_moon';
 import { CssBaseline } from '@mui/material';
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 function ColorMode() {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = useContext(ColorModeContext);
   return (
       <IconButton  className="colormode" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
         {theme.palette.mode === 'dark' ? <SVG_moon stroke="rgb(153, 143, 235)" style={{width: 40, height: 40}} /> : <SVG_sun stroke="rgb(153, 143, 235)" style={{width: 40, height: 40}} />}
@@ -31,8 +30,8 @@ export default function AppComponent({ Component, pageProps }) {
       setFormData({ ...formData, ...newData });
   };
 
-  const [mode, setMode] = React.useState('light');
-  const colorMode = React.useMemo(
+  const [mode, setMode] = useState('light');
+  const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
@@ -107,7 +106,7 @@ export default function AppComponent({ Component, pageProps }) {
 
   })
 
-  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   theme.typography.h1 = {
     fontSize: '3rem',

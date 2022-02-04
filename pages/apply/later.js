@@ -7,7 +7,6 @@ import { Typography } from '@mui/material';
 function Later({ updateFormData, ...formData }) {
 
   return (
-    <Layout>
     <div className={styles.main}>
         <Head>
         <title>Pranic Family - May you be joyful & free!</title>
@@ -22,7 +21,6 @@ function Later({ updateFormData, ...formData }) {
       <Link href="/"><a>Back to Homepage</a></Link>
     
     </div>
-    </Layout>
     
 
   )
