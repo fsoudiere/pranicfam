@@ -8,3 +8,5 @@ Disallow: /404
 # Allow all crawlers
 User-agent: *
 Allow: /
+
+Sitemap: https://pranicfamily.com/sitemap.xml
