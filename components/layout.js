@@ -8,17 +8,11 @@ import { useRouter } from 'next/router'
 
 export default function Layout({ children }) {
   const router = useRouter()
-  const props = useSpring({
-    to: [
-      { opacity: 1, },
-    ],
-    from: { opacity: 0,},
-    config: {duration: 1000,},
-  })
+
     return (
       <>
         { router.pathname === '/business' ? null : <Navbar /> }
-        <animated.main style={props}>{children}</animated.main>
+        <main style={props}>{children}</main>
         { router.pathname === '/apply/success' ? <ParticlesHearts/> : <ParticlesBG/> }
         <NoiseBG/>
         <Footer />
