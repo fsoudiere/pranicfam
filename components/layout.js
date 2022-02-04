@@ -4,6 +4,7 @@ import NoiseBG from './noise'
 import {ParticlesBG, ParticlesHearts} from './particles'
 import { useSpring, animated } from 'react-spring'
 import Router from 'next/router'
+import { useEffect } from "react";
 
 
 export default function Layout({ children }) {
