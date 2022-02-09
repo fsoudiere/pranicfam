@@ -111,8 +111,8 @@ function Story({ contentCards, params, updateFormData, ...formData }) {
           </section>
             
           <section className={`hi bubble ${addBubble === 'hi' ? 'active' : ''}`} id="hi-bubble">
-              <Typography variant="h4">Hi</Typography>
-              <p>{contentCards[0].desc}</p>
+              <Typography variant="h4">Hi Dear!</Typography>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[0].desc}</ReactMarkdown>
               <TextField 
               id="fname" 
               label={contentCards[0].name} 
