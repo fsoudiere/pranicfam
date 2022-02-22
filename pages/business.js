@@ -100,7 +100,7 @@ function Business({contentCards}) {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentCards[5].desc}</ReactMarkdown>
           <Grid container direction="row" justifyContent="center" alignItems="center" 
           spacing={{ xs: 4, sm: 4 }} columns={{ xs: 6, sm: 12 }}>
-            { contentCards[6].attachments.map((url)=> {
+            { contentCards[5].attachments.map((url)=> {
               
               return (
                 <Grid item xs={10} sm={4} key={url.id} justifyContent="center">                
