@@ -30,6 +30,7 @@ function Members({contentCards}) {
         {contentCards.map((data)=>{
             return (
               <Grid item xs={10} sm={4} key={data.id}>
+              <div className='push5'></div>
               <div className='img'>
                 <Image
                 src={data.attachments[0].url}
@@ -62,15 +63,13 @@ function Members({contentCards}) {
         </Grid>
 
         <div className='push5'></div>
-        <Typography variant='h2'>Monthly Discounts</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
-        We thank you for considering these monthly donations. Those fees are going toward our mission to acquire
+        Thank you for considering these monthly donations. All fees are going toward our mission to acquire
         land and inspire all beings to live joyfully free!
         </p>
         <Stack spacing={2} direction="row" justifyContent="center">
-        <Button variant="outlined" href="https://calendly.com/pranicfamily/1-month-coaching">Book 1 Month (10%)</Button>
-        <Button variant="contained" href="https://calendly.com/pranicfamily/6-month-coaching">Book 6 Month (25%)</Button>
+        <Button variant="contained" href="https://calendly.com/pranicfamily">Special Monthly Discounts</Button>
         </Stack>
 
         <div className='push5'></div>
