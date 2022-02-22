@@ -36,7 +36,7 @@ function Home({contentCards}) {
             </a></Link>
             </Grid>
             <Grid item xs={10} sm={6} key={contentCards[1].id}>
-            <Link href="/members"><a>
+            <Link href="/coaching"><a>
               <SVG_fire stroke="rgba(0, 0, 0, 0.87)" style={{width: 60, height: 60}}/>
               <Typography variant='h4'>{contentCards[1].name}</Typography>
               <p>{contentCards[1].desc}</p>

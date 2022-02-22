@@ -13,13 +13,13 @@ function Members({contentCards}) {
     <Layout>
     <div className={styles.container}>
     <Head>
-        <title>Pranic Family - Members</title>
-        <meta property="og:url" content='https://pranicfamily.com/members' key="ogurl" />
-        <meta property="og:title" content='Pranic Family - Members' key="ogtitle" />
+        <title>Pranic Family - Coaching</title>
+        <meta property="og:url" content='https://pranicfamily.com/coaching' key="ogurl" />
+        <meta property="og:title" content='Pranic Family - Coaching' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h1'>Members</Typography>
+        <Typography variant='h1'>Coaching</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
         From every corner of the world, we are here to remind each other of the Love we are.</p>
@@ -41,14 +41,18 @@ function Members({contentCards}) {
               </div>
               <h2>{data.name}</h2>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{data.desc}</ReactMarkdown>
+              <Stack spacing={2} direction="row" justifyContent="center">
                 {data.attachments[1] 
                 ?
-                <Stack spacing={2} direction="row" justifyContent="center">
-                    <Button href={data.attachments[1].url}>Contact {data.attachments[1].name}</Button>
-                </Stack>
+                  <Button href={data.attachments[1].url}>Contact {data.attachments[1].name}</Button>
                 : ''
                 }
-
+                {data.attachments[2] && data.attachments[2].name === "calendly"
+                ?
+                  <Button variant="contained" href={data.attachments[2].url}>Book Session</Button>
+                : ''
+                }
+                </Stack>
             </Grid>
             
 
@@ -56,6 +60,19 @@ function Members({contentCards}) {
           })}
 
         </Grid>
+
+        <div className='push5'></div>
+        <Typography variant='h2'>Monthly Discounts</Typography>
+        <div className={styles.dash}></div>
+        <p className={styles.description}>
+        We thank you for considering these monthly donations. Those fees are going toward our mission to acquire
+        land and inspire all beings to live joyfully free!
+        </p>
+        <Stack spacing={2} direction="row" justifyContent="center">
+        <Button variant="outlined" href="https://calendly.com/pranicfamily/1-month-coaching">Book 1 Month (10%)</Button>
+        <Button variant="contained" href="https://calendly.com/pranicfamily/6-month-coaching">Book 6 Month (25%)</Button>
+        </Stack>
+
         <div className='push5'></div>
         <Button variant='outlined' href="/en"><a>Back to Menu</a></Button>
 

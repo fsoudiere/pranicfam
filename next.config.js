@@ -22,6 +22,11 @@ module.exports = {
         permanent: true,
         destination: '/events',
       },
+      {
+        source: '/members',
+        permanent: true,
+        destination: '/coaching',
+      },
     ]
   },
   images: {
