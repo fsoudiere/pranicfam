@@ -49,9 +49,9 @@ function Channels({contentCards}) {
 
 
                 { data.attachments[2] && data.attachments[2].name === "link" ? 
-                <Button variant="contained" href={`${data.attachments[2].url}`}>Join Group</Button>
+                <Button variant="contained" href="/">Join Us</Button>
                 : data.attachments[1].name === "link" ? 
-                <Button variant="contained" href={`${data.attachments[1].url}`}>Join Group</Button>
+                <Button variant="contained" href="/">Join us</Button>
                  : '' }
               </Stack>
             </Grid>
