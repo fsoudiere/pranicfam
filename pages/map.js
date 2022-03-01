@@ -29,6 +29,8 @@ function MyMapComponent({
 }
 
 function Map() {
+  const apiKeyMap = process.env.NEXT_PUBLIC_GMAP;
+
 
   const center = { lat: 102.5528, lng: 23.6345 };
   const zoom = 4;
@@ -45,7 +47,7 @@ function Map() {
         <div className={styles.dash}></div>
         <p className={styles.description}>
         Let us meet</p>
-        <Wrapper apiKey={process.env.GMAP}>
+        <Wrapper apiKey={apiKeyMap}>
           <MyMapComponent center={center} zoom={zoom}>
           </MyMapComponent>
         </Wrapper>
