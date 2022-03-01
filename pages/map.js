@@ -13,16 +13,11 @@ function MyMapComponent({
   const ref = useRef();
   
   useEffect(() => {
-    const map = new window.google.maps.Map(ref.current, {
+    new window.google.maps.Map(ref.current, {
       center,
       zoom,
     });
 
-    new google.maps.Marker({
-      position: { lat: 102.5528, lng: 23.6345 },
-      map,
-      title: "Hello World!",
-    });
   });
 
   return <div ref={ref} id="map" />;
