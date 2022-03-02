@@ -30,7 +30,7 @@ module.exports = {
     ]
   },
   images: {
-    domains: ['trello.com', 'bit.ly'],
+    domains: ['trello.com', 'bit.ly', 'google.com'],
   },
   reactStrictMode: true,
 }
