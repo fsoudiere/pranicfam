@@ -10,7 +10,7 @@ function Home({updateFormData, ...formData}) {
     const [loaded,setLoaded] = useState(false)
     useEffect(() => {
         const {pathname} = Router
-        const members = [ "fabi", "kamilla", "monika", "luiza", "nathan", "rai", "hrefna"];
+        const members = [ "fabi", "kamilla", "ciara", "supriya", "tobias", "monika", "luiza", "nathan", "rai", "hrefna"];
         const random = Math.floor(Math.random() * members.length);
         const path = members[random];
         if(pathname == '/' ){

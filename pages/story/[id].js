@@ -395,6 +395,8 @@ export async function getStaticPaths() {
     return { paths: [
         { params: { id: "fabi" } },
         { params: { id: "tobias" } },
+        { params: { id: "ciara" } },
+        { params: { id: "supriya" } },
         { params: { id: "luiza" } },
         { params: { id: "hrefna" } },
         { params: { id: "nathan" } },
@@ -423,6 +425,14 @@ export async function getStaticProps({ params }) {
             pid = '61bc8fd878662a71f9458203';
             return card.idList == pid && !card.closed; 
         } else
+        if (params.id === 'ciara') {
+          pid = '622cb287809f612f8589c24c';
+          return card.idList == pid && !card.closed; 
+      } else
+      if (params.id === 'supriya') {
+        pid = '622cb3703786a1746e8b4a1f';
+        return card.idList == pid && !card.closed; 
+    } else
         if (params.id === 'luiza') {
             pid = '61cbc5b65bfc5327ae25c62c';
             return card.idList == pid && !card.closed; 
