@@ -394,6 +394,7 @@ export async function getStaticPaths() {
     // correct id will 404.
     return { paths: [
         { params: { id: "fabi" } },
+        { params: { id: "alice" } },
         { params: { id: "tobias" } },
         { params: { id: "ciara" } },
         { params: { id: "supriya" } },
@@ -416,11 +417,15 @@ export async function getStaticProps({ params }) {
 
     let pid;
     let contentCards = posts.cards.filter(card => {
-
+      
         if (params.id === 'fabi') {
             pid = '61ba2e77d9741d7fc9a75e4d';
             return card.idList == pid && !card.closed; 
         } else
+        if (params.id === 'alice') {
+          pid = '6230f7962efadc1dcaed587f';
+          return card.idList == pid && !card.closed; 
+      } else
         if (params.id === 'tobias') {
             pid = '61bc8fd878662a71f9458203';
             return card.idList == pid && !card.closed; 
