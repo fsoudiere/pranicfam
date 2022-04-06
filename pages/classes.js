@@ -12,9 +12,9 @@ function Channels({contentCards}) {
     <Layout>
     <div className={styles.container}>
     <Head>
-        <title>Pranic Family - Circles</title>
-        <meta property="og:url" content='https://pranicfamily.com/circles' key="ogurl" />
-        <meta property="og:title" content='Pranic Family - Circles' key="ogtitle" />
+        <title>Pranic Family - Classes</title>
+        <meta property="og:url" content='https://pranicfamily.com/classes' key="ogurl" />
+        <meta property="og:title" content='Pranic Family - Classes' key="ogtitle" />
       </Head>
 
       <main className={styles.main}>

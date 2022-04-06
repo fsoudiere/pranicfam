@@ -13,7 +13,7 @@ function Home({contentCards}) {
     <div className={styles.container}>
     <Head>
         <title>Pranic Family - Welcome Home</title>
-        <meta name="description" content="Inspiring beings to live joyfully free" />
+        <meta name="description" content="Connect & Inspire Beings to live joyfully free" />
         <meta property="og:url" content='https://pranicfamily.com/' key="ogurl" />
         <meta property="og:image" content='/images/joy.jpg' key="ogimage" />
         <meta property="og:title" content='Welcome Home' key="ogtitle" />
@@ -43,7 +43,7 @@ function Home({contentCards}) {
             </a></Link>
             </Grid>
             <Grid item xs={10} sm={6} key={contentCards[2].id}>
-            <Link href="/circles"><a>
+            <Link href="/classes"><a>
                <SVG_water stroke="rgba(0, 0, 0, 0.87)" style={{width: 60, height: 60}}/>
               <Typography variant='h4'>{contentCards[2].name}</Typography>
               <p>{contentCards[2].desc}</p>

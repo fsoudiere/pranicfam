@@ -33,7 +33,7 @@ function Mission({contentCards}) {
         <Typography variant='h1'>Mission</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
-        Inspiring beings to live Joyfully Free</p>
+        Connect & Inspire Beings to live Joyfully Free</p>
         <div className='push5'>
           <Image
           src={'/images/ceremony.jpg'} // Route of the image file

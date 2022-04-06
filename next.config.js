@@ -13,9 +13,9 @@ module.exports = {
         destination: '/en',
       },
       {
-        source: '/channels',
+        source: '/circles',
         permanent: true,
-        destination: '/circles',
+        destination: '/classes',
       },
       {
         source: '/initiations',
