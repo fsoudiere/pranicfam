@@ -9,6 +9,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import PhoneInput from 'react-phone-number-input'
 import * as Yup from 'yup';
+
+import { parsePhoneNumber } from 'react-phone-number-input'
+
+
 import { 
   Button, 
   TextField, 
@@ -32,8 +36,9 @@ function Apply({ updateFormData, ...formData }) {
   const [problems, setProblems] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState();
-
+  const [country, setCountry] = useState();
   console.log(formData);
+
 
   const validationSchema = Yup.object().shape({
     age: Yup.number()
@@ -83,6 +88,7 @@ const onSubmit = data => {
     initiated: formData.initiated,
     dry: formData.dry,
     age: formData.age,
+    area: formData.country,
 
   }
   
@@ -175,8 +181,8 @@ const listUser = async event => {
             id="sms"
             type="phone"
             {...register('phone')}
+            defaultCountry='US'
             placeholder="What's your telegram number?"
-            defaultCountry="US"
             value={phone ? phone : formData.phone ? formData.phone : ""}
             onChange={setPhone}
             error={errors.phone ? true : false}
@@ -189,7 +195,11 @@ const listUser = async event => {
             fullWidth
             type="email"
             {...register('email')}
-            onChange={(event) => {setEmail(event.target.value);updateFormData({ email: event.target.value });updateFormData({ phone: phone });}}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              updateFormData({ email: event.target.value, country: country });}}
+            onClick={(event) => {
+                setCountry(parsePhoneNumber(phone).country);updateFormData({ phone: phone });}}
             value={email ? email : formData.email ? formData.email : ""}
             label="What's your email?"
             variant="standard"
