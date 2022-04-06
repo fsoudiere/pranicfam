@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     range: 'Sheet1!A2:J', // sheet name
     valueInputOption: 'USER_ENTERED',
     requestBody: {
-        values: [[body.fname, body.email, body.sms, body.referral, body.diet, body.dry, body.initiated, body.motive, body.age, body.country]],
+        values: [[body.fname, body.email, body.sms, body.referral, body.diet, body.dry, body.initiated, body.motive, body.age, body.area]],
       },
   }, (err, result) => {
     if (err) {
