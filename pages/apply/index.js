@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import 'react-phone-number-input/style.css'
 import Layout from '../../components/layout'
 import styles from '../../styles/Home.module.scss'
 import { useState } from 'react';
@@ -6,6 +7,7 @@ import Link from 'next/link';
 import { useCookies } from "react-cookie"
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import PhoneInput from 'react-phone-number-input'
 import * as Yup from 'yup';
 import { 
   Button, 
@@ -29,7 +31,7 @@ function Apply({ updateFormData, ...formData }) {
   const [medication, setMedication] = useState("");
   const [problems, setProblems] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState();
 
   const validationSchema = Yup.object().shape({
     age: Yup.number()
@@ -42,9 +44,9 @@ function Apply({ updateFormData, ...formData }) {
     email: Yup.string()
       .required('Email is required')
       .email('Email is invalid'),
-    phone: Yup.string()
-      .min(8, 'Phone should start with + and the area code.')
-      .required('Phone should start with + and the area code.'),
+    phone: Yup.number()
+      .min(8, 'Phone should have at least 8 numbers.')
+      .required('Phone is required.'),
     acceptTerms: Yup.bool().oneOf([true], 'Accept Terms is required')
   });
   const {
@@ -163,18 +165,8 @@ const listUser = async event => {
               <FormControlLabel value="no" control={<Radio />} label="No" />
             </RadioGroup>
             <p></p>
-            <TextField 
-            id="sms" 
-            fullWidth
-            type="phone"
-            {...register('phone')}
-            onChange={(event) => {setPhone(event.target.value);updateFormData({ phone: event.target.value });}}
-            label="What's your Telegram number?"
-            variant="standard"
-            value={phone ? phone : formData.phone ? formData.phone : ""}
-            error={errors.phone ? true : false}
-            />
-            <p variant="inherit" color="textSecondary">{errors.phone?.message}</p> 
+
+
             <TextField 
             id="email" 
             fullWidth
@@ -187,6 +179,21 @@ const listUser = async event => {
             error={errors.email ? true : false}
             />
             <p variant="inherit" color="textSecondary">{errors.email?.message}</p> 
+            
+            <PhoneInput
+            id="sms"
+            type="phone"
+            {...register('phone')}
+            placeholder="What's your telegram number?"
+            defaultCountry="US"
+            value={phone ? phone : formData.phone ? formData.phone : ""}
+            onChange={(event) => {setPhone();updateFormData({ phone: phone });}}
+            error={errors.phone ? true : false}
+            />
+            <p variant="inherit" color="textSecondary">{errors.phone?.message}</p> 
+            
+            
+            
             <FormLabel component="legend">By signing your name you agree to the <Link href="https://docs.google.com/document/d/18RvseS_7tTNCmfKpO1Q30sDjTvTDyxrmxpPJETWTLIg"><a style={{textDecoration:'underline'}}>terms</a></Link> and to receive our newsletter.</FormLabel>
             <TextField 
             id="signed" 

@@ -37,6 +37,44 @@ h2, h1 {
 
 .MuiGrid-item, .MuiGrid-root { text-align: center;}
 
+
+.PhoneInput select, .PhoneInput input  {
+  border: 0;
+  outline: none;
+}
+
+#apply-bubble p {
+  font-size: 14px;
+  color: rgb(182, 22, 22);
+  margin-bottom: 2em;
+}
+.PhoneInput {
+  .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon--border,
+.PhoneInputCountrySelect:focus + .PhoneInputCountryIcon + .PhoneInputCountrySelectArrow {
+	opacity: 1;
+	color: black;
+  box-shadow: none;
+}
+}
+
+
+.PhoneInput .PhoneInputInput {
+  background-color: transparent;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.34);
+}
+.PhoneInput--focus .PhoneInputInput {
+  border-bottom: 2px solid #998feb;
+}
+.PhoneInput {
+  input, select, option {
+    font-weight: 400;
+    font-family: 'Dosis',sans-serif;
+    font-size: 1.142rem;
+  }
+}
+
+
 .bubble {
   width: 90vw;
   margin: 2px;
