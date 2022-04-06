@@ -33,6 +33,8 @@ function Apply({ updateFormData, ...formData }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState();
 
+  console.log(formData);
+
   const validationSchema = Yup.object().shape({
     age: Yup.number()
       .required('Age is required.')
@@ -167,18 +169,7 @@ const listUser = async event => {
             <p></p>
 
 
-            <TextField 
-            id="email" 
-            fullWidth
-            type="email"
-            {...register('email')}
-            onChange={(event) => {setEmail(event.target.value);updateFormData({ email: event.target.value });}}
-            value={email ? email : formData.email ? formData.email : ""}
-            label="What's your email?"
-            variant="standard"
-            error={errors.email ? true : false}
-            />
-            <p variant="inherit" color="textSecondary">{errors.email?.message}</p> 
+
             
             <PhoneInput
             id="sms"
@@ -187,12 +178,24 @@ const listUser = async event => {
             placeholder="What's your telegram number?"
             defaultCountry="US"
             value={phone ? phone : formData.phone ? formData.phone : ""}
-            onChange={(event) => {setPhone();updateFormData({ phone: phone });}}
+            onChange={setPhone}
             error={errors.phone ? true : false}
             />
             <p variant="inherit" color="textSecondary">{errors.phone?.message}</p> 
             
             
+            <TextField 
+            id="email" 
+            fullWidth
+            type="email"
+            {...register('email')}
+            onChange={(event) => {setEmail(event.target.value);updateFormData({ email: event.target.value });updateFormData({ phone: phone });}}
+            value={email ? email : formData.email ? formData.email : ""}
+            label="What's your email?"
+            variant="standard"
+            error={errors.email ? true : false}
+            />
+            <p variant="inherit" color="textSecondary">{errors.email?.message}</p> 
             
             <FormLabel component="legend">By signing your name you agree to the <Link href="https://docs.google.com/document/d/18RvseS_7tTNCmfKpO1Q30sDjTvTDyxrmxpPJETWTLIg"><a style={{textDecoration:'underline'}}>terms</a></Link> and to receive our newsletter.</FormLabel>
             <TextField 
