@@ -15,10 +15,10 @@ export default async function handler(req, res) {
     
     sheets.spreadsheets.values.append({
     spreadsheetId: process.env.GSHEET_DATABASE_ID,
-    range: 'Sheet1!A2:I', // sheet name
+    range: 'Sheet1!A2:J', // sheet name
     valueInputOption: 'USER_ENTERED',
     requestBody: {
-        values: [[body.fname, body.email, body.sms, body.referral, body.diet, body.dry, body.initiated, body.motive, body.age]],
+        values: [[body.fname, body.email, body.sms, body.referral, body.diet, body.dry, body.initiated, body.motive, body.age, body.country]],
       },
   }, (err, result) => {
     if (err) {
