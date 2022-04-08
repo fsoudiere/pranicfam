@@ -18,7 +18,7 @@ function Channels({contentCards}) {
       </Head>
 
       <main className={styles.main}>
-        <Typography variant='h1'>Circles</Typography>
+        <Typography variant='h1'>Classes</Typography>
         <div className={styles.dash}></div>
         <p className={styles.description}>
         Reflecting our essence in a multitude of colors, sounds, tastes, smells, and touches.</p>
